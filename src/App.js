@@ -52,9 +52,7 @@ import AddNursingActivitiesPage from "./page/Adminpage/AddNursingActivitiesPage"
 import UpdateNursingActivities, {
   Actionactivities,
 } from "./page/Adminpage/UpdateNursingActivitiesPage";
-import MedicationsPage, {
-  LoaderMeications,
-} from "./page/Adminpage/MedicationsPage";
+import MedicationsPage from "./page/Adminpage/MedicationsPage";
 import DetailsMedicalPage, {
   LoadgetDetailmedication,
 } from "./page/Adminpage/DetailsMedicalPage";
@@ -62,9 +60,7 @@ import UpdateMedicalPage, {
   ActionMedication,
 } from "./page/Adminpage/UpdateMedicalPage";
 import AddmedicationPage from "./page/Adminpage/AddmedicationPage";
-import MedicalSuppliesPage, {
-  LoaderMedicalSupplies,
-} from "./page/Adminpage/MedicalSuppliesPage";
+import MedicalSuppliesPage from "./page/Adminpage/MedicalSuppliesPage";
 import DetailsMedicalPageSupplies, {
   LoadgetDetailmedicalSupplies,
 } from "./page/Adminpage/DetailMedicalSuppliesPage";
@@ -226,11 +222,7 @@ function RouterApp() {
           </Route>
 
           <Route path="medication" element={<MainLayout />}>
-            <Route
-              index
-              element={<MedicationsPage />}
-              loader={LoaderMeications}
-            />
+            <Route index element={<MedicationsPage />} />
             <Route path=":id">
               <Route
                 index
@@ -247,11 +239,7 @@ function RouterApp() {
           </Route>
 
           <Route path="medicalsupplies" element={<MainLayout />}>
-            <Route
-              index
-              element={<MedicalSuppliesPage />}
-              loader={LoaderMedicalSupplies}
-            />
+            <Route index element={<MedicalSuppliesPage />} />
             <Route path=":id">
               <Route
                 index

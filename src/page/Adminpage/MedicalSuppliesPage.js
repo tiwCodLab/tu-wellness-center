@@ -1,23 +1,30 @@
-import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { FaBriefcaseMedical } from "react-icons/fa6";
-import {  MdAddCircle } from "react-icons/md";
+import { MdAddCircle } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
 import { FaTrashCan } from "react-icons/fa6";
-
-
-export const LoaderMedicalSupplies = async () => {
-  const res = await fetch("/api/medicalsupplies");
-  if (!res.ok) {
-    throw Error("Could not fetch the medicalsupplies");
-  }
-  return res.json();
-};
+import axios from "axios";
 
 export default function MedicalSuppliesPage() {
-  const medicalsuppliesdata = useLoaderData();
+  const [medicalsuppliesdata, setMedicalsupplies] = useState([]);
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://api-data-medical-room-tu.onrender.com/api/medicalsupplies`
+        );
+        setMedicalsupplies(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -26,16 +33,12 @@ export default function MedicalSuppliesPage() {
   const handleDelete = async (id) => {
     if (window.confirm("ต้องการลบข้อมูลโรคนี้ใช่หรือไม่?")) {
       try {
-        const response = await fetch(`/api/medicalsupplies/${id}`, {
-          method: "DELETE",
-        });
+        await axios.delete(
+          `https://api-data-medical-room-tu.onrender.com/api/medicalsupplies/${id}`
+        );
 
-        if (response.ok) {
-          alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
-          window.location.reload(); // Refresh the page after successful deletion
-        } else {
-          alert("ไม่สามารถลบข้อมูลโรคได้");
-        }
+        alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
+        window.location.reload(); // Refresh the page after successful deletion
       } catch (error) {
         console.error("Error deleting medicalsupplies:", error.message);
       }

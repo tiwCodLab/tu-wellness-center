@@ -1,20 +1,28 @@
-import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { MdMedication, MdAddCircle } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
 import { FaTrashCan } from "react-icons/fa6";
-
-export const LoaderMeications = async () => {
-  const res = await fetch("/api/medication");
-  if (!res.ok) {
-    throw Error("Could not fetch the medication");
-  }
-  return res.json();
-};
+import axios from "axios";
 
 export default function MedicationsPage() {
-  const medication = useLoaderData();
+  const [medication, setMedication] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://api-data-medical-room-tu.onrender.com/api/medication`
+        );
+        setMedication(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -23,16 +31,12 @@ export default function MedicationsPage() {
   const handleDelete = async (id) => {
     if (window.confirm("ต้องการลบข้อมูลโรคนี้ใช่หรือไม่?")) {
       try {
-        const response = await fetch(`/api/medication/${id}`, {
-          method: "DELETE",
-        });
+        await axios.delete(
+          `https://api-data-medical-room-tu.onrender.com/api/medication/${id}`
+        );
 
-        if (response.ok) {
-          alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
-          window.location.reload(); // Refresh the page after successful deletion
-        } else {
-          alert("ไม่สามารถลบข้อมูลโรคได้");
-        }
+        alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
+        window.location.reload(); // Refresh the page after successful deletion
       } catch (error) {
         console.error("Error deleting medication:", error.message);
       }

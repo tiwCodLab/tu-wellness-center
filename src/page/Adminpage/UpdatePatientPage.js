@@ -5,23 +5,27 @@ import { Form, redirect, useNavigate, useParams } from "react-router-dom";
 
 async function updataPatient(id, updataPatient) {
   try {
-    let response = await fetch(`/api/patient/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(updataPatient),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    }).then((res) => {
-      if (res.ok) {
-        alert("แก้ไขข้อมูลเรียบร้อย");
-      } else {
-        throw Error({ error: `Could not update patient ${id}` });
+    const response = await axios.put(
+      `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`,
+      updataPatient,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-      return res.json();
-    });
-    return response;
+    );
+
+    if (response.status === 200) {
+      alert("แก้ไขข้อมูลเรียบร้อย");
+    } else {
+      throw new Error(`Could not update patient ${id}`);
+    }
+
+    return response.data;
   } catch (error) {
     console.error("Error:", error);
+    // You may choose to throw the error again to propagate it to the calling code
+    throw error;
   }
 }
 
@@ -65,13 +69,20 @@ export default function UpdatePatientPage() {
   }, []);
 
   // Load initial product data from APi
+
   useEffect(() => {
-    async function fetchpatient() {
-      const response = await fetch(`/api/patient/${id}`);
-      const data = await response.json();
-      setPatient(data);
-    }
-    fetchpatient();
+    const fetchPatient = async () => {
+      try {
+        const response = await axios.get(
+          `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`
+        );
+        setPatient(response.data);
+      } catch (error) {
+        console.error("Error fetching patient:", error);
+      }
+    };
+
+    fetchPatient();
   }, [id]);
 
   if (!patient) {
