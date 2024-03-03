@@ -24,9 +24,7 @@ import { AuthProvider } from "./utils/AuthProvider";
 import ROLES_LIST from "./utils/rolesList";
 // import usePermission from "./utils/usePermission";
 import ManagementPage from "./page/Nursepage/ManagementPage";
-import MedicalRecordByPatient, {
-  LoadMedicalRecordByPatient,
-} from "./page/Nursepage/MedicalRecordByPatientPage";
+import MedicalRecordByPatient from "./page/Nursepage/MedicalRecordByPatientPage";
 import ViewMedicalRecordPage, {
   LoadgetViewMedicalRecord,
 } from "./page/Nursepage/ViewMedicalRecordPage";
@@ -122,11 +120,7 @@ function RouterApp() {
             </Route>
             <Route path=":id" element={<NewmedicalRecord />} />
             <Route path=":id/history">
-              <Route
-                index
-                element={<MedicalRecordByPatient />}
-                loader={LoadMedicalRecordByPatient}
-              />
+              <Route index element={<MedicalRecordByPatient />} />
               <Route
                 path=":id/view"
                 element={<ViewMedicalRecordPage />}
@@ -148,11 +142,7 @@ function RouterApp() {
 
             <Route path=":id" element={<NewmedicalRecord />} />
             <Route path=":id/history">
-              <Route
-                index
-                element={<MedicalRecordByPatient />}
-                loader={LoadMedicalRecordByPatient}
-              />
+              <Route index element={<MedicalRecordByPatient />} />
               <Route
                 path=":id/view"
                 element={<ViewMedicalRecordPage />}
@@ -312,7 +302,6 @@ function RouterApp() {
         </Route>
 
         <Route path="adds" element={<Log />} />
-       
 
         {/* <Route path="login" element={<LoginPage />} action={loginAction(auth)}/> */}
       </Route>

@@ -1,15 +1,13 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import GoBack from "../../component/GoBack";
+import axios from "axios";
 
 export async function getViewMedicalRecord(id) {
-  const res = await fetch(`/api/medicalrecord/${id}`);
-
-  let viewredcord = await res.json();
-  if (!res.ok) {
-    throw Error(viewredcord.error);
-  }
-  return viewredcord; //res.json()
+  const res = await axios.get(
+    `https://api-data-medical-room-tu.onrender.com/api/medicalrecord/${id}`
+  ); // Use axios.get
+  return res.data;
 }
 
 export const LoadgetViewMedicalRecord = async ({ params }) => {
@@ -26,9 +24,9 @@ export const LoadgetViewMedicalRecord = async ({ params }) => {
 export default function ViewMedicalRecordPage() {
   const viewMedicalRecord = useLoaderData();
 
-  const handlePrint = () => {
-    window.print(); // เมื่อคลิกที่ปุ่มจะทำการพิมพ์หน้าปัจจุบัน
-  };
+  // const handlePrint = () => {
+  //   window.print();
+  // };
 
   return (
     <>
