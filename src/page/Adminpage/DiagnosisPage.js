@@ -62,14 +62,14 @@ const DiagnosisPage = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`/api/diagnosis/${deletePopup.patientId}`, {
-        method: "DELETE",
-      });
+      const response = await axios.delete(
+        `https://api-data-medical-room-tu.onrender.com/api/diagnosis/${deletePopup.patientId}`
+      );
 
-       const dataRes = await axios.get(
-         `https://api-data-medical-room-tu.onrender.com/api/diagnosis`
-       );
-       setDiagnosisdata(dataRes.data);
+      const dataRes = await axios.get(
+        `https://api-data-medical-room-tu.onrender.com/api/diagnosis`
+      );
+      setDiagnosisdata(dataRes.data);
 
       if (response.ok) {
         closeDeletePopup();
