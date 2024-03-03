@@ -1,0 +1,194 @@
+import React from "react";
+import { useLoaderData } from "react-router-dom";
+import GoBack from "../../component/GoBack";
+
+export async function getViewCounseling(id) {
+  const res = await fetch(`/api/counseling/${id}`);
+
+  let viewredcord = await res.json();
+  if (!res.ok) {
+    throw Error(viewredcord.error);
+  }
+  return viewredcord; //res.json()
+}
+
+export const LoadgetViewCounseling = async ({ params }) => {
+  const { id } = params;
+  try {
+    const res = await getViewCounseling(id);
+    console.log(id);
+    return res;
+  } catch (error) {
+    throw new Error("MedicalRecord with id: " + id + " could not be found.");
+  }
+};
+
+export default function ViewCounselingById() {
+  const viewCounseling = useLoaderData();
+
+  return (
+    <>
+      <div className="mt-2 p-8 bg-white rounded-md print-section">
+        <div>
+          <h1 className="text-xl font-bold mb-4">
+            มหาวิทยาลัยธรรมศาสตร์ ศูนย์ลำปาง
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-1  ml-8 ">
+            <div className="mb-4">
+              <div className="mb-2 font-semibold text-sm">วันที่</div>
+              <p className="text-sm">{viewCounseling.visitdate}</p>
+            </div>
+
+            <div className="mb-4">
+              <div className="mb-2 font-semibold text-sm">รหัสนักศึกษา</div>
+              <p className="text-sm">{viewCounseling.patient.student_id}</p>
+            </div>
+
+            <div className="mb-4">
+              <div className="mb-2 font-semibold text-sm">ชื่อ-นามสกุล</div>
+              <p className="text-sm">
+                {viewCounseling.patient.patient_fname}{" "}
+                {viewCounseling.patient.patient_lname}
+              </p>
+            </div>
+
+            <div className="mb-4">
+              <div className="mb-2 font-semibold text-sm">สถานภาพ</div>
+              <p className="text-sm">{viewCounseling.patient.status}</p>
+            </div>
+
+            <div className="mb-4">
+              <div className="mb-2 font-semibold text-sm">คณะ/หน่วยงาน</div>
+              <p className="text-sm">{viewCounseling.patient.organizations}</p>
+            </div>
+
+            <div className="mb-4">
+              <div className="mb-2 font-semibold text-sm">อายุ</div>
+              <p className="text-sm">{viewCounseling.patient.age}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-white p-8 mt-2 rounded-md">
+        <h1 className="text-base font-bold mt-4 mb-2">รายละเอียดการปรึกษา</h1>
+        <div className="relative overflow-x-auto">
+          <table className="w-full text-sm text-left rtl:text-right">
+            <thead className="text-xs"></thead>
+            <tbody>
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal">
+                  รูปแบบการปรึกษา
+                </th>
+                <td className="px-6 py-4">
+                  {viewCounseling.format ? viewCounseling.format : "ไม่ได้ระบุ"}
+                </td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  ปัญหานำ
+                </th>
+                <td className="px-6 py-4">
+                  {viewCounseling.firstproblems
+                    ? viewCounseling.firstproblems
+                    : "ไม่ได้ระบุ"}
+                </td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  ปัญหาสำคัญ
+                </th>
+                <td className="px-6 py-4">
+                  {viewCounseling.problems
+                    ? viewCounseling.problems
+                    : "ไม่ได้ระบุ"}
+                </td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  เสียงหายใจ
+                </th>
+                <td className="px-6 py-4">
+                  {viewCounseling.breathing_sound_detail
+                    ? viewCounseling.breathing_sound_detail
+                    : "ปกติ"}
+                </td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  ลักษณะทั่วไปและพฤติกรรมขณะให้การปรึกษา
+                </th>
+                <td className="px-6 py-4">
+                  {viewCounseling.behavior
+                    ? viewCounseling.behavior
+                    : "ไม่ได้ระบุ"}
+                </td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  ผลการให้คำปรึกษา
+                </th>
+                <td className="px-6 py-4">
+                  {viewCounseling.counseling_result
+                    ? viewCounseling.counseling_result
+                    : "ไม่ได้ระบุ"}
+                </td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  แผนการให้คำปรึกษาในครั้งต่อไป
+                </th>
+                <td className="px-6 py-4">
+                  {viewCounseling.counseling_plan
+                    ? viewCounseling.counseling_plan
+                    : "ไม่ได้ระบุ"}
+                </td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  แนวทางการให้ความช่วยเหลือ
+                </th>
+                <td className="px-6 py-4">
+                  {viewCounseling.assistance
+                    ? viewCounseling.assistance
+                    : "ไม่ได้ระบุ"}
+                </td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  หมายเหตุ
+                </th>
+                <td className="px-6 py-4"> {viewCounseling.remarks}</td>
+              </tr>
+
+              <tr className="border-b border-gray-100">
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  ผู้บันทึก
+                </th>
+                <td className="px-6 py-4">{viewCounseling.psychologist}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="flex justify-between ">
+        <GoBack />
+        {/* <div className="mt-4">
+          <button
+            className="bg-teal-500 text-white px-6  py-1 rounded-md hover:bg-blue-700"
+            onClick={handlePrint}
+          >
+            พิมพ์
+          </button>
+        </div> */}
+      </div>
+    </>
+  );
+}
