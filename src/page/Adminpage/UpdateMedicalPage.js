@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import axios from "axios";
+
 async function updateMedication(id, updatedMedication) {
   try {
-    let response = await fetch(`/api/medication/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(updatedMedication),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.put(
+      `https://api-data-medical-room-tu.onrender.com/api/medication/${id}`,
+      updatedMedication,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    if (!response.ok) {
+    if (response.status !== 200) {
       throw new Error(`Could not update medication ${id}`);
     }
 
-    return response.json();
+    return response.data;
   } catch (error) {
     console.error("Error:", error);
     throw error;
@@ -41,11 +45,17 @@ export default function UpdateMedicalPage() {
   });
 
   useEffect(() => {
-    async function fetchMedication() {
-      const response = await fetch(`/api/medication/${id}`);
-      const data = await response.json();
-      setMedication(data);
-    }
+    const fetchMedication = async () => {
+      try {
+        const response = await axios.get(
+          `https://api-data-medical-room-tu.onrender.com/api/medication/${id}`
+        );
+        setMedication(response.data);
+      } catch (error) {
+        console.error("Error fetching medication:", error);
+      }
+    };
+
     fetchMedication();
   }, [id]);
 

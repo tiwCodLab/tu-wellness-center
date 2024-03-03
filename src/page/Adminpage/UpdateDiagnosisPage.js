@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Form, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 async function updateDiagnosis(id, updatedDiagnosis) {
   try {
-    let response = await fetch(`/api/diagnosis/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(updatedDiagnosis),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    });
+    const response = await axios.put(
+      `https://api-data-medical-room-tu.onrender.com/api/diagnosis/${id}`,
+      updatedDiagnosis,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    if (!response.ok) {
+    if (response.status !== 200) {
       throw new Error(`Could not update diagnosis ${id}`);
     }
 
-    return response.json();
+    return response.data;
   } catch (error) {
     console.error("Error:", error);
     throw error;
@@ -35,14 +38,23 @@ export default function UpdateDiagnosisPage() {
     diagnosis_name: "",
   });
 
-  useEffect(() => {
-    async function fetchDiagnosis() {
-      const response = await fetch(`/api/diagnosis/${id}`);
-      const data = await response.json();
-      setDiagnosis(data);
+
+useEffect(() => {
+  const fetchDiagnosis = async () => {
+    try {
+      const response = await axios.get(
+        `https://api-data-medical-room-tu.onrender.com/api/diagnosis/${id}`
+      );
+      setDiagnosis(response.data);
+    } catch (error) {
+      console.error("Error fetching diagnosis:", error);
     }
-    fetchDiagnosis();
-  }, [id]);
+  };
+
+  fetchDiagnosis();
+ 
+}, [id]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

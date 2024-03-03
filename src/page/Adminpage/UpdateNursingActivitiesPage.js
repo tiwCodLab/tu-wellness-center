@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Form, useNavigate, useParams } from "react-router-dom";
 
-async function updateActivities(id, updatedactivities) {
-  try {
-    let response = await fetch(`/api/activities/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(updatedactivities),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    });
+import axios from "axios";
 
-    if (!response.ok) {
+async function updateActivities(id, updatedActivities) {
+  try {
+    const response = await axios.put(
+      `https://api-data-medical-room-tu.onrender.com/api/activities/${id}`,
+      updatedActivities,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.status !== 200) {
       throw new Error(`Could not update activities ${id}`);
     }
 
-    return response.json();
+    return response.data;
   } catch (error) {
     console.error("Error:", error);
     throw error;
@@ -36,12 +40,18 @@ export default function UpdateNursingActivities() {
   });
 
   useEffect(() => {
-    async function fetchactivities() {
-      const response = await fetch(`/api/activities/${id}`);
-      const data = await response.json();
-      setactivities(data);
-    }
-    fetchactivities();
+    const fetchActivities = async () => {
+      try {
+        const response = await axios.get(
+          `https://api-data-medical-room-tu.onrender.com/api/activities/${id}`
+        );
+        setactivities(response.data);
+      } catch (error) {
+        console.error("Error fetching activities:", error);
+      }
+    };
+
+    fetchActivities();
   }, [id]);
 
   const handleSubmit = async (e) => {
