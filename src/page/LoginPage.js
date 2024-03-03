@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
 import Spinner from "../component/Spinner";
+import axios from "axios"; // Import Axios
 
 import logo from "../assets/logotu.png";
 
@@ -35,15 +36,18 @@ const LoginPage = () => {
 
     try {
       setLoginLoading(true);
-      const response = await fetch("/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }), // data type match "Content-Type" header
-      });
-      if (response.ok) {
-        const data = await response.json();
+      const response = await axios.post(
+        "https://api-data-medical-room-tu.onrender.com/auth",
+        { username, password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const data = response.data;
         const accessToken = data?.accessToken;
         const roles = data?.roles;
         const user = { username, roles, accessToken };

@@ -118,7 +118,7 @@ export default function LoginMenu() {
             <FaSignInAlt className="mr-2" /> เข้าสู่ระบบ
           </NavLink>
 
-          <NavLink to="/addpatients" className={commonLinkClass}>
+          <NavLink to="/adds" className={commonLinkClass}>
             <FaUserPlus className="mr-2" /> เพิ่มข้อมูลส่วนตัว
           </NavLink>
 

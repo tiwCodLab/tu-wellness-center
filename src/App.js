@@ -329,7 +329,7 @@ function RouterApp() {
           </Route>
         </Route>
 
-        <Route path="addpatients" element={<Log />} />
+        <Route path="adds" element={<Log />} />
         <Route path="nothing" element={<PatientPage />} />
 
         {/* <Route path="login" element={<LoginPage />} action={loginAction(auth)}/> */}
