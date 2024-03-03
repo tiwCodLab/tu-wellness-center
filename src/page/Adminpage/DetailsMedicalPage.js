@@ -3,14 +3,17 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { FaChevronCircleLeft } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
 
-export async function getDetailMedication(id) {
-  const res = await fetch(`/api/medication/${id}`);
+import axios from "axios";
 
-  let viewredcord = await res.json();
-  if (!res.ok) {
-    throw Error(viewredcord.error);
+export async function getDetailMedication(id) {
+  try {
+    const response = await axios.get(
+      `https://api-data-medical-room-tu.onrender.com/api/medication/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  return viewredcord; //res.json()
 }
 
 export const LoadgetDetailmedication = async ({ params }) => {

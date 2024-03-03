@@ -19,14 +19,16 @@ function calculateAge(birthday) {
 
   return age;
 }
-export async function getGeneralByPatient(id) {
-  const res = await fetch(`/api/general/patient/${id}`);
 
-  let general = await res.json();
-  if (!res.ok) {
-    throw Error(general.error);
+export async function getGeneralByPatient(id) {
+  try {
+    const response = await axios.get(
+      `https://api-data-medical-room-tu.onrender.com/api/general/patient/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  return general; //res.json()
 }
 
 export const LoadGeneralByPatient = async ({ params }) => {

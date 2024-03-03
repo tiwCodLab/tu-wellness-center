@@ -2,15 +2,17 @@ import React from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { FaChevronCircleLeft } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
+import axios from "axios";
 
 export async function getDetailmedicalSupplies(id) {
-  const res = await fetch(`/api/medicalsupplies/${id}`);
-
-  let viewredcord = await res.json();
-  if (!res.ok) {
-    throw Error(viewredcord.error);
+  try {
+    const response = await axios.get(
+      `https://api-data-medical-room-tu.onrender.com/api/medicalsupplies/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  return viewredcord; //res.json()
 }
 
 export const LoadgetDetailmedicalSupplies = async ({ params }) => {
