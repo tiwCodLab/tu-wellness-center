@@ -4,9 +4,12 @@ import { MdVolunteerActivism } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import { FaTrashCan } from "react-icons/fa6";
+import axios from "axios";
 
 export const LoaderNursingActivities = async () => {
-  const res = await fetch("/api/activities");
+  const res = await axios.get(
+    "https://api-data-medical-room-tu.onrender.com/api/activities"
+  );
   if (!res.ok) {
     throw Error("Could not fetch the activities");
   }
