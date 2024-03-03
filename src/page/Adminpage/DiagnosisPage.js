@@ -62,7 +62,7 @@ const DiagnosisPage = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(
+      await axios.delete(
         `https://api-data-medical-room-tu.onrender.com/api/diagnosis/${deletePopup.patientId}`
       );
 
@@ -70,13 +70,8 @@ const DiagnosisPage = () => {
         `https://api-data-medical-room-tu.onrender.com/api/diagnosis`
       );
       setDiagnosisdata(dataRes.data);
-
-      if (response.ok) {
-        closeDeletePopup();
-        // Refresh the page after successful deletion
-      } else {
-        alert("ไม่สามารถลบข้อมูลโรคได้");
-      }
+      closeDeletePopup();
+      // Refresh the page after successful deletion
     } catch (error) {
       console.error("Error deleting diagnosis:", error.message);
     }
