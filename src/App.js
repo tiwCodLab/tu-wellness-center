@@ -205,8 +205,6 @@ function RouterApp() {
               />
               <Route path="add" element={<GeneralInfoForm />} />
             </Route>
-
-            
           </Route>
 
           <Route path="disease" element={<MainLayout />}>
@@ -326,13 +324,13 @@ function RouterApp() {
           <Route path="appointment" element={<MainLayout />}>
             <Route index element={<Appointment />} />
           </Route>
-        </Route>
-
-        <Route path="addpatients" element={<MainLayout />}>
-          <Route index element={<AddpatientPage />} />
+          <Route path="addpatients" element={<MainLayout />}>
+            <Route index element={<AddpatientPage />} />
+          </Route>
         </Route>
 
         <Route path="addpatients" element={<Log />} />
+        <Route path="nothing" element={<PatientPage />} />
 
         {/* <Route path="login" element={<LoginPage />} action={loginAction(auth)}/> */}
       </Route>

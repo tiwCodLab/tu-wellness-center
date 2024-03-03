@@ -121,6 +121,10 @@ export default function LoginMenu() {
           <NavLink to="/addpatients" className={commonLinkClass}>
             <FaUserPlus className="mr-2" /> เพิ่มข้อมูลส่วนตัว
           </NavLink>
+
+          <NavLink to="/nothing" className={commonLinkClass}>
+            <FaUserPlus className="mr-2" /> ผู่ป่วย
+          </NavLink>
         </li>
       )}
     </>
