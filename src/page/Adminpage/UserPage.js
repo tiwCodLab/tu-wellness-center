@@ -89,31 +89,31 @@ export default function UserPage() {
                 </Link>
               </div>
             </div>
-            <div class="relative overflow-x-auto shadow-lg sm:rounded-lg">
-              <table class="w-full text-sm text-left rtl:text-right text-gray-600 dark:text-gray-900">
-                <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-200 text-center dark:text-black">
+            <div className="relative overflow-x-auto shadow-lg sm:rounded-lg">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-600 dark:text-gray-900">
+                <thead className="text-xs text-black uppercase bg-gray-50 dark:bg-gray-200 text-center dark:text-black">
                   <tr>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       ชื่อ
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       นามสกุล
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       ชื่อยูสเซอร์
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       สถานะการใช้งาน
                     </th>
 
-                    <th scope="col" class="px-6 py-3 text-center"></th>
+                    <th scope="col" className="px-6 py-3 text-center"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {userData.map((item) => (
                     <tr
                       key={item._id}
-                      class="bg-white border-b dark:border-gray-100 hover:bg-gray-100"
+                      className="bg-white border-b dark:border-gray-100 hover:bg-gray-100"
                     >
                       <td className="px-4 text-center ">{item.firstname}</td>
                       <td className="py-2 px-4 text-center">{item.lastname}</td>
