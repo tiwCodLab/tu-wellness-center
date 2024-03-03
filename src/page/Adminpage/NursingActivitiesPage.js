@@ -1,50 +1,52 @@
-import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { MdVolunteerActivism } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import { FaTrashCan } from "react-icons/fa6";
 import axios from "axios";
 
-export const LoaderNursingActivities = async () => {
-  const res = await axios.get(
-    "https://api-data-medical-room-tu.onrender.com/api/activities"
-  );
-  if (!res.ok) {
-    throw Error("Could not fetch the activities");
-  }
-  return res.json();
-};
-
 const NursingActivitiesPage = () => {
-  const activitiesdata = useLoaderData();
-
+  const [nursingActivitiesData, setNursingActivitiesData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://api-data-medical-room-tu.onrender.com/api/activities"
+        );
+        setNursingActivitiesData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleDelete = async (id) => {
     if (window.confirm("ต้องการลบข้อมูลโรคนี้ใช่หรือไม่?")) {
       try {
-        const response = await fetch(`/api/activities/${id}`, {
-          method: "DELETE",
-        });
-
-        if (response.ok) {
-          alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
-          window.location.reload(); // Refresh the page after successful deletion
-        } else {
-          alert("ไม่สามารถลบข้อมูลโรคได้");
-        }
+        await axios.delete(
+          `https://api-data-medical-room-tu.onrender.com/api/activities/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
+        alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
+        window.location.reload(); // Refresh the page after successful deletion
       } catch (error) {
         console.error("Error deleting activities:", error.message);
       }
     }
   };
 
-  const filteredData = activitiesdata.filter(
+  const filteredData = nursingActivitiesData.filter(
     (item) =>
       item.activities_name.toLowerCase().includes(searchTerm.toLowerCase())
     // item.student_id.toString().includes(searchTerm.toLowerCase())

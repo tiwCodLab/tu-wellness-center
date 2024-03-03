@@ -47,9 +47,7 @@ import UpdateDiagnosisPage, {
   ActionDiagnosis,
 } from "./page/Adminpage/UpdateDiagnosisPage";
 import AddDianosisPage from "./page/Adminpage/AddDianosisPage";
-import NursingActivitiesPage, {
-  LoaderNursingActivities,
-} from "./page/Adminpage/NursingActivitiesPage";
+import NursingActivitiesPage from "./page/Adminpage/NursingActivitiesPage";
 import AddNursingActivitiesPage from "./page/Adminpage/AddNursingActivitiesPage";
 import UpdateNursingActivities, {
   Actionactivities,
@@ -218,11 +216,7 @@ function RouterApp() {
           </Route>
 
           <Route path="activities" element={<MainLayout />}>
-            <Route
-              index
-              element={<NursingActivitiesPage />}
-              loader={LoaderNursingActivities}
-            />
+            <Route index element={<NursingActivitiesPage />} />
             <Route
               path=":id/edit"
               element={<UpdateNursingActivities />}

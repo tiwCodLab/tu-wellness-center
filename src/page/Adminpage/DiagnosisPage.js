@@ -8,14 +8,6 @@ import { FaShieldVirus } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
 
-// export const LoaderDiagnosis = async () => {
-//   const res = await fetch("/api/diagnosis");
-//   if (!res.ok) {
-//     throw Error("Could not fetch the diagnosis");
-//   }
-//   return res.json();
-// };
-
 const DiagnosisPage = () => {
   const [diagnosisdata, setDiagnosisdata] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
