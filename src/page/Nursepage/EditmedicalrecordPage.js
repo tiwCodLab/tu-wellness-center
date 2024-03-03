@@ -5,13 +5,16 @@ import Select from "react-select";
 import Spinners from "../../component/Spinner";
 async function updateMedicalrecord(id, updateMedicalrecord) {
   try {
-    let response = await fetch(`/api/medicalrecord/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(updateMedicalrecord),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    }).then((res) => {
+    let response = await fetch(
+      `https://api-data-medical-room-tu.onrender.com/api/medicalrecord/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(updateMedicalrecord),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      }
+    ).then((res) => {
       if (res.ok) {
         alert("แก้ไขข้อมูลเรียบร้อย");
       } else {
