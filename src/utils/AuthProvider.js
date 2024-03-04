@@ -28,13 +28,13 @@ export const AuthProvider = ({ children }) => {
     callback();
   }
 
-  let signout = (callback) => {
+  function signout(callback) {
     setLoading(true);
     if (sessionStorage.getItem("aToken")) sessionStorage.clear();
     setUser({});
     setLoading(false);
     callback();
-  };
+  }
 
   return (
     <AuthContext.Provider

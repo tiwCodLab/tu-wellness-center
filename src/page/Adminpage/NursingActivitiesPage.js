@@ -84,42 +84,56 @@ const NursingActivitiesPage = () => {
                   </div>
                 </div>
 
-                <table className="w-full table-auto text-sm">
-                  <thead>
-                    <tr className="bg-gray-2 text-xs">
-                      <th className="py-2 px-4 text-black">รหัส</th>
-                      <th className="py-2 px-4 text-black">
-                        ชื่อกิจกรรมพยาบาล
-                      </th>
-                      <th className="py-2 px-4 text-black">จัดการ</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredData.map((item) => (
-                      <tr
-                        key={item._id}
-                        className="border-b border-gray-100 text-center"
-                      >
-                        <td className="px-4 text-sm">{item.activities_id}</td>
-                        <td className="py-2 px-4">{item.activities_name}</td>
+                <div className="relative overflow-x-auto shadow-lg sm:rounded-md">
+                  <table className="w-full text-sm text-left rtl:text-right text-black ">
+                    <thead className="text-xs text-gray-500 uppercase  text-center ">
+                      <tr>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          รหัส
+                        </th>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          ชื่อการหัตถการ
+                        </th>
 
-                        <td className="text-center">
-                          <div className="flex items-center justify-center">
-                            <Link
-                              to={`/activities/${item._id}/edit`}
-                              className="mr-2"
-                            >
-                              <BiEdit className="text-white hover:bg-blue-700 text-xl mr-2 bg-blue-600 p-1.5 h-7 w-7 rounded-md " />
-                            </Link>
-                            <button onClick={() => handleDelete(item._id)}>
-                              <FaTrashCan className="text-white hover:bg-red-700 text-base bg-red-600 p-2 h-7 w-7 rounded-md" />
-                            </button>
-                          </div>
-                        </td>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          จัดการ
+                        </th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {filteredData.map((item) => (
+                        <tr
+                          key={item._id}
+                          className="bg-white border-b  dark:border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-100"
+                        >
+                          <th
+                            scope="row"
+                            className="px-6 py-2 text-center font-medium text-gray-900 whitespace-nowrap"
+                          >
+                            {item.activities_id}
+                          </th>
+                          <td className="px-6 py-3 text-center">
+                            {item.activities_name}
+                          </td>
+
+                          <td className="text-center">
+                            <div className="flex items-center justify-center">
+                              <Link
+                                to={`/activities/${item._id}/edit`}
+                                className="mr-2"
+                              >
+                                <BiEdit className="text-white hover:bg-blue-700 text-xl mr-2 bg-blue-600 p-1.5 h-7 w-7 rounded-md " />
+                              </Link>
+                              <button onClick={() => handleDelete(item._id)}>
+                                <FaTrashCan className="text-white hover:bg-red-700 text-base bg-red-600 p-2 h-7 w-7 rounded-md" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

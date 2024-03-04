@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useAuth } from "./AuthProvider";
-import axios from "axios";
-// import { _fetch as fetch} from './fetchWTimeout'
 
 let useFetchPrivate = () => {
   const { user, setUser } = useAuth();
@@ -39,31 +37,31 @@ let useFetchPrivate = () => {
 
   const refreshToken = async () => {
     try {
-      const response = await axios.get(
+      const response = await fetch(
         "https://api-data-medical-room-tu.onrender.com/auth/refresh",
         {
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
 
-      if (response.status === 200) {
-        const data = response.data;
+      if (response.ok) {
+        const data = await response.json();
         setUser((prev) => {
           return { ...prev, accessToken: data.accessToken };
         });
         return data.accessToken;
       } else {
         const error = new Error("Fail to refresh! while fetching the data.");
-        const contentType = response.headers["content-type"];
+        const contentType = response.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
-          error.info = response.data;
+          error.info = await response.json();
         } else {
           error.info = response.statusText;
         }
         error.status = response.status;
-        // signout(()=> console.log("Fail to refresh! force signout!"));
         throw error;
       }
     } catch (error) {

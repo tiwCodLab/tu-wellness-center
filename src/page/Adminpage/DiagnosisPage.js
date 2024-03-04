@@ -12,7 +12,7 @@ const DiagnosisPage = () => {
   const [diagnosisdata, setDiagnosisdata] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
-  const diagnosesPerPage = 12;
+  const diagnosesPerPage = 10;
   const pagesVisited = pageNumber * diagnosesPerPage;
   const pageCount = Math.ceil(diagnosisdata.length / diagnosesPerPage);
 
@@ -87,8 +87,14 @@ const DiagnosisPage = () => {
         key={item._id}
         className="border-b border-gray-100 text-center text-sm"
       >
-        <td className="px-4 text-sm">{item.diagnosis_id}</td>
-        <td className="py-2 px-4">{item.diagnosis_name}</td>
+        <th
+          scope="row"
+          className="px-6 py-2 text-center font-medium text-gray-900 whitespace-nowrap"
+        >
+          {item.diagnosis_id}
+        </th>
+
+        <td className="px-6 py-3 text-center">{item.diagnosis_name}</td>
         <td className="text-center">
           <div className="flex items-center justify-center">
             <Link to={`/disease/${item._id}/edit`} className="mr-2">
@@ -147,16 +153,25 @@ const DiagnosisPage = () => {
                   </div>
                 </div>
 
-                <table className="w-full table-auto">
-                  <thead>
-                    <tr className="bg-gray-2 text-xs">
-                      <th className="py-2 px-4 text-black">รหัสโรค</th>
-                      <th className="py-2 px-4 text-black">ชื่อโรค</th>
-                      <th className="py-2 px-4 text-black">จัดการ</th>
-                    </tr>
-                  </thead>
-                  <tbody>{displayDiagnoses}</tbody>
-                </table>
+                <div className="relative overflow-x-auto shadow-lg sm:rounded-md">
+                  <table className="w-full text-sm text-left rtl:text-right text-black ">
+                    <thead className="text-xs text-gray-500 uppercase  text-center ">
+                      <tr>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          รหัสโรค
+                        </th>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          ชื่อโรค
+                        </th>
+
+                        <th scope="col" className="px-6 py-2 text-center">
+                          จัดการ
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>{displayDiagnoses}</tbody>
+                  </table>
+                </div>
               </div>
               <ReactPaginate
                 previousLabel={"ก่อน"}

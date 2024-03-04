@@ -78,48 +78,81 @@ export default function MedicationsPage() {
                     </Link>
                   </div>
                 </div>
-                <table className="w-full table-auto">
-                  <thead>
-                    <tr className="bg-gray-2 text-xs">
-                      <th className="py-2 px-4 text-black">รหัสยา</th>
-                      <th className="py-2 px-4 text-black">ชื่อยา</th>
-                      <th className="py-2 px-4 text-black">หน่วย</th>
-                      <th className="py-2 px-4 text-black">จำนวนคงเหลือ</th>
-                      <th className="py-2 px-4 text-black">รายละเอียด</th>
-                      <th className="py-2 px-4 text-black">ลบ</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredData.map((item) => (
-                      <tr
-                        key={item._id}
-                        className="text-center border-b border-gray-100 text-sm"
-                      >
-                        <td className="px-4 text-sm">{item.medication_id}</td>
-                        <td className="py-2 px-4">{item.medication_name}</td>
-                        <td className="py-2 px-4 text-center">{item.unit}</td>
-                        <td className="py-2 px-4 text-center">{item.stock}</td>
+                <div className="relative overflow-x-auto shadow-lg sm:rounded-md">
+                  <table className="w-full text-sm text-left rtl:text-right text-black ">
+                    <thead className="text-xs text-gray-500 uppercase  text-center ">
+                      <tr>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          รหัสยา
+                        </th>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          ชื่อยา
+                        </th>
 
-                        <td className="text-center text-sm">
-                          <Link
-                            to={`/medication/${item._id}`}
-                            className="flex items-center justify-center"
-                          >
-                            <TbListDetails className="text-white hover:bg-blue-700 text-xl mr-2 bg-blue-600 p-1.5 h-7 w-7 rounded-md" />
-                          </Link>
-                        </td>
-                        <td className="text-center">
-                          <button
-                            className="text-red-500  items-center justify-center text-base"
-                            onClick={() => handleDelete(item._id)}
-                          >
-                            <FaTrashCan className="text-white hover:bg-red-700 text-base bg-red-600 p-2 h-7 w-7 rounded-md" />
-                          </button>
-                        </td>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          หน่วย
+                        </th>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          จำนวนคงเหลือ
+                        </th>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          รายละเอียด
+                        </th>
+                        <th scope="col" className="px-6 py-2 text-center">
+                          ลบ
+                        </th>
+
+                        <th scope="col" className="px-6 py-2 text-center">
+                          <span className="sr-only">Edit</span>
+                        </th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {filteredData.map((item) => (
+                        <tr
+                          key={item._id}
+                          className="bg-white border-b  dark:border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-100"
+                        >
+                          <th
+                            scope="row"
+                            className="px-6 py-2 text-center font-medium text-gray-900 whitespace-nowrap"
+                          >
+                            {item.medication_id}
+                          </th>
+                          <td className="px-6 py-3 text-center">
+                            {item.medication_name}
+                          </td>
+
+                          <td className="px-6 py-2 text-center">{item.unit}</td>
+
+                          <td className="px-6 py-2 text-center">
+                            {item.stock}
+                          </td>
+
+                          <td className="text-center text-sm">
+                            <Link
+                              to={`/medication/${item._id}`}
+                              className="flex items-center justify-center"
+                            >
+                              <TbListDetails className="text-white hover:bg-blue-700 text-xl mr-2 bg-blue-600 p-1.5 h-7 w-7 rounded-md" />
+                            </Link>
+                          </td>
+
+                          <td className="text-center">
+                            <button
+                              className="text-red-500  items-center justify-center text-base"
+                              onClick={() => handleDelete(item._id)}
+                            >
+                              <FaTrashCan className="text-white hover:bg-red-700 text-base bg-red-600 p-2 h-7 w-7 rounded-md" />
+                            </button>
+                          </td>
+
+                          <td className="px-6 py-4 text-right"></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
