@@ -6,7 +6,7 @@ const Dropdown = ({ options, selectedValue, onChange }) => {
     <select
       value={selectedValue}
       onChange={onChange}
-      className="mt-1 p-2 block w-full rounded-md border-gray-800 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+      className="mt-2 p-2 block w-full rounded-md border border-gray-800 shadow-sm "
     >
       <option value="" disabled hidden>
         เลือกรายการ
@@ -151,26 +151,26 @@ const FormOne = ({
         <div className="flex mt-2">
           <Link
             onClick={handleSelectOptionA}
-            className="bg-form1 text-sm bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-md mr-4"
+            className="bg-form1 text-sm bg-sky-600 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded-md mr-4"
           >
             ระบบทางเดินหายใจ
           </Link>
           <Link
             onClick={handleSelectOptionB}
-            className="bg-form1 text-sm bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-md mr-4"
+            className="bg-form1 text-sm bg-sky-600 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded-md mr-4"
           >
             ระบบทางเดินอาหาร
           </Link>
           <Link
             onClick={handleSelectOptionC}
-            className="bg-form1 text-sm bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-md mr-4"
+            className="bg-form1 text-sm bg-sky-600 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded-md mr-4"
           >
             ตรวจร่างกาย
           </Link>
 
           <Link
             onClick={handleSelectOptionD}
-            className="bg-form1 text-sm bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-md mr-4"
+            className="bg-form1 text-sm bg-sky-600 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded-md mr-4"
           >
             จิตเวช
           </Link>
@@ -182,25 +182,25 @@ const FormOne = ({
                 <div className="w-1/2 mb-6">
                   <Link
                     onClick={handSelectedA}
-                    className="text-sm rounded-md  px-6 py-1  bg-teal-800 bg-form text-white"
+                    className="text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 bg-form text-black"
                   >
                     ดู
                   </Link>
                   <Link
                     onClick={handSelectedB}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1  bg-teal-800 bg-form text-white "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 bg-form text-black "
                   >
                     คลำ
                   </Link>
                   <Link
                     onClick={handSelectedC}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1  bg-teal-800 bg-form text-white "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 bg-form text-black "
                   >
                     เคาะ
                   </Link>
                   <Link
                     onClick={handSelectedD}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1  bg-teal-800 bg-form text-white "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 bg-form text-black "
                   >
                     ฟัง
                   </Link>
@@ -814,25 +814,25 @@ const FormOne = ({
                 <div className="w-1/2 mb-6">
                   <Link
                     onClick={handSelectedA}
-                    className="text-sm rounded-md  px-6 py-1  bg-teal-800 text-white bg-form "
+                    className="text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black bgblack "
                   >
                     ดู
                   </Link>
                   <Link
                     onClick={handSelectedB}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1  bg-teal-800 text-white bg-form "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black bgblack "
                   >
                     คลำ
                   </Link>
                   <Link
                     onClick={handSelectedC}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1  bg-teal-800 text-white bg-form "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black bgblack "
                   >
                     เคาะ
                   </Link>
                   <Link
                     onClick={handSelectedD}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1  bg-teal-800 text-white bg-form "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black bgblack "
                   >
                     ฟัง
                   </Link>
@@ -2330,7 +2330,7 @@ const FormOne = ({
 
         {selectedOption === "D" && (
           <div>
-            <div className="text-sm">
+            <div className="" style={{ fontSize: "16px" }}>
               <label className="block mt-4">
                 <span className="text-gray-700">รูปแบบการปรึกษา</span>
                 {/* Dropdown component */}
@@ -2356,7 +2356,7 @@ const FormOne = ({
                   name="problems"
                   value={medicalCounseling.problems}
                   onChange={handleChangeCounseling}
-                  className="mt-1 p-2 block w-full rounded-md border-gray-800 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="mt-2 p-2 block w-full rounded-md border border-gray-800 shadow-sm"
                 />
               </label>
 
@@ -2369,7 +2369,7 @@ const FormOne = ({
                   name="behavior"
                   value={medicalCounseling.behavior}
                   onChange={handleChangeCounseling}
-                  className="mt-1 p-2 block w-full rounded-md border-gray-800 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="mt-1 p-2 block w-full rounded-md border border-gray-800 shadow-sm "
                 />
               </label>
 
@@ -2380,7 +2380,7 @@ const FormOne = ({
                   name="counseling_result"
                   value={medicalCounseling.counseling_result}
                   onChange={handleChangeCounseling}
-                  className="mt-1 p-2 h-40 block w-full rounded-md border-gray-800 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="mt-1 p-2 h-40 block w-full rounded-md border border-gray-800 shadow-sm "
                 />
               </label>
 
@@ -2393,7 +2393,7 @@ const FormOne = ({
                   name="counseling_plan"
                   value={medicalCounseling.counseling_plan}
                   onChange={handleChangeCounseling}
-                  className="mt-1 p-2 h-40 block w-full rounded-md border-gray-800 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="mt-1 p-2 h-40 block w-full rounded-md border border-gray-800 shadow-sm"
                 />
               </label>
 
@@ -2421,7 +2421,7 @@ const FormOne = ({
                       appointment_date: e.target.value,
                     })
                   }
-                  className="mt-1 p-2 block w-full rounded-md border-gray-800 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="mt-2 p-2 block w-full rounded-md border border-gray-800 shadow-sm "
                 />
               </div>
 
@@ -2438,18 +2438,18 @@ const FormOne = ({
                       appointment_time: e.target.value,
                     })
                   }
-                  className="mt-1 p-2 block w-full rounded-md border-gray-800 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="mt-2 p-2 block w-full rounded-md border border-gray-800 shadow-sm "
                 />
               </div>
 
-              <label className="block mb-4">
+              <label className="block mb-4 mt-2">
                 <span className="text-gray-700">หมายเหตุ</span>
                 <textarea
                   type="text"
                   name="remarks"
                   value={medicalCounseling.remarks}
                   onChange={handleChangeCounseling}
-                  className="mt-1 p-2 h-40 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="mt-2 p-2 h-40 block w-full rounded-md border border-gray-800 shadow-sm"
                 />
               </label>
             </div>

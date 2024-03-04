@@ -13,7 +13,7 @@ export default function PatientPage() {
   const [currentPage, setCurrentPage] = useState(page ? parseInt(page) : 1);
   const [searchTerm, setSearchTerm] = useState("");
   const [patientData, setPatientData] = useState([]);
-  const [pageSize] = useState(14);
+  const [pageSize] = useState(10);
   const [deletePopup, setDeletePopup] = useState({
     isOpen: false,
     patientId: null,
@@ -88,12 +88,12 @@ export default function PatientPage() {
 
   return (
     <>
-      <div className="rounded-lg bg-gray-50 px-6 pt-4 pb-10 shadow-default mt-2">
+      <div className="rounded-lg bg-white px-6 pt-4 pb-10 shadow-default mt-2">
         <div className="max-w-full overflow-x-auto">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <FaUserInjured style={{ fontSize: "22px" }} />
-              <h5 className="font-bold ml-2" style={{ fontSize: "18px" }}>
+              <h5 className="font-bold ml-2 " style={{ fontSize: "18px" }}>
                 ข้อมูลผู้ป่วย
               </h5>
             </div>
@@ -117,9 +117,9 @@ export default function PatientPage() {
             </div>
           </div>
 
-          <div className="relative overflow-x-auto shadow-lg sm:rounded-lg">
+          <div className="relative overflow-x-auto shadow-lg bg-white p-4 rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-600 ">
-              <thead className="text-xs text-black uppercase bg-gray-200 ">
+              <thead className="text-xs text-black  py-2 ">
                 <tr className="text-center">
                   <th className="py-2 px-4 text-black">รหัสนักศึกษา</th>
                   <th className="py-2 px-4 text-black">ชื่อ-นามสกุล</th>
@@ -130,7 +130,7 @@ export default function PatientPage() {
                   <th className="py-2 px-4 text-black">ลบ</th>
                 </tr>
               </thead>
-              <tbody className="bg-white">
+              <tbody className="">
                 {filteredData.map((item) => (
                   <tr
                     key={item._id}

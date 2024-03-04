@@ -5,24 +5,23 @@ import Select from "react-select";
 import Spinners from "../../component/Spinner";
 async function updateMedicalrecord(id, updateMedicalrecord) {
   try {
-    let response = await fetch(
+    const response = await axios.put(
       `https://api-data-medical-room-tu.onrender.com/api/medicalrecord/${id}`,
+      updateMedicalrecord,
       {
-        method: "PUT",
-        body: JSON.stringify(updateMedicalrecord),
-        headers: new Headers({
+        headers: {
           "Content-Type": "application/json",
-        }),
+        },
       }
-    ).then((res) => {
-      if (res.ok) {
-        alert("แก้ไขข้อมูลเรียบร้อย");
-      } else {
-        throw Error({ error: `Could not update medicalrecord ${id}` });
-      }
-      return res.json();
-    });
-    return response;
+    );
+
+    if (response.status === 200) {
+      alert("แก้ไขข้อมูลเรียบร้อย");
+    } else {
+      throw new Error(`Could not update medicalrecord ${id}`);
+    }
+
+    return response.data;
   } catch (error) {
     console.error("Error:", error);
   }

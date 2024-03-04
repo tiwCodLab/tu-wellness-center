@@ -53,11 +53,14 @@ const SearchPatientPage = () => {
     <div className="rounded-lg  shadow-default">
       <div className="max-w-full overflow-x-auto  ">
         <div className="py-2 ">
-          <div className="rounded-lg border border-stroke bg-white p-6 shadow-default">
+          <div className="rounded-lg border border-stroke bg-teal-800 p-6 shadow-default">
             <div className="ml-4 mt-2 block text-base font-semibold mb-2 ">
               <div className="flex items-center">
-                <RiUserSearchFill style={{ fontSize: "24px" }} />
-                <p className="ml-2">ค้นหาผู้ป่วย</p>
+                <RiUserSearchFill
+                  className="text-white"
+                  style={{ fontSize: "24px" }}
+                />
+                <p className="ml-2 text-white">ค้นหาผู้ป่วย</p>
               </div>
             </div>
             <div className="max-w-full overflow-x-auto">
@@ -84,7 +87,7 @@ const SearchPatientPage = () => {
                 </div>
               </form>
               {studentId.trim() !== "" && (
-                <div className="mt-4">
+                <div className="mt-4 bg-white  p-4 rounded-lg">
                   <table className="w-full table-auto text-sm">
                     <thead>
                       <tr className="bg-gray-2 text-xs">

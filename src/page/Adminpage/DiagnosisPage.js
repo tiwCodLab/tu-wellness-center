@@ -85,7 +85,7 @@ const DiagnosisPage = () => {
     .map((item) => (
       <tr
         key={item._id}
-        className="border-b border-gray-100 text-center text-sm"
+        className="border-b border-gray-100  text-sm"
       >
         <th
           scope="row"
@@ -94,7 +94,7 @@ const DiagnosisPage = () => {
           {item.diagnosis_id}
         </th>
 
-        <td className="px-6 py-3 text-center">{item.diagnosis_name}</td>
+        <td className="px-6 py-2.5">{item.diagnosis_name}</td>
         <td className="text-center">
           <div className="flex items-center justify-center">
             <Link to={`/disease/${item._id}/edit`} className="mr-2">

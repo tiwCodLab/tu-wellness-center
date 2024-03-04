@@ -112,7 +112,7 @@ const NursingActivitiesPage = () => {
                           >
                             {item.activities_id}
                           </th>
-                          <td className="px-6 py-3 text-center">
+                          <td className="px- py-3 text-left">
                             {item.activities_name}
                           </td>
 

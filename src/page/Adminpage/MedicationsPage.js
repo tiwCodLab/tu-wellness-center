@@ -119,7 +119,7 @@ export default function MedicationsPage() {
                           >
                             {item.medication_id}
                           </th>
-                          <td className="px-6 py-3 text-center">
+                          <td className="px-6 py-3">
                             {item.medication_name}
                           </td>
 

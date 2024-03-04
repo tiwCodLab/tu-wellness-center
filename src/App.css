@@ -1,10 +1,6 @@
-.bg-form1:focus {
-  background-color: #065f63;
-}
-
 .bg-form:hover,
 .bg-form:focus {
-  background-color: rgb(1, 161, 161);
+  background-color: rgb(206, 208, 208);
 }
 
 .ronal {
@@ -332,20 +328,20 @@ button {
 
 .previousBttn,
 .nextBttn {
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   padding: 6px 10px;
-  background-color: #179071;
-  color: white;
+  background-color: #ffd901;
+  color: black;
   border: none;
   border-radius: 4px;
 }
 
 .paginationActive {
-  background-color: rgba(103, 236, 141, 0.904);
   border-radius: 2px;
   padding-right: 5px;
   padding-left: 5px;
+  color: #ccff00;
 }
 
 .paginationDisabled {
