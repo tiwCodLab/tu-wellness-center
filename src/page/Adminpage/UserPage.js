@@ -17,9 +17,7 @@ export default function UserPage() {
   useEffect(() => {
     const getuserData = async () => {
       try {
-        const { response, data } = await callFetch(
-          "https://api-data-medical-room-tu.onrender.com/api/user"
-        );
+        const { response, data } = await callFetch("/api/user");
         if (response.ok) {
           setUserData(data);
           setDataLoaded(true); // Set dataLoaded to true when data is loaded
