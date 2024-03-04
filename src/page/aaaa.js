@@ -99,44 +99,44 @@
 //           <Spinner />
 //         ) : (
 //           <>
-//             <p
-//               ref={errRef}
-//               className={
-//                 error
-//                   ? "text-white bg-yellow-500 p-2 text-center text-sm rounded-md"
-//                   : "hidden"
-//               }
-//             >
-//               {error}
-//             </p>
+// <p
+//   ref={errRef}
+//   className={
+//     error
+//       ? "text-white bg-yellow-500 p-2 text-center text-sm rounded-md"
+//       : "hidden"
+//   }
+// >
+//   {error}
+// </p>
 //             <div className="flex-1 p-2">
 //               <div className="max-w-md mx-auto p-6 mb-24  mt-24 bg-teal-800 shadow-md rounded-lg">
 //                 <form onSubmit={handleSubmit} className="space-y-4 p-10">
-//                   <div>
-//                     <img
-//                       src={logo}
-//                       alt="Logo"
-//                       className="w-32 h-32 mx-auto mb-4"
-//                     />
-//                     <h1 className="text-xl font-bold mb-4 text-center ">
-//                       TULP WELLNESS CENTER
-//                     </h1>
-//                   </div>
+// <div>
+//   <img
+//     src={logo}
+//     alt="Logo"
+//     className="w-32 h-32 mx-auto mb-4"
+//   />
+//   <h1 className="text-xl font-bold mb-4 text-center ">
+//     TULP WELLNESS CENTER
+//   </h1>
+// </div>
 
-//                   <div className="flex flex-col text-sm">
-//                     <label htmlFor="username" className="mb-2">
-//                       ชื่อยูสเซอร์
-//                     </label>
-//                     <input
-//                       type="text"
-//                       name="username"
-//                       id="username"
-//                       ref={usernameRef}
-//                       autoComplete="off"
-//                       required
-//                       className="border border-gray-300 p-2 rounded-md"
-//                     />
-//                   </div>
+// <div className="flex flex-col text-sm">
+//   <label htmlFor="username" className="mb-2">
+//     ชื่อยูสเซอร์
+//   </label>
+//   <input
+//     type="text"
+//     name="username"
+//     id="username"
+//     ref={usernameRef}
+//     autoComplete="off"
+//     required
+//     className="border border-gray-300 p-2 rounded-md"
+//   />
+// </div>
 //                   <div className="flex flex-col text-sm">
 //                     <label htmlFor="password" className="mb-2">
 //                       รหัสผ่าน
@@ -151,14 +151,14 @@
 //                       className="border border-gray-300 p-2 rounded-md"
 //                     />
 //                   </div>
-//                   <div className="flex justify-center items-center ">
-//                     <button
-//                       type="submit"
-//                       className="bg-teal-500 text-white px-4 rounded-lg hover:bg-teal-700"
-//                     >
-//                       เข้าสู่ระบบ
-//                     </button>
-//                   </div>
+// <div className="flex justify-center items-center ">
+//   <button
+//     type="submit"
+//     className="bg-teal-500 text-white px-4 rounded-lg hover:bg-teal-700"
+//   >
+//     เข้าสู่ระบบ
+//   </button>
+// </div>
 //                 </form>
 //               </div>
 //             </div>
@@ -186,6 +186,7 @@ const LoginPage = () => {
   let from = "/";
   const usernameRef = useRef();
   const errRef = useRef();
+
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -200,13 +201,16 @@ const LoginPage = () => {
 
     try {
       setLoginLoading(true);
-      const response = await fetch("/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }), // data type match "Content-Type" header
-      });
+      const response = await fetch(
+        "https://api-data-medical-room-tu.onrender.com/auth",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }), // data type match "Content-Type" header
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         const accessToken = data?.accessToken;
@@ -220,7 +224,7 @@ const LoginPage = () => {
       } else if (response.status === 401) {
         setError("Unauthorized");
       } else {
-        setError("Login Failed");
+        setError("เกิดข้อผิดพลาด กรุณาเข้าสู่ระบบอีกครั้ง");
       }
     } catch (error) {
       setError("Error. Try again later (" + error + ")!");
@@ -228,7 +232,6 @@ const LoginPage = () => {
       setLoginLoading(false);
     }
   };
-
   const redirect = useCallback(() => {
     if (!loginLoading && auth?.user?.username) {
       console.log(
@@ -249,8 +252,6 @@ const LoginPage = () => {
       }
     }
   }, [auth.user.username, from, loginLoading, navigate]);
-
-  // useEffect to make the redirect callback if user already logon
   useEffect(() => redirect(), [redirect]);
 
   return (
