@@ -4,7 +4,7 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
   return (
     <div className="p-4 flex justify-center items-center">
       <div className="ml-24 text-sm">
-        <div className="mb-2">
+        <div className="mb-2 ">
           <label className="block mb-2 font-bold">แพ้ยา</label>
           <div className="flex items-center mb-4">
             <input
@@ -18,7 +18,7 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2  h-5 w-5 rounded-full"
             />
-            <label htmlFor="allergy_medicine_no">ไม่มี</label>
+            <label htmlFor="allergy_medicine_no"  className="mr-8">ไม่มี</label>
 
             <input
               type="radio"
@@ -65,7 +65,7 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2 h-5 w-5 rounded-full"
             />
-            <label htmlFor="allergy_food_no">ไม่มี</label>
+            <label htmlFor="allergy_food_no"  className="mr-8">ไม่มี</label>
 
             <input
               type="radio"
@@ -114,7 +114,7 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2 h-5 w-5 rounded-full"
             />
-            <label htmlFor="smoking_status_no">ไม่มี</label>
+            <label htmlFor="smoking_status_no"  className="mr-8">ไม่มี</label>
 
             <input
               type="radio"
@@ -164,7 +164,7 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2 h-5 w-5 rounded-full"
             />
-            <label htmlFor="alcohol_consumption_no">ไม่มี</label>
+            <label htmlFor="alcohol_consumption_no"  className="mr-8">ไม่มี</label>
 
             <input
               type="radio"
@@ -214,7 +214,7 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2 h-5 w-5 rounded-full"
             />
-            <label htmlFor="other_substance_no">ไม่มี</label>
+            <label htmlFor="other_substance_no"  className="mr-8">ไม่มี</label>
 
             <input
               type="radio"

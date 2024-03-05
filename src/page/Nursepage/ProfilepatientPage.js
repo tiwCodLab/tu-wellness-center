@@ -381,14 +381,14 @@ export default function ProfilePatientPage() {
             <div className="fixed inset-0 transition-opacity">
               <div className="absolute inset-0 bg-gray-500 opacity-80"></div>
             </div>
-            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-4 sm:max-w-lg sm:w-full">
+            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-4 max-w-lg w-full">
               <div className="bg-white px-10 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-center">
-                  <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <div className="flex items-center">
+                  <div className=" ml-4 text-left">
                     <h3 className="text-lg leading-6 text-center font-bold text-gray-900">
-                      เพิ่มข้อมูล
+                      เพิ่มข้อมูลทั่วไป
                     </h3>
-                    <div className="mt-2">
+                    <div className="">
                       <form onSubmit={handleSubmit}>
                         <FormStep1
                           formDataStep1={formDataStep1}
