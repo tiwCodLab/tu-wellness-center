@@ -176,7 +176,6 @@ import { useNavigate, useNavigation } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
 import logo from "../assets/logotu.png";
 import Spinner from "../component/Spinner";
-import axios from "../api/axios";
 const LoginPage = () => {
   const auth = useAuth();
   const [loginLoading, setLoginLoading] = useState(false);
@@ -201,18 +200,15 @@ const LoginPage = () => {
 
     try {
       setLoginLoading(true);
-      const response = await axios.post(
-        "/auth",
-        { username, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        const data = response.data;
+      const response = await fetch("/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }), // data type match "Content-Type" header
+      });
+      if (response.ok) {
+        const data = await response.json();
         const accessToken = data?.accessToken;
         const roles = data?.roles;
         const user = { username, roles, accessToken };
@@ -223,16 +219,11 @@ const LoginPage = () => {
         setError("Missing username or Password");
       } else if (response.status === 401) {
         setError("Unauthorized");
-        console.log(">>> ", from);
-      } else if (response.status === 404) {
-        setError("User not found");
       } else {
-        setError("Login failed");
+        setError("Login Failed");
       }
     } catch (error) {
-      setError(
-        "ล็อคอินไม่สำเร็จ กรุณาตรวจสอบยูสเซอร์และรหัสก่อนทำการเข้าสู่ระบบ"
-      );
+      setError("Error. Try again later (" + error + ")!");
     } finally {
       setLoginLoading(false);
     }

@@ -54,7 +54,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://api-data-medical-room-tu.onrender.com/",
+  "proxy": "https://api-data-medical-room-tu.onrender.com",
   "devDependencies": {
     "tailwindcss": "^3.4.1"
   }

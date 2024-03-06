@@ -17,12 +17,15 @@ export default function UserPage() {
   useEffect(() => {
     const getuserData = async () => {
       try {
-        const { response, data } = await callFetch("/api/user", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const { response, data } = await callFetch(
+          "https://tu-wellness-center.vercel.app/api/user",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         if (response.ok) {
           setUserData(data);
           setDataLoaded(true); // Set dataLoaded to true when data is loaded
