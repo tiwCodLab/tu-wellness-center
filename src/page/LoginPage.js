@@ -201,7 +201,7 @@ const LoginPage = () => {
     try {
       setLoginLoading(true);
       const response = await fetch(
-        "https://tu-wellness-center.vercel.app/auth",
+        "https://api-data-medical-room-tu.onrender.com/auth",
         {
           method: "POST",
           headers: {
