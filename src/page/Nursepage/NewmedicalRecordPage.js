@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../api/axios";
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../utils/AuthProvider";
 import Select from "react-select";
@@ -242,7 +242,7 @@ export default function NewmedicalRecord() {
   useEffect(() => {
     // ดึงข้อมูลจาก API สำหรับ diagnosis
     axios
-      .get("/api/diagnosis")
+      .get("https://api-data-medical-room-tu.onrender.com/api/diagnosis")
       .then((response) => setDiagnosisOptions(response.data))
       .catch((error) =>
         console.error("Error fetching diagnosis options:", error)
@@ -250,21 +250,21 @@ export default function NewmedicalRecord() {
 
     // ดึงข้อมูลจาก API สำหรับ nursing activities
     axios
-      .get("/api/activities")
+      .get("https://api-data-medical-room-tu.onrender.com/api/activities")
       .then((response) => setNursingActivitiesOptions(response.data))
       .catch((error) =>
         console.error("Error fetching nursing activities options:", error)
       );
 
     axios
-      .get("/api/medication")
+      .get("https://api-data-medical-room-tu.onrender.com/api/medication")
       .then((response) => setMedicationOptions(response.data))
       .catch((error) =>
         console.error("Error fetching medications options:", error)
       );
 
     axios
-      .get("/api/medicalsupplies")
+      .get("https://api-data-medical-room-tu.onrender.com/api/medicalsupplies")
       .then((response) => setMedicalSupOptions(response.data))
       .catch((error) =>
         console.error("Error fetching medicalsupplies options:", error)
@@ -274,10 +274,16 @@ export default function NewmedicalRecord() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post(`/api/counseling`, medicalCounseling);
+    axios.post(
+      `https://api-data-medical-room-tu.onrender.com/api/counseling`,
+      medicalCounseling
+    );
 
     axios
-      .post("/api/medicalrecord", medicalRecord)
+      .post(
+        "https://api-data-medical-room-tu.onrender.com/api/medicalrecord",
+        medicalRecord
+      )
       .then((response) => {
         console.log("Response:", response.data);
         // ทำสิ่งที่ต้องการหลังจากได้รับการตอบกลับจากเซิร์ฟเวอร์
