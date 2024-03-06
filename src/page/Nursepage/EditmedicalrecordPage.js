@@ -1,12 +1,12 @@
 import { Form, redirect, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import Select from "react-select";
 import Spinners from "../../component/Spinner";
 async function updateMedicalrecord(id, updateMedicalrecord) {
   try {
     const response = await axios.put(
-      `https://api-data-medical-room-tu.onrender.com/api/medicalrecord/${id}`,
+      `/api/medicalrecord/${id}`,
       updateMedicalrecord,
       {
         headers: {
@@ -50,7 +50,7 @@ export default function Editmedicalreacord() {
   useEffect(() => {
     // ดึงข้อมูลจาก API สำหรับ diagnosis
     axios
-      .get("https://api-data-medical-room-tu.onrender.com/api/diagnosis")
+      .get("/api/diagnosis")
       .then((response) => setDiagnosisOptions(response.data))
       .catch((error) =>
         console.error("Error fetching diagnosis options:", error)
@@ -58,7 +58,7 @@ export default function Editmedicalreacord() {
 
     // ดึงข้อมูลจาก API สำหรับ nursing activities
     axios
-      .get("https://api-data-medical-room-tu.onrender.com/api/activities")
+      .get("/api/activities")
       .then((response) => setNursingActivitiesOptions(response.data))
       .catch((error) =>
         console.error("Error fetching nursing activities options:", error)

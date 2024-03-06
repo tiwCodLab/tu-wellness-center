@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import React, { useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import FormStep1 from "./Form/FormAddGeneral";
@@ -22,9 +22,7 @@ function calculateAge(birthday) {
 
 export async function getGeneralByPatient(id) {
   try {
-    const response = await axios.get(
-      `https://api-data-medical-room-tu.onrender.com/api/general/patient/${id}`
-    );
+    const response = await axios.get(`/api/general/patient/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error.message);
@@ -77,10 +75,7 @@ export default function ProfilePatientPage() {
     event.preventDefault();
 
     axios
-      .post(
-        "https://api-data-medical-room-tu.onrender.com/api/general",
-        formDataStep1
-      )
+      .post("/api/general", formDataStep1)
       .then((response) => {
         console.log("Response:", response.data);
         // ทำสิ่งที่ต้องการหลังจากได้รับการตอบกลับจากเซิร์ฟเวอร์

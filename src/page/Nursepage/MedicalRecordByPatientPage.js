@@ -3,13 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 import { FaHistory } from "react-icons/fa";
 import Spinners from "../../component/Spinner";
-import axios from "axios";
+import axios from "../../api/axios";
 import GoBack from "../../component/GoBack";
 
 export async function getMedicalRecordByPatient(id) {
-  const res = await axios.get(
-    `https://api-data-medical-room-tu.onrender.com/api/medicalrecord/patient/${id}`
-  );
+  const res = await axios.get(`/api/medicalrecord/patient/${id}`);
   return res.data;
 }
 

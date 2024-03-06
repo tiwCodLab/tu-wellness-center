@@ -1,15 +1,11 @@
-// file: ./utils/useFetchPrivate
-
 import { useState } from "react";
 import { useAuth } from "./AuthProvider";
-// import { _fetch as fetch} from './fetchWTimeout'
+import axios from "../api/axios";
 let useFetchPrivate = () => {
   const { user, setUser } = useAuth();
   const [loading, setLoading] = useState(true);
 
-  //    const baseURL = 'http://127.0.0.1:4000'
-
-  const setAuthorizationHeader = (params, accessToken = user.accessToken) => {
+  const setAuthorizationHeader = (params, accessToken) => {
     if (!params) {
       params = {
         credentials: "include",
@@ -19,81 +15,73 @@ let useFetchPrivate = () => {
         },
       };
     } else {
-      if (!params.headers || accessToken) {
+      if (!params.headers || !params.headers["Authorization"]) {
         Object.assign(params, {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
       }
       Object.assign(params, { credentials: "include" });
-      if (!params.noContentType) {
-        Object.assign(params.headers, { "Content-Type": "application/json" });
-      } else if (params.noContentType && params.headers["Content-Type"]) {
-        params.headers.delete("Content-Type");
-      }
+      params.headers = {
+        ...params.headers,
+        "Content-Type": "application/json",
+      };
     }
     return params;
   };
 
   const originalRequest = async (url, config) => {
+    config = setAuthorizationHeader(config, user.accessToken);
     let response = await fetch(url, config);
     return response;
   };
 
   const refreshToken = async () => {
-    let response = await fetch(
-      "https://api-data-medical-room-tu.onrender.com/auth/refresh",
-      {
-        method: "GET",
+    try {
+      const response = await axios.get("/auth/refresh", {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true, // เพิ่มค่า withCredentials เป็น true เพื่อส่งคุกกี้ไปยังเซิร์ฟเวอร์
+      });
+
+      if (response.status === 200) {
+        const data = response.data;
+        setUser((prev) => {
+          return { ...prev, accessToken: data.accessToken };
+        });
+        return data.accessToken;
+      } else {
+        const error = new Error("Fail to refresh! while fetching the data.");
+        error.info = response.data; // กำหนดข้อมูลของ error
+        error.status = response.status;
+        throw error;
       }
-    );
-    if (response.ok) {
-      let data = await response.json();
-      let tempUser = { ...user, accessToken: data.accessToken };
-      sessionStorage.setItem("aToken", JSON.stringify(tempUser)); // add this forget to set the session storage
-      setUser(tempUser);
-      return data.accessToken;
-    } else {
-      const error = new Error("Fail to refresh! while fetching the data.");
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.indexOf("application/json") !== -1)
-        error.info = await response.json();
-      else error.info = await response.text();
-      error.status = response.status;
-      //      signout(()=> console.log("Fail to refresh! force signout!"));
+    } catch (error) {
+      console.error("Error refreshing token:", error);
       throw error;
     }
-  };
-  const processResult = async (response) => {
-    let data = {};
-    const contentType = response.headers.get("content-type");
-    if (contentType && contentType.indexOf("application/json") >= 0) {
-      data = await response.json();
-    } else if (contentType && contentType.indexOf("text/") >= 0) {
-      data = await response.text();
-    } else data = await response.blob(); // expect it is a mimetype data i.e., image
-    return { response, data };
   };
 
   const callFetch = async (url, config) => {
     try {
-      //      let newConfig = setAuthorizationHeader(config, user.accessToken);
-      let newConfig = setAuthorizationHeader(config);
-      let response = await originalRequest(url, newConfig);
+      let response = await originalRequest(url, config);
+
       if (response.ok) {
-        return processResult(response);
-        // let data = await response.json();
-        // return {response, data};
+        let data = await response.json();
+        return { response, data };
       } else {
         if (response?.status === 403) {
           // token expire or loss?
           const newAccessToken = await refreshToken();
-          const options = setAuthorizationHeader(config, newAccessToken);
+          const options = setAuthorizationHeader(
+            config,
+            `Bearer ${newAccessToken}`
+          );
           let response = await originalRequest(url, options);
+          let data = {};
           if (response.ok) {
-            return processResult(response);
+            data = await response.json();
+            return { response, data };
           } else {
             throw new Error("Request fail!");
           }

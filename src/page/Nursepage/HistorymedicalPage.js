@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FaHistory } from "react-icons/fa";
@@ -16,7 +16,7 @@ export default function HistorymedicalPage() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/medicalrecord?page=${currentPage}&pageSize=${pageSize}`
+          `/api/medicalrecord?page=${currentPage}&pageSize=${pageSize}`
         );
         setdataHistory(response.data);
       } catch (error) {

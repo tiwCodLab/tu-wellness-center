@@ -1,11 +1,11 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import GoBack from "../../component/GoBack";
-import axios from "axios";
+import axios from "../../api/axios";
 
 export async function getViewMedicalRecord(id) {
   const res = await axios.get(
-    `https://api-data-medical-room-tu.onrender.com/api/medicalrecord/${id}`
+    `/api/medicalrecord/${id}`
   ); // Use axios.get
   return res.data;
 }

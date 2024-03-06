@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
 import { FaFileMedical } from "react-icons/fa6";
@@ -8,6 +8,7 @@ import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import sdt from "../../assets/graduated.png";
 import teacher from "../../assets/teacher.png";
 import maid from "../../assets/maid.png";
+import axios from "../../api/axios";
 
 const ManagementPage = () => {
   const { page } = useParams(); // ดึงค่า params ชื่อ page
@@ -21,7 +22,7 @@ const ManagementPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/patient?page=${currentPage}&pageSize=${pageSize}`
+          `/api/patient?page=${currentPage}&pageSize=${pageSize}`
         );
         setData(response.data);
       } catch (error) {

@@ -17,7 +17,10 @@ export default function UserPage() {
   useEffect(() => {
     const getuserData = async () => {
       try {
-        const { response, data } = await callFetch("/api/user");
+        const { response, data } = await callFetch("/api/user", {
+          method: "GET", // เปลี่ยนเป็นเมทอด HTTP ตามที่คุณต้องการ
+          // อาจจะมีคอนฟิกเพิ่มเติมที่ต้องการส่งไปยังเซิร์ฟเวอร์อื่น ๆ ได้ตรงนี้
+        });
         if (response.ok) {
           setUserData(data);
           setDataLoaded(true); // Set dataLoaded to true when data is loaded
