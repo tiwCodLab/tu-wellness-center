@@ -200,13 +200,16 @@ const LoginPage = () => {
 
     try {
       setLoginLoading(true);
-      const response = await fetch("/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }), // data type match "Content-Type" header
-      });
+      const response = await fetch(
+        "https://tu-wellness-center.vercel.app/auth",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }), // data type match "Content-Type" header
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         const accessToken = data?.accessToken;
