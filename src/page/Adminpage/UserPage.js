@@ -5,9 +5,9 @@ import Spinners from "../../component/Spinner";
 import { FaUser } from "react-icons/fa";
 import { MdAddCircle } from "react-icons/md";
 
-import nurse from "../../assets/nurse.png";
-import admin from "../../assets/admin.png";
-import psy from "../../assets/psy.png";
+// import nurse from "../../assets/nurse.png";
+// import admin from "../../assets/admin.png";
+// import psy from "../../assets/psy.png";
 
 export default function UserPage() {
   const [userData, setUserData] = useState([]);
@@ -18,8 +18,10 @@ export default function UserPage() {
     const getuserData = async () => {
       try {
         const { response, data } = await callFetch("/api/user", {
-          method: "GET", // เปลี่ยนเป็นเมทอด HTTP ตามที่คุณต้องการ
-          // อาจจะมีคอนฟิกเพิ่มเติมที่ต้องการส่งไปยังเซิร์ฟเวอร์อื่น ๆ ได้ตรงนี้
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
         if (response.ok) {
           setUserData(data);
@@ -108,8 +110,6 @@ export default function UserPage() {
                     <th scope="col" className="px-6 py-3 text-center">
                       สถานะการใช้งาน
                     </th>
-
-                    <th scope="col" className="px-6 py-3 text-center"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -130,7 +130,7 @@ export default function UserPage() {
                           ? "นักจิตวิทยา"
                           : "อื่น ๆ"}
                       </td>
-                      <td className="py-2 px-4 text-center">
+                      {/* <td className="py-2 px-4 text-center">
                         {item.roles.Admin ? (
                           <img
                             src={admin}
@@ -168,7 +168,7 @@ export default function UserPage() {
                             loading="lazy"
                           />
                         )}
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
