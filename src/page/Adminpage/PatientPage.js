@@ -203,7 +203,7 @@ export default function PatientPage() {
             <div className="flex justify-end">
               <button
                 onClick={handleDelete}
-                className="bg-red-500 text-white px-4 rounded-md mr-2"
+                className="bg-red-500 text-white px-6 rounded-md mr-16"
               >
                 ลบ
               </button>

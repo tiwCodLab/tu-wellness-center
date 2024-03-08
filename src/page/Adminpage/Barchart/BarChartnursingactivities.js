@@ -78,7 +78,7 @@ const BarChartNusingactivities = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center h-100 mb-4 rounded bg-white">
+      <div className="flex items-center justify-center h-100 mb-4 rounded bg-white mt-4">
         <div className="chart-container mt-6 ">
           <div className="flex justify-center mb-4">
             <div className="mr-4">

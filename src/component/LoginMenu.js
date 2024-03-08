@@ -3,7 +3,6 @@ import { useAuth } from "../utils/AuthProvider";
 import usePermission from "../utils/usePermission";
 import ROLES_LIST from "../utils/rolesList";
 import {
-  FaUserCircle,
   FaListAlt,
   FaHistory,
   FaUserPlus,
@@ -33,9 +32,9 @@ export default function LoginMenu() {
       {auth?.user?.username ? (
         <div className="space-y-2">
           <ul className="space-y-2">
-            <div className={`${commonLinkClass} px-5 py-2 `}>
+            {/* <div className={`${commonLinkClass} px-5 py-2 `}>
               <FaUserCircle className="mr-2" /> {auth.user.username}
-            </div>
+            </div> */}
             {hasPermission([ROLES_LIST.Nurse]) && (
               <li>
                 <NavLink to="/search" className={commonLinkClass}>

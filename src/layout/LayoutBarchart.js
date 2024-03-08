@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { FaHospitalSymbol } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
 
 const LayoutBarchart = () => {
@@ -21,9 +21,15 @@ const LayoutBarchart = () => {
   }, []);
   return (
     <>
-      <nav className="bg-gradient-to-r from-teal-500 to-teal-300 p-4 rounded font-prompt">
+      <nav className="bg-gradient-to-r from-teal-800 to-teal-600 p-4 rounded-lg font-prompt">
         <div className="container mx-auto flex justify-between items-center">
-          <ul className="flex space-x-4">
+          <p className="text-white hover:text-gray-300 transition duration-300">
+            <h1 className="flex items-center ml-4 text-xl font-Kanit font-medium text-white">
+              <FaHospitalSymbol style={{ fontSize: "24px" }} className="mr-2" />
+              TULP WELLNESS CENTER
+            </h1>
+          </p>
+          {/* <ul className="flex space-x-4">
             <NavLink
               to=""
               className="text-white hover:text-gray-300 transition duration-300"
@@ -63,13 +69,13 @@ const LayoutBarchart = () => {
                 รายงานยาเวชภัณฑ์
               </NavLink>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </nav>
 
-      <div className="p-4 border-2 border-gray-400 border-dashed rounded-md mt-2">
-        <div className="grid grid-cols-3 gap-6 mb-6">
-          <div className="flex items-center justify-center h-24 rounded-md bg-gray-50 ">
+      <div className="p-2.5 border-2 border-gray-300 border-dashed rounded-md mt-2">
+        <div className="grid grid-cols-3 gap-6">
+          <div className="flex items-center justify-center h-24 rounded-md bg-white ">
             <div className="text-center">
               <p className="text-sm">ผู้ป่วย</p>
               <p className="text-4xl mt-2 text-gray-600 font-semibold">
@@ -77,7 +83,7 @@ const LayoutBarchart = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-center h-24 rounded-md bg-gray-50 ">
+          <div className="flex items-center justify-center h-24 rounded-md bg-white ">
             <div className="text-center">
               <p className="text-sm">ผู้ใช้งานระบบ</p>
               <p className="text-4xl mt-2 text-gray-600 font-semibold">
@@ -85,7 +91,7 @@ const LayoutBarchart = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-center h-24 rounded-md bg-gray-50 ">
+          <div className="flex items-center justify-center h-24 rounded-md bg-white ">
             <div className="text-center">
               <p className="text-sm">การให้บริการทั้งหมด</p>
               <p className="text-4xl mt-2 text-gray-600 font-semibold">

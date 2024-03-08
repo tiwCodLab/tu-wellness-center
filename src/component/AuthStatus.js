@@ -17,7 +17,7 @@ export default function AuthStatus() {
 
   return (
     <div className="text-teal-800 p-4">
-      <p className="text-lg">ยินดีต้อนรับ {auth.user?.username}!</p>
+      <p className="text-lg text-teal-800">ยินดีต้อนรับ {auth.user?.username}!</p>
       {/* <div className="mt-4">
         ไปที่{" "}
         <Link to="/manange" className="text-blue-500 underline">

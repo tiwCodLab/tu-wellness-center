@@ -273,7 +273,7 @@ const LoginPage = () => {
             {error}
           </p>
           <div className="flex-1 p-2">
-            <div className="max-w-md mx-auto p-6 mb-24  mt-24 bg-teal-800 shadow-md rounded-lg">
+            <div className="max-w-md mx-auto p-6 mb-24  mt-24 bg-teal-700 shadow-md rounded-lg">
               <form onSubmit={handleSubmit} className="space-y-4 p-10">
                 <div>
                   <img
@@ -281,14 +281,14 @@ const LoginPage = () => {
                     alt="Logo"
                     className="w-32 h-32 mx-auto mb-4"
                   />
-                  <h1 className="text-xl font-bold mb-4 text-center text-white">
+                  <h1 className="text-2xl font-bold font-Kanit mb-4 text-center text-white">
                     TULP WELLNESS CENTER
                   </h1>
                 </div>
 
                 <div className="flex flex-col text-sm">
                   <label htmlFor="username" className="mb-2 text-white">
-                    ยูสเซอร์
+                    Username
                   </label>
                   <input
                     type="text"
@@ -298,12 +298,12 @@ const LoginPage = () => {
                     placeholder="Username"
                     autoComplete="off"
                     required
-                    className="border border-gray-300 p-2 rounded-md"
+                    className="border border-gray-300 p-2 rounded-md focus:outline-none"
                   />
                 </div>
                 <div className="flex flex-col text-sm">
                   <label htmlFor="password" className="mb-2 text-white">
-                    รหัสผ่าน
+                    Password
                   </label>
                   <input
                     type="password"
@@ -312,7 +312,7 @@ const LoginPage = () => {
                     placeholder="Password"
                     autoComplete="off"
                     required
-                    className="border border-gray-300 p-2 rounded-md"
+                    className="border border-gray-300 p-2 rounded-md focus:outline-none"
                   />
                 </div>
                 <div className="flex justify-center items-center ">

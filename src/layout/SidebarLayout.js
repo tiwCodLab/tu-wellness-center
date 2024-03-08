@@ -11,7 +11,7 @@ const SidebarLayout = () => {
           <div>
             <aside className="fixed top-0 left-0 z-40 w-60 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-teal-900 text-white shadow-2xl rounded-sm">
               <div className="h-full px-4 py-8 overflow-y-auto">
-                <img src={logo} alt="Logo" className="w-32 h-32 mx-auto mb-4" />
+                <img src={logo} alt="Logo" className="w-32 h-32 mx-auto mb-6" />
                 <ul className="space-y-2 font-medium">
                   <LoginMenu />
                 </ul>

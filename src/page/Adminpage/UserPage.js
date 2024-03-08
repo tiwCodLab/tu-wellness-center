@@ -5,9 +5,9 @@ import Spinners from "../../component/Spinner";
 import { FaUser } from "react-icons/fa";
 import { MdAddCircle } from "react-icons/md";
 
-// import nurse from "../../assets/nurse.png";
-// import admin from "../../assets/admin.png";
-// import psy from "../../assets/psy.png";
+import nurse from "../../assets/nurse.png";
+import admin from "../../assets/admin.png";
+import psy from "../../assets/psy.png";
 
 export default function UserPage() {
   const [userData, setUserData] = useState([]);
@@ -17,15 +17,7 @@ export default function UserPage() {
   useEffect(() => {
     const getuserData = async () => {
       try {
-        const { response, data } = await callFetch(
-          "https://tu-wellness-center.vercel.app/api/user",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const { response, data } = await callFetch("/api/user");
         if (response.ok) {
           setUserData(data);
           setDataLoaded(true); // Set dataLoaded to true when data is loaded
@@ -110,8 +102,11 @@ export default function UserPage() {
                     <th scope="col" className="px-6 py-3 text-center">
                       ชื่อยูสเซอร์
                     </th>
-                    <th scope="col" className="px-6 py-3 text-center">
+                    <th scope="col" className="px-0 py-3 text-center">
                       สถานะการใช้งาน
+                    </th>
+                    <th scope="col" className="px-0 py-3 text-center">
+                 
                     </th>
                   </tr>
                 </thead>
@@ -122,9 +117,9 @@ export default function UserPage() {
                       className="bg-white border-b dark:border-gray-100 hover:bg-gray-100"
                     >
                       <td className="px-4 text-center ">{item.firstname}</td>
-                      <td className="py-2 px-4 text-center">{item.lastname}</td>
-                      <td className="py-2 px-4 text-center">{item.username}</td>
-                      <td className="py-2 px-4 text-center">
+                      <td className="py-4 px-4 text-center">{item.lastname}</td>
+                      <td className="py-4 px-4 text-center">{item.username}</td>
+                      <td className="py-4 px-4 text-center ">
                         {item.roles.Admin
                           ? "ผู้ดูแลระบบ"
                           : item.roles.Nurse
@@ -133,7 +128,7 @@ export default function UserPage() {
                           ? "นักจิตวิทยา"
                           : "อื่น ๆ"}
                       </td>
-                      {/* <td className="py-2 px-4 text-center">
+                      <td className="py-2 px-4 text-center">
                         {item.roles.Admin ? (
                           <img
                             src={admin}
@@ -171,7 +166,7 @@ export default function UserPage() {
                             loading="lazy"
                           />
                         )}
-                      </td> */}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

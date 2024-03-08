@@ -100,7 +100,7 @@ export default function AddpatientPage() {
       <div className="p-8 mt-2 bg-white shadow-lg rounded-md">
         <div>
           <div className="flex items-center mb-4 text-base">
-            <TiUserAdd style={{fontSize:"28px"}} />
+            <TiUserAdd style={{ fontSize: "28px" }} />
             <h3 className=" font-semibold ml-2">เพิ่มข้อมูลผู้ใช้บริการใหม่</h3>
           </div>
 
