@@ -16,7 +16,7 @@ const ManagementPage = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [pageSize] = useState(9);
+  const [pageSize] = useState(11);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,7 +98,7 @@ const ManagementPage = () => {
                 {reversedDataPatient.map((item) => (
                   <tr
                     key={item._id}
-                    className="bg-white border-b  dark:border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-200"
+                    className="bg-white border-b  dark:border-gray-50 hover:bg-gray-50 dark:hover:bg-gray-200"
                   >
                     <th
                       scope="row"

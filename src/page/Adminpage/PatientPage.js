@@ -23,7 +23,8 @@ export default function PatientPage() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/patient?page=${currentPage}&pageSize=${pageSize}`
+          `http://localhost:4000/api/patient?page=${currentPage}&pageSize=${pageSize}`,
+          { withCredentials: true }
         );
         setPatientData(response.data);
       } catch (error) {

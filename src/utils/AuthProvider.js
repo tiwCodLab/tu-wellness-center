@@ -5,8 +5,8 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   // let [user, setUser] = useState({});
   const [user, setUser] = useState(() =>
-    sessionStorage.getItem("aToken")
-      ? JSON.parse(sessionStorage.getItem("aToken"))
+    sessionStorage.getItem("Token")
+      ? JSON.parse(sessionStorage.getItem("Token"))
       : {}
   );
 
@@ -17,11 +17,11 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     if (newUser) {
       try {
-        sessionStorage.setItem("aToken", JSON.stringify(newUser));
+        sessionStorage.setItem("Token", JSON.stringify(newUser));
         setUser(newUser);
       } catch (err) {}
     } else {
-      sessionStorage.removeItem("aToken");
+      sessionStorage.removeItem("Token");
       setUser({});
     }
     setLoading(false);
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
   function signout(callback) {
     setLoading(true);
-    if (sessionStorage.getItem("aToken")) sessionStorage.clear();
+    if (sessionStorage.getItem("Token")) sessionStorage.clear();
     setUser({});
     setLoading(false);
     callback();

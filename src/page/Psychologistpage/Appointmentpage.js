@@ -113,10 +113,12 @@ function Appointment() {
                       {item.patient.patient_fname} {item.patient.patient_lname}
                     </p>
                     <p className="text-sm mb-2">
-                      วันที่: {item.appointment_date}
+                      <span className="font-bold">วันที่</span>{" "}
+                      {item.appointment_date}
                     </p>
                     <p className="text-sm font-medium mb-2">
-                      เวลา: {item.appointment_time}
+                      <span className="font-bold">เวลา </span>
+                      {item.appointment_time}
                     </p>
                   </div>
                   <button

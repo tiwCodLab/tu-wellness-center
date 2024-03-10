@@ -11,7 +11,7 @@ export default function HistorymedicalPage() {
   const [currentPage, setCurrentPage] = useState(page ? parseInt(page) : 1);
   const [dataHistory, setdataHistory] = useState([]);
 
-  const [pageSize] = useState(13); // Adjust the page size as needed
+  const [pageSize] = useState(14); // Adjust the page size as needed
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,11 +59,11 @@ export default function HistorymedicalPage() {
                 <tbody>
                   {reversedDataHistory.length > 0 ? (
                     reversedDataHistory.map((item) => (
-                      <tr key={item._id} className="border-b border-gray-100">
-                        <td className="px-4 text-sm text-center">
+                      <tr key={item._id} className="border-b border-gray-50">
+                        <td className="px-4 py-2.5 text-sm text-center">
                           {item.visittime}
                         </td>
-                        <td className="py-2 px-4 text-sm text-center ">
+                        <td className="px-4 text-sm text-center ">
                           {item.visitdate}
                         </td>
                         <td className="px-4 text-sm">

@@ -74,8 +74,8 @@ export default function ViewMedicalRecordPage() {
         </div>
       </div>
       <div className="bg-white p-8 mt-2 rounded-md">
-        <h1 className="text-base font-bold mt-4 mb-2">รายละเอียดการรักษา</h1>
-        <div className="relative overflow-x-auto">
+        <h1 className="text-xl font-bold mt-4 mb-2">รายละเอียดการรักษา</h1>
+        <div className="relative overflow-x-auto px-4">
           <table className="w-full text-sm text-left rtl:text-right">
             <thead className="text-xs"></thead>
             <tbody>

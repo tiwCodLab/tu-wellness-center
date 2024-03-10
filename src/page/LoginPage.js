@@ -176,6 +176,7 @@ import { useNavigate, useNavigation } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
 import logo from "../assets/logotu.png";
 import Spinner from "../component/Spinner";
+import axios from "../api/axios";
 const LoginPage = () => {
   const auth = useAuth();
   const [loginLoading, setLoginLoading] = useState(false);
@@ -200,18 +201,20 @@ const LoginPage = () => {
 
     try {
       setLoginLoading(true);
-      const response = await fetch(
-        "https://api-data-medical-room-tu.onrender.com/auth",
+      const response = await axios.post(
+        "http://localhost:4000/auth",
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password }), // data type match "Content-Type" header
+          username,
+          password,
+        },
+        {
+          withCredentials: true,
         }
       );
-      if (response.ok) {
-        const data = await response.json();
+      console.log(response);
+
+      if (response.status === 200) {
+        const data = response.data;
         const accessToken = data?.accessToken;
         const roles = data?.roles;
         const user = { username, roles, accessToken };
@@ -226,7 +229,7 @@ const LoginPage = () => {
         setError("Login Failed");
       }
     } catch (error) {
-      setError("Error. Try again later (" + error + ")!");
+      setError("Error. Try again later (" + error.message + ")!");
     } finally {
       setLoginLoading(false);
     }
