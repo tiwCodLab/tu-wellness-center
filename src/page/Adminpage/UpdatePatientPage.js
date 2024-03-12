@@ -5,12 +5,14 @@ import { Form, redirect, useNavigate, useParams } from "react-router-dom";
 
 async function updataPatient(id, updataPatient) {
   try {
+    const authToken = localStorage.getItem("token");
     const response = await axios.put(
       `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`,
       updataPatient,
       {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
         },
       }
     );
@@ -72,10 +74,16 @@ export default function UpdatePatientPage() {
 
   useEffect(() => {
     const fetchPatient = async () => {
+      const authToken = localStorage.getItem("token");
       try {
         const response = await axios.get(
           `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`,
-          { withCredentials: true }
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
         );
         setPatient(response.data);
       } catch (error) {

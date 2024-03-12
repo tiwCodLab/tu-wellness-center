@@ -81,7 +81,7 @@ function RegisterForm() {
   };
 
   return (
-    <div className="p-6 mt-2 bg-white rounded-md shadow-md mx-2 ">
+    <div className="p-6 mt-2 bg-white rounded-md mx-2 ">
       <h1 className="text-xl font-bold mb-4">เพิ่มผู้ใช้งานระบบ</h1>
       <div className="text-sm">
         <div className="mb-4">

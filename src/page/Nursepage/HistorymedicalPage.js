@@ -60,7 +60,10 @@ export default function HistorymedicalPage() {
                 <tbody>
                   {reversedDataHistory.length > 0 ? (
                     reversedDataHistory.map((item) => (
-                      <tr key={item._id} className="border-b border-gray-50">
+                      <tr
+                        key={item._id}
+                        className="border-b border-gray-50 font-light"
+                      >
                         <td className="px-4 py-2.5 text-sm text-center">
                           {item.visittime}
                         </td>

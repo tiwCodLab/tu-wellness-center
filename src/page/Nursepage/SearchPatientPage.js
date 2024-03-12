@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import Spinners from "../../component/Spinner";
 import { FaFileMedical } from "react-icons/fa6";
 import { RiFolderHistoryFill } from "react-icons/ri";
 import { RiUserSearchFill } from "react-icons/ri";
+import Loading from "../../component/Loading";
 
 const SearchPatientPage = () => {
   const storedStudentId = localStorage.getItem("studentId") || "";
@@ -20,10 +20,16 @@ const SearchPatientPage = () => {
           return;
         }
 
+        const authToken = localStorage.getItem("token");
+
         const response = await fetch(
           `https://api-data-medical-room-tu.onrender.com/api/patient/search?student_id=${studentId}`,
           {
             method: "GET",
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+              "Content-Type": "application/json", // คุณอาจต้องการระบุ Content-Type อื่น ๆ ตามที่ API ต้องการ
+            },
             credentials: "include",
           }
         );
@@ -147,7 +153,7 @@ const SearchPatientPage = () => {
                       <tbody>
                         <tr>
                           <td colSpan="7" className="px-4  text-sm text-center">
-                            <Spinners />
+                            <Loading />
                           </td>
                         </tr>
                       </tbody>

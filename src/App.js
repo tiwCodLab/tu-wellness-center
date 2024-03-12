@@ -91,6 +91,7 @@ import BarChartmedicationSup from "./page/Adminpage/Barchart/BarChartmedicalSup"
 import ViewCounselingById, {
   LoadgetViewCounseling,
 } from "./page/Psychologistpage/DetailHistorypage";
+import ProfilePage from "./component/Profilepage";
 
 function RouterApp() {
   // const fetchPrivate = useFetchPrivate();
@@ -161,6 +162,10 @@ function RouterApp() {
           </Route>
           <Route path="addpatient" element={<MainLayout />}>
             <Route index element={<AddpatientPage />} />
+          </Route>
+
+          <Route path="profile" element={<MainLayout />}>
+            <Route index element={<ProfilePage />} />
           </Route>
         </Route>
         <Route path="unauthorize" element={<UnauthorizeError />} />

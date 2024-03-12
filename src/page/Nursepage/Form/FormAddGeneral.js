@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
+const FormAddGeneral = ({ formDataStep1, handleInputChangeStep1 }) => {
   return (
     <div className="p-4 flex justify-center items-center">
       <div className="ml-24 text-sm">
@@ -18,7 +18,9 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2  h-5 w-5 rounded-full"
             />
-            <label htmlFor="allergy_medicine_no"  className="mr-8">ไม่มี</label>
+            <label htmlFor="allergy_medicine_no" className="mr-8">
+              ไม่มี
+            </label>
 
             <input
               type="radio"
@@ -65,7 +67,9 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2 h-5 w-5 rounded-full"
             />
-            <label htmlFor="allergy_food_no"  className="mr-8">ไม่มี</label>
+            <label htmlFor="allergy_food_no" className="mr-8">
+              ไม่มี
+            </label>
 
             <input
               type="radio"
@@ -114,7 +118,9 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2 h-5 w-5 rounded-full"
             />
-            <label htmlFor="smoking_status_no"  className="mr-8">ไม่มี</label>
+            <label htmlFor="smoking_status_no" className="mr-8">
+              ไม่มี
+            </label>
 
             <input
               type="radio"
@@ -164,7 +170,9 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2 h-5 w-5 rounded-full"
             />
-            <label htmlFor="alcohol_consumption_no"  className="mr-8">ไม่มี</label>
+            <label htmlFor="alcohol_consumption_no" className="mr-8">
+              ไม่มี
+            </label>
 
             <input
               type="radio"
@@ -214,7 +222,9 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
               }
               className="mr-2 h-5 w-5 rounded-full"
             />
-            <label htmlFor="other_substance_no"  className="mr-8">ไม่มี</label>
+            <label htmlFor="other_substance_no" className="mr-8">
+              ไม่มี
+            </label>
 
             <input
               type="radio"
@@ -314,7 +324,7 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
                 parseFloat(e.target.value)
               )
             }
-            className="border rounded-md px-2 py-1 ml-2"
+            className="border rounded-md px-2 py-1 ml-2 mt-2"
           />
         </label>
         <br />
@@ -330,7 +340,7 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
                 parseFloat(e.target.value)
               )
             }
-            className="border rounded-md px-2 py-1 ml-2"
+            className="border rounded-md px-2 py-1 ml-2 mt-2"
           />
         </label>
       </div>
@@ -338,4 +348,4 @@ const FormStep1 = ({ formDataStep1, handleInputChangeStep1 }) => {
   );
 };
 
-export default FormStep1;
+export default FormAddGeneral;

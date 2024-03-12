@@ -6,25 +6,35 @@ import { FaFileMedical } from "react-icons/fa6";
 import { RiFolderHistoryFill } from "react-icons/ri";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import axios from "../../api/axios";
+import Loading from "../../component/Loading";
 
 const ManagementPage = () => {
   const { page } = useParams(); // ดึงค่า params ชื่อ page
   const [currentPage, setCurrentPage] = useState(page ? parseInt(page) : 1);
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true); // เพิ่ม state เพื่อตรวจสอบการโหลดข้อมูล
 
   const [pageSize] = useState(11);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const authToken = localStorage.getItem("token");
         const response = await axios.get(
           `/api/patient?page=${currentPage}&pageSize=${pageSize}`,
-          { withCredentials: true }
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
         );
         setData(response.data);
+        setLoading(false); // เมื่อโหลดข้อมูลเสร็จแล้วตั้งค่า loading เป็น false
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false); // หากเกิดข้อผิดพลาดก็ต้องตั้งค่า loading เป็น false เช่นกัน
       }
     };
 
@@ -65,77 +75,84 @@ const ManagementPage = () => {
               onChange={handleSearch}
             />
           </div>
-          <div className="relative overflow-x-auto shadow-lg sm:rounded-md">
-            <table className="w-full text-sm text-left rtl:text-right text-black ">
-              <thead className="text-xs text-gray-500 uppercase  text-center ">
-                <tr>
-                  <th scope="col" className="px-6 py-2 text-center">
-                    รหัสนักศึกษา/รหัสประจำตัว
-                  </th>
-                  <th scope="col" className="px-6 py-2 text-center">
-                    ชื่อ-นามสกุล
-                  </th>
 
-                  <th scope="col" className="px-6 py-2 text-center">
-                    คณะ/สถาบัน
-                  </th>
-                  <th scope="col" className="px-6 py-2 text-center">
-                    บันทึกเวชระเบียน
-                  </th>
-
-                  <th scope="col" className="px-6 py-2 text-center">
-                    ประวัติ
-                  </th>
-                  <th scope="col" className="px-6 py-2 text-center">
-                    <span className="sr-only">Edit</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {reversedDataPatient.map((item) => (
-                  <tr
-                    key={item._id}
-                    className="bg-white border-b  dark:border-gray-50 hover:bg-gray-50 dark:hover:bg-gray-200"
-                  >
-                    <th
-                      scope="row"
-                      className="px-6 py-2 text-center font-medium text-gray-900 whitespace-nowrap"
-                    >
-                      <Link to={`${item._id}/general`}>{item.student_id}</Link>
+          {loading ? ( // เพิ่มเงื่อนไขการแสดงผลเมื่อโหลดข้อมูล
+            <div className="text-center">
+              <Loading />
+            </div>
+          ) : (
+            <div className="relative overflow-x-auto shadow-lg sm:rounded-md">
+              <table className="w-full text-sm text-left rtl:text-right text-black ">
+                <thead className="text-xs text-gray-500 uppercase  text-center ">
+                  <tr>
+                    <th scope="col" className="px-6 py-2 text-center ">
+                      รหัสนักศึกษา/รหัสประจำตัว
                     </th>
-                    <td className="px-6 py-3">
-                      <Link to={`${item._id}/general`}>
-                        {`${item.patient_fname} ${item.patient_lname}`}
-                      </Link>
-                    </td>
+                    <th scope="col" className="px-6 py-2 text-center">
+                      ชื่อ-นามสกุล
+                    </th>
 
-                    <td className="px-6 py-2 text-center">
-                      {item.organizations}
-                    </td>
-                    <td className="px-4 py-2.5 text-center">
-                      <Link
-                        to={`${item._id}`}
-                        className="inline-block rounded-md transition duration-300 "
-                      >
-                        <FaFileMedical className="text-white hover:bg-sky-600 text-base bg-sky-500 p-1.5 h-7 w-7 rounded-md" />
-                      </Link>
-                    </td>
+                    <th scope="col" className="px-6 py-2 text-center">
+                      คณะ/สถาบัน
+                    </th>
+                    <th scope="col" className="px-6 py-2 text-center">
+                      บันทึกเวชระเบียน
+                    </th>
 
-                    <td className="text-center">
-                      <Link
-                        to={`${item._id}/history`}
-                        className="inline-block rounded-md transition duration-300 "
-                      >
-                        <RiFolderHistoryFill className="text-white hover:bg-teal-300 text-base bg-teal-500 p-1.5 h-7 w-7 rounded-md" />
-                      </Link>
-                    </td>
-
-                    <td className="px-6 py-4 text-right"></td>
+                    <th scope="col" className="px-6 py-2 text-center">
+                      ประวัติ
+                    </th>
+                    <th scope="col" className="px-6 py-2 text-center">
+                      <span className="sr-only">Edit</span>
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {reversedDataPatient.map((item) => (
+                    <tr
+                      key={item._id}
+                      className="bg-white border-b  dark:border-gray-50 hover:bg-gray-50 dark:hover:bg-gray-200"
+                    >
+                      <th
+                        scope="row"
+                        className="px-6 py-2 text-center font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        <Link to={`${item._id}/general`}>
+                          {item.student_id}
+                        </Link>
+                      </th>
+                      <td className="px-6 py-3 ">
+                        <Link to={`${item._id}/general`}>
+                          {`${item.patient_fname} ${item.patient_lname}`}
+                        </Link>
+                      </td>
+
+                      <td className="px-6 py-2">{item.organizations}</td>
+                      <td className="px-4 py-2.5 text-center">
+                        <Link
+                          to={`${item._id}`}
+                          className="inline-block rounded-md transition duration-300 "
+                        >
+                          <FaFileMedical className="text-white hover:bg-sky-600 text-base bg-sky-500 p-1.5 h-7 w-7 rounded-md" />
+                        </Link>
+                      </td>
+
+                      <td className="text-center">
+                        <Link
+                          to={`${item._id}/history`}
+                          className="inline-block rounded-md transition duration-300 "
+                        >
+                          <RiFolderHistoryFill className="text-white hover:bg-teal-300 text-base bg-teal-500 p-1.5 h-7 w-7 rounded-md" />
+                        </Link>
+                      </td>
+
+                      <td className="px-6 py-4 text-right"></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
       <div className="flex justify-center mt-2 text-sm ">

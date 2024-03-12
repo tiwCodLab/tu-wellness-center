@@ -19,7 +19,7 @@ const Dropdown = ({ options, selectedValue, onChange }) => {
     </select>
   );
 };
-const FormOne = ({
+const FormCheckList = ({
   selected,
   selectedOption,
   handleSelectOptionA,
@@ -211,7 +211,10 @@ const FormOne = ({
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14 ">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           สีผิวหนัง/ปาก/เล็บ
                         </label>
                       </div>
@@ -273,7 +276,10 @@ const FormOne = ({
 
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           ขนาดและรูปร่างทรวงอก
                         </label>
                       </div>
@@ -335,7 +341,10 @@ const FormOne = ({
 
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           ลักษณะการหายใจ
                         </label>
                       </div>
@@ -400,7 +409,12 @@ const FormOne = ({
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>หลอดลม</label>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
+                          หลอดลม
+                        </label>
                       </div>
                       <div className="w-1/2 pl-2">
                         <div className="flex items-center justify-center">
@@ -457,7 +471,10 @@ const FormOne = ({
 
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           กระดูกซี่โครง
                         </label>
                       </div>
@@ -513,7 +530,10 @@ const FormOne = ({
 
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           การยายตัวของทรวงอก
                         </label>
                       </div>
@@ -581,7 +601,10 @@ const FormOne = ({
 
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           ต่อมน้ำเหลือง
                         </label>
                       </div>
@@ -647,7 +670,10 @@ const FormOne = ({
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           เสียงผิดปกติ
                         </label>
                       </div>
@@ -727,7 +753,10 @@ const FormOne = ({
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           เสียงหายใจ
                         </label>
                       </div>
@@ -843,7 +872,10 @@ const FormOne = ({
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           ช่องปากและลำคอ
                         </label>
                       </div>
@@ -919,7 +951,10 @@ const FormOne = ({
 
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           ลักษณะท้อง
                         </label>
                       </div>
@@ -1002,7 +1037,10 @@ const FormOne = ({
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           เสียงลำไส้เคลื่อนไหว
                         </label>
                       </div>
@@ -1090,7 +1128,10 @@ const FormOne = ({
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           เสียงผนังหน้าท้อง
                         </label>
                       </div>
@@ -1176,7 +1217,10 @@ const FormOne = ({
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                       <div className="w-1/2 pl-14">
-                        <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                        <label
+                          className="block mb-2 text-base"
+                          style={{ fontSize: "15px" }}
+                        >
                           หน้าท้องและอวัยวะช่องท้อง
                         </label>
                       </div>
@@ -1264,7 +1308,10 @@ const FormOne = ({
                 <h3 className="text-base font-bold mb-5 p-2"> </h3>
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ผิวหนัง (Skin)
                     </label>
                   </div>
@@ -1331,7 +1378,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ศีรษะ (Skull)
                     </label>
                   </div>
@@ -1398,7 +1448,12 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>หน้า (Face)</label>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
+                      หน้า (Face)
+                    </label>
                   </div>
                   <div className="w-1/2 pl-2">
                     <div className="flex items-center justify-center">
@@ -1463,7 +1518,12 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>ตา (Eyes)</label>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
+                      ตา (Eyes)
+                    </label>
                   </div>
                   <div className="w-1/2 pl-2">
                     <div className="flex items-center justify-center">
@@ -1528,7 +1588,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ช่องปาก (Oral cavity)
                     </label>
                   </div>
@@ -1595,7 +1658,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ลิ้น (Tongue)
                     </label>
                   </div>
@@ -1662,7 +1728,12 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>คอ (Neck)</label>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
+                      คอ (Neck)
+                    </label>
                   </div>
                   <div className="w-1/2 pl-2">
                     <div className="flex items-center justify-center">
@@ -1727,7 +1798,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ต่อมน้ำเหลือง (Lymph Nodes)
                     </label>
                   </div>
@@ -1794,7 +1868,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       เต้านม (Breasts)
                     </label>
                   </div>
@@ -1861,7 +1938,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ทรวงอก (Chest)
                     </label>
                   </div>
@@ -1928,7 +2008,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ระบบไหวเวียนโลหิต (CVS)
                     </label>
                   </div>
@@ -2009,7 +2092,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ท้อง (Abdomen)
                     </label>
                   </div>
@@ -2076,7 +2162,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ระบบสืบพันธ์ (Genitalia)
                     </label>
                   </div>
@@ -2159,7 +2248,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ระบบโครงร่างกล้ามเนื้อ (Extremities)
                     </label>
                   </div>
@@ -2254,7 +2346,10 @@ const FormOne = ({
 
                 <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3 ">
                   <div className="w-1/2 pl-14">
-                    <label className="block mb-2 text-base" style={{fontSize:"15px"}}>
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
                       ระบบประสาท (CNS)
                     </label>
                   </div>
@@ -2460,4 +2555,4 @@ const FormOne = ({
   );
 };
 
-export default FormOne;
+export default FormCheckList;

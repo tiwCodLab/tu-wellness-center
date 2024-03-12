@@ -1,7 +1,7 @@
 import axios from "../../api/axios";
 import React, { useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import FormStep1 from "./Form/FormAddGeneral";
+import FormAddGeneral from "./Form/FormAddGeneral";
 import GoBack from "../../component/GoBack";
 
 function calculateAge(birthday) {
@@ -380,12 +380,12 @@ export default function ProfilePatientPage() {
               <div className="bg-white px-10 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="flex items-center">
                   <div className=" ml-4 text-left">
-                    <h3 className="text-lg leading-6 text-center font-bold text-gray-900">
-                      เพิ่มข้อมูลทั่วไป
+                    <h3 className="text-base leading-6 text-center font-bold text-gray-900">
+                      เพิ่มการซักประวัติ
                     </h3>
                     <div className="">
                       <form onSubmit={handleSubmit}>
-                        <FormStep1
+                        <FormAddGeneral
                           formDataStep1={formDataStep1}
                           handleInputChangeStep1={handleInputChangeStep1}
                         />

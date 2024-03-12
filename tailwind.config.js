@@ -6,6 +6,8 @@ module.exports = {
     fontFamily: {
       Sarabun: ["Sarabun", "sans-serif"],
       Kanit: ["Kanit", "sans-serif"],
+      NotoSerifThai: ["Noto Sans Thai", "sans-serif"],
+      Noto: ["Noto Serif Thai", "serif"],
     },
   },
   plugins: [],

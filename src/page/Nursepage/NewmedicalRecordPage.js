@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../utils/AuthProvider";
 import Select from "react-select";
 import { FaPlus } from "react-icons/fa";
-import FormOne from "./Form/FormMedicalRecord";
+import FormCheckList from "./Form/FormMedicalRecord";
 
 export default function NewmedicalRecord() {
   let auth = useAuth();
@@ -329,7 +329,7 @@ export default function NewmedicalRecord() {
           </label>
         </div>
 
-        <FormOne
+        <FormCheckList
           medicalRecord={medicalRecord}
           selected={selected}
           selectedOption={selectedOption}
@@ -346,18 +346,6 @@ export default function NewmedicalRecord() {
           medicalCounseling={medicalCounseling}
         />
         <div className="mt-4">
-          {/* <label className="block mb-4">
-            <span className="text-gray-700">
-              การตรวจร่างกายตามระบบที่สัมพันธ์กับความเจ็บป่วย
-            </span>
-            <textarea
-              type="text"
-              name="physical_exam"
-              value={medicalRecord.physical_exam}
-              onChange={handleChange}
-              className="h-36 mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:outline-none"
-            />
-          </label> */}
           <label className="block mb-4 ">
             <span className="text-gray-700">การวินิจฉัย</span>
             <div className="">
