@@ -5,9 +5,6 @@ import { Link, useParams } from "react-router-dom";
 import { FaFileMedical } from "react-icons/fa6";
 import { RiFolderHistoryFill } from "react-icons/ri";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
-import sdt from "../../assets/graduated.png";
-import teacher from "../../assets/teacher.png";
-import maid from "../../assets/maid.png";
 import axios from "../../api/axios";
 
 const ManagementPage = () => {
@@ -22,7 +19,8 @@ const ManagementPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `/api/patient?page=${currentPage}&pageSize=${pageSize}`
+          `/api/patient?page=${currentPage}&pageSize=${pageSize}`,
+          { withCredentials: true }
         );
         setData(response.data);
       } catch (error) {
@@ -71,7 +69,6 @@ const ManagementPage = () => {
             <table className="w-full text-sm text-left rtl:text-right text-black ">
               <thead className="text-xs text-gray-500 uppercase  text-center ">
                 <tr>
-                  <th scope="col" className="px-6 py-2 text-center"></th>
                   <th scope="col" className="px-6 py-2 text-center">
                     รหัสนักศึกษา/รหัสประจำตัว
                   </th>
@@ -100,52 +97,6 @@ const ManagementPage = () => {
                     key={item._id}
                     className="bg-white border-b  dark:border-gray-50 hover:bg-gray-50 dark:hover:bg-gray-200"
                   >
-                    <th
-                      scope="row"
-                      className="px-6 py-2 text-center font-medium text-gray-900"
-                    >
-                      {item.status === "นักศึกษา" ? (
-                        <img
-                          src={sdt}
-                          alt="คำอธิบายรูปภาพ"
-                          width="35"
-                          height="35"
-                          className="rounded-full bg-gray-400"
-                          style={{ display: "block", margin: "auto" }}
-                          loading="lazy"
-                        />
-                      ) : item.status === "แม่บ้าน" ? (
-                        <img
-                          src={maid}
-                          alt="คำอธิบายรูปภาพ"
-                          width="35"
-                          height="35"
-                          className="rounded-full bg-gray-400"
-                          style={{ display: "block", margin: "auto" }}
-                          loading="lazy"
-                        />
-                      ) : item.status === "อาจารย์" ? (
-                        <img
-                          src={teacher}
-                          alt="คำอธิบายรูปภาพ"
-                          width="35"
-                          height="35"
-                          className="rounded-full bg-gray-400"
-                          style={{ display: "block", margin: "auto" }}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <img
-                          src={sdt}
-                          alt="คำอธิบายรูปภาพ"
-                          width="35"
-                          height="35"
-                          className="rounded-full bg-gray-400"
-                          style={{ display: "block", margin: "auto" }}
-                          loading="lazy"
-                        />
-                      )}
-                    </th>
                     <th
                       scope="row"
                       className="px-6 py-2 text-center font-medium text-gray-900 whitespace-nowrap"

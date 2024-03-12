@@ -4,6 +4,7 @@ import { useAuth } from "./AuthProvider";
 
 let useFetchPrivate = () => {
   const { user, setUser } = useAuth();
+  const authToken = localStorage.getItem("token");
   const [loading, setLoading] = useState(true);
 
   const setAuthorizationHeader = (params, accessToken) => {
@@ -31,7 +32,7 @@ let useFetchPrivate = () => {
   };
 
   const originalRequest = async (url, config) => {
-    config = setAuthorizationHeader(config, user.accessToken);
+    config = setAuthorizationHeader(config, authToken);
     let response = await fetch(url, config);
     return response;
   };

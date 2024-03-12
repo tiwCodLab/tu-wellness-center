@@ -5,6 +5,7 @@ import { FaHistory } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
+import Spinners from "../../component/Spinner";
 
 export default function HistorymedicalPage() {
   const { page } = useParams(); // ดึงค่า params ชื่อ page
@@ -93,7 +94,7 @@ export default function HistorymedicalPage() {
                   ) : (
                     <tr>
                       <td colSpan="7" className="text-center">
-                        ไม่มีข้อมูล
+                        <Spinners />
                       </td>
                     </tr>
                   )}

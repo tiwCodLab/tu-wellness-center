@@ -23,53 +23,11 @@ const LayoutBarchart = () => {
     <>
       <nav className="bg-gradient-to-r from-teal-800 to-teal-600 p-4 rounded-lg font-prompt">
         <div className="container mx-auto flex justify-between items-center">
-          <p className="text-white hover:text-gray-300 transition duration-300">
-            <h1 className="flex items-center ml-4 text-xl font-Kanit font-medium text-white">
-              <FaHospitalSymbol style={{ fontSize: "24px" }} className="mr-2" />
-              TULP WELLNESS CENTER
-            </h1>
-          </p>
-          {/* <ul className="flex space-x-4">
-            <NavLink
-              to=""
-              className="text-white hover:text-gray-300 transition duration-300"
-            >
-              รายงานตามการวินิฉัย
-            </NavLink>
-
-            <li>
-              <NavLink
-                to="reportnurigactivites"
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
-                รายงานตามกิจกรรมพยาบาล
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="reportorganizations"
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
-                รายงานตามหน่วยงาน
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="reportmedications"
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
-                รายงานยา
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="reportmedicationsupplies"
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
-                รายงานยาเวชภัณฑ์
-              </NavLink>
-            </li>
-          </ul> */}
+          <h1 className="flex items-center ml-4 text-xl font-Kanit font-medium text-white">
+            <FaHospitalSymbol style={{ fontSize: "24px" }} className="mr-2" />
+            TULP WELLNESS CENTER
+          </h1>
+          {/* คำสั่งอื่นๆ สามารถแสดงผลได้ที่นี่ */}
         </div>
       </nav>
 

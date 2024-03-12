@@ -74,7 +74,8 @@ export default function UpdatePatientPage() {
     const fetchPatient = async () => {
       try {
         const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`
+          `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`,
+          { withCredentials: true }
         );
         setPatient(response.data);
       } catch (error) {

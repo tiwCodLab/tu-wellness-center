@@ -22,9 +22,15 @@ export default function PatientPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const authToken = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:4000/api/patient?page=${currentPage}&pageSize=${pageSize}`,
-          { withCredentials: true }
+          `https://api-data-medical-room-tu.onrender.com/api/patient?page=${currentPage}&pageSize=${pageSize}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
         );
         setPatientData(response.data);
       } catch (error) {

@@ -6,10 +6,6 @@ import { FaFileMedical } from "react-icons/fa6";
 import { RiFolderHistoryFill } from "react-icons/ri";
 import { RiUserSearchFill } from "react-icons/ri";
 
-import sdt from "../../assets/graduated.png";
-import teacher from "../../assets/teacher.png";
-import maid from "../../assets/maid.png";
-
 const SearchPatientPage = () => {
   const storedStudentId = localStorage.getItem("studentId") || "";
   const [searchResults, setSearchResults] = useState([]);
@@ -25,7 +21,11 @@ const SearchPatientPage = () => {
         }
 
         const response = await fetch(
-          `https://api-data-medical-room-tu.onrender.com/api/patient/search?student_id=${studentId}`
+          `https://api-data-medical-room-tu.onrender.com/api/patient/search?student_id=${studentId}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -91,7 +91,6 @@ const SearchPatientPage = () => {
                   <table className="w-full table-auto text-sm">
                     <thead>
                       <tr className="bg-gray-2 text-xs">
-                        <th className="py-2 px-4 text-black"></th>
                         <th className="py-2 px-4 text-black">
                           รหัสนักศึกษา/รหัสประจำตัว
                         </th>
@@ -112,52 +111,6 @@ const SearchPatientPage = () => {
                             key={item._id}
                             className="border-b border-gray-100"
                           >
-                            <th
-                              scope="row"
-                              className="px-6 py-2 text-center font-medium text-gray-900"
-                            >
-                              {item.status === "นักศึกษา" ? (
-                                <img
-                                  src={sdt}
-                                  alt="คำอธิบายรูปภาพ"
-                                  width="35"
-                                  height="35"
-                                  className="rounded-full ml-2 bg-gray-400"
-                                  style={{ display: "block", margin: "auto" }}
-                                  loading="lazy"
-                                />
-                              ) : item.status === "แม่บ้าน" ? (
-                                <img
-                                  src={maid}
-                                  alt="คำอธิบายรูปภาพ"
-                                  width="40"
-                                  height="40"
-                                  className="rounded-full ml-2 bg-gray-400"
-                                  style={{ display: "block", margin: "auto" }}
-                                  loading="lazy"
-                                />
-                              ) : item.status === "อาจารย์" ? (
-                                <img
-                                  src={teacher}
-                                  alt="คำอธิบายรูปภาพ"
-                                  width="40"
-                                  height="40"
-                                  className="rounded-full ml-2 bg-gray-400"
-                                  style={{ display: "block", margin: "auto" }}
-                                  loading="lazy"
-                                />
-                              ) : (
-                                <img
-                                  src={sdt}
-                                  alt="คำอธิบายรูปภาพ"
-                                  width="35"
-                                  height="35"
-                                  className="rounded-full ml-2 bg-gray-400"
-                                  style={{ display: "block", margin: "auto" }}
-                                  loading="lazy"
-                                />
-                              )}
-                            </th>
                             <td className="px-4 py-2.5 text-sm text-center">
                               <Link to={`${item._id}/general`}>
                                 {item.student_id}
