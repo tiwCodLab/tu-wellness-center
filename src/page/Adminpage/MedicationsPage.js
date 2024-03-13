@@ -95,10 +95,10 @@ export default function MedicationsPage() {
                         <th scope="col" className="px-6 py-2 text-center">
                           จำนวนคงเหลือ
                         </th>
-                        <th scope="col" className="px-6 py-2 text-center">
+                        <th scope="col" className="py-2 text-center">
                           รายละเอียด
                         </th>
-                        <th scope="col" className="px-6 py-2 text-center">
+                        <th scope="col" className="py-2 text-center">
                           ลบ
                         </th>
 

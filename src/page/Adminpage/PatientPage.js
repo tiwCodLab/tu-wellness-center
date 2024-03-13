@@ -160,8 +160,8 @@ export default function PatientPage() {
                     <th className="py-2 px-4 text-black">สถานะ</th>
                     <th className="py-2 px-4 text-black">คณะ/สถาบัน</th>
                     <th className="py-2 px-4 text-black">อายุ</th>
-                    <th className="py-2 px-4 text-black">แก้ไข</th>
-                    <th className="py-2 px-4 text-black">ลบ</th>
+                    <th className="py-2  text-black">แก้ไข</th>
+                    <th className="py-2  text-black">ลบ</th>
                   </tr>
                 </thead>
                 <tbody className="">

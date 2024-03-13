@@ -2,7 +2,8 @@ import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FaHistory } from "react-icons/fa";
-import { FaEdit } from "react-icons/fa";
+// import { FaEdit } from "react-icons/fa";
+import { IoEye } from "react-icons/io5";
 
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import Spinners from "../../component/Spinner";
@@ -53,8 +54,7 @@ export default function HistorymedicalPage() {
                     <th className="py-2 px-4 text-black">อาการ</th>
                     <th className="py-2 px-4 text-black">การวินิจฉัย</th>
                     <th className="py-2 px-4 text-black">กิจกรรมพยาบาล</th>
-
-                    <th className="py-2 px-4 text-black">แก้ไข</th>
+                    <th className="py-2 px-4 text-black">รายละเอียด</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -86,10 +86,10 @@ export default function HistorymedicalPage() {
                         </td>
                         <td className="text-center">
                           <Link
-                            to={`${item._id}/edit`}
-                            className="inline-block t bg-yellow-500 text-base text-white px-2.5 py-1 rounded-md transition duration-300 hover:bg-yellow-700"
+                            to={`${item._id}/view`}
+                            className="inline-block t  text-base text-white px-2.5 py-1 rounded-md transition duration-300"
                           >
-                            <FaEdit />
+                            <IoEye className="text-white hover:bg-teal-700 text-base bg-teal-400 p-2 h-8 w-8 rounded-md" />
                           </Link>
                         </td>
                       </tr>
@@ -115,14 +115,14 @@ export default function HistorymedicalPage() {
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
               >
-                <FaCircleChevronLeft />
+                <FaCircleChevronLeft className="text-white hover:bg-teal-700 text-base bg-teal-600 p-1 h-8 w-8 rounded-md" />
               </Link>
               <Link
                 to={`/record/page/${currentPage + 1}`}
                 className="mx-1 px-2  text-3xl text-teal-600 hover:text-teal-700  "
                 onClick={() => handlePageChange(currentPage + 1)}
               >
-                <FaCircleChevronRight />
+                <FaCircleChevronRight className="text-white hover:bg-teal-700 text-base bg-teal-600 p-1 h-8 w-8 rounded-md" />
               </Link>
             </div>
           </div>

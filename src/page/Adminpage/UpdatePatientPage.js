@@ -175,10 +175,10 @@ export default function UpdatePatientPage() {
           </select>
         </label>
         <label className="block mb-2">
-          อายุ
+          วันเกิด
           <input
             type="text"
-            defaultValue={patient.age}
+            defaultValue={patient.birthday}
             name="age"
             className="w-full border p-2 mt-2 rounded-md focus:outline-none focus:border-blue-500"
           />

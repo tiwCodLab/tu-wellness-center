@@ -19,7 +19,6 @@ const SidebarLayout = () => {
             </aside>
           </div>
 
-          {/* Main Content */}
           <div className="flex-1 p-1 ml-60 ">
             <div className="p-3 rounded-md bg-soft-pastel-color bg-gradient-to-r from-gray-200 to-gray-200">
               <Outlet />

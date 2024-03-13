@@ -100,6 +100,7 @@ export default function NewmedicalRecord() {
     nervous_system_detail: "",
     medications: [{ medication_name: "", quantity: "" }],
     supplies: [{ medical_supplies_name: "", quantity: "" }],
+    forwarding: "",
     remarks: "",
   });
 
@@ -516,6 +517,22 @@ export default function NewmedicalRecord() {
               <FaPlus className="mr-2" />
               เพิ่มรายการ
             </button>
+          </label>
+
+          <label className="block mb-4">
+            <span className="text-gray-700">การส่งต่อ</span>
+            <select
+              name="forwarding"
+              value={medicalRecord.forwarding}
+              onChange={handleChange}
+              className="border border-gray-500 focus:outline-none mt-1 p-2 block w-full rounded-md shadow-sm"
+            >
+              <option value="">--เลือก--</option>
+              <option value="hospital">โรงพยาบาลห้างฉัตร</option>
+              <option value="clinic">คลินิก</option>
+              <option value="ไม่มีการส่งต่อ">ไม่มีการส่งต่อ</option>
+              {/* เพิ่มตัวเลือกเพิ่มเติมตามความเหมาะสม */}
+            </select>
           </label>
 
           <label className="block mb-4">

@@ -30,7 +30,7 @@ const SearchPatientPage = () => {
               Authorization: `Bearer ${authToken}`,
               "Content-Type": "application/json", // คุณอาจต้องการระบุ Content-Type อื่น ๆ ตามที่ API ต้องการ
             },
-            credentials: "include",
+            // credentials: "include",
           }
         );
         if (!response.ok) {

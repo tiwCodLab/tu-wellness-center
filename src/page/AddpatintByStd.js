@@ -131,37 +131,39 @@ const Log = () => {
   return (
     <>
       <div className="mt-" style={{ textAlign: "right" }}></div>
-      <div className="p-4 bg-white shadow-lg rounded-md">
+      <div className="p-8 bg-white shadow-lg rounded-md">
         <div>
-          <h3 className="text-lg font-semibold mb-4">
-            เพิ่มข้อมูลผู้ใช้บริการใหม่
-          </h3>
+          <div className="flex justify-between">
+            <h3 className="text-lg font-semibold mb-4">
+              เพิ่มข้อมูลผู้ใช้บริการใหม่
+            </h3>
 
-          <div style={{ textAlign: "right" }}>
-            <div className="mb-2 text-black text-sm">
-              *หากต้องการดึงข้อมูล สามารถใช้ รหัสนักศึกษา และ
-              รหัสผ่านของมหาลัยในการดึงข้อมูลได้
+            <div style={{ textAlign: "right" }}>
+              <div className="mb-2 text-black text-sm">
+                *หากต้องการดึงข้อมูล สามารถใช้ รหัสนักศึกษา และ
+                รหัสผ่านของมหาลัยในการดึงข้อมูลได้
+              </div>
+              <input
+                type="text"
+                placeholder="รหัสนักศึกษา"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="border text-sm rounded-md px-3 py-1 mr-2 focus:outline-none"
+              />
+              <input
+                type="password"
+                placeholder="รหัสผ่าน"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="border text-sm rounded-md px-3 py-1 mr-2 focus:outline-none"
+              />
+              <button
+                onClick={handleVerify}
+                className="bg-teal-600  text-white  px-4 rounded-md hover:bg-yellow-300 focus:outline-none"
+              >
+                รับข้อมูล
+              </button>
             </div>
-            <input
-              type="text"
-              placeholder="รหัสนักศึกษา"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="border text-sm rounded-md px-3 py-1 mr-2 focus:outline-none"
-            />
-            <input
-              type="password"
-              placeholder="รหัสผ่าน"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="border text-sm rounded-md px-3 py-1 mr-2 focus:outline-none"
-            />
-            <button
-              onClick={handleVerify}
-              className="bg-teal-600  text-white  px-4 rounded-md hover:bg-yellow-300 focus:outline-none"
-            >
-              รับข้อมูล
-            </button>
           </div>
 
           <div className="text-sm">

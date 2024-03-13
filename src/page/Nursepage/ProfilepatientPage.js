@@ -376,10 +376,10 @@ export default function ProfilePatientPage() {
             <div className="fixed inset-0 transition-opacity">
               <div className="absolute inset-0 bg-gray-500 opacity-80"></div>
             </div>
-            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-4 max-w-lg w-full">
+            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-4 max-w-2xl w-full">
               <div className="bg-white px-10 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="flex items-center">
-                  <div className=" ml-4 text-left">
+                <div className="flex items-center justify-evenly">
+                  <div className="ml-4 text-left">
                     <h3 className="text-base leading-6 text-center font-bold text-gray-900">
                       เพิ่มการซักประวัติ
                     </h3>

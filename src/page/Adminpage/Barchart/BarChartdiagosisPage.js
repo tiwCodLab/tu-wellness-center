@@ -181,7 +181,7 @@ const BarChartdiagnosis = () => {
                 <div>
                   <BarChart width={580} height={300} data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis dataKey="diagnosis" fontSize={11} />
+                    <XAxis dataKey="diagnosis" fontSize={10} />
                     <YAxis />
                     <Tooltip />
                     <Legend />
@@ -189,7 +189,7 @@ const BarChartdiagnosis = () => {
                       dataKey="count"
                       fill="#0d9488"
                       name="จำนวน"
-                      barSize={22}
+                      barSize={20}
                     />
                   </BarChart>
                 </div>
@@ -245,7 +245,7 @@ const BarChartdiagnosis = () => {
                       dataKey="count"
                       fill="#0d9488"
                       name="จำนวน"
-                      barSize={22}
+                      barSize={20}
                     />
                   </BarChart>
                 </div>
@@ -304,7 +304,7 @@ const BarChartdiagnosis = () => {
                       dataKey="count"
                       fill="#0d9488"
                       name="จำนวน"
-                      barSize={22}
+                      barSize={20}
                     />
                   </BarChart>
                 </div>
@@ -348,7 +348,7 @@ const BarChartdiagnosis = () => {
                       dataKey="count"
                       fill="#0d9488"
                       name="จำนวน"
-                      barSize={22}
+                      barSize={20}
                     />
                   </BarChart>
                 </div>

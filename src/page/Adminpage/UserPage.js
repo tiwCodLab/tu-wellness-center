@@ -93,14 +93,12 @@ export default function UserPage() {
             </div>
             <div className="relative overflow-x-auto shadow-lg sm:rounded-lg">
               <table className="w-full text-sm text-left rtl:text-right text-gray-600 dark:text-gray-900">
-                <thead className="text-xs text-black uppercase bg-gray-50 dark:bg-gray-200 text-center dark:text-black">
+                <thead className="text-xs text-black uppercase bg-gray-50 dark:bg-gray-100 text-center dark:text-black">
                   <tr>
                     <th scope="col" className="px-6 py-3 text-center">
-                      ชื่อ
+                      ชื่อ-นามสกุล
                     </th>
-                    <th scope="col" className="px-6 py-3 text-center">
-                      นามสกุล
-                    </th>
+                    <th scope="col" className="px-6 py-3 text-center"></th>
                     <th scope="col" className="px-6 py-3 text-center">
                       ชื่อยูสเซอร์
                     </th>
@@ -116,8 +114,11 @@ export default function UserPage() {
                       key={item._id}
                       className="bg-white border-b dark:border-gray-100 hover:bg-gray-100"
                     >
-                      <td className="px-4 text-center ">{item.firstname}</td>
-                      <td className="py-4 px-4 text-center">{item.lastname}</td>
+                      <td className="px-0 text-center">
+                        <span>{item.firstname}</span>
+                        <span className="ml-2">{item.lastname}</span>
+                      </td>
+                      <td className="py-4 px-4 text-left"></td>
                       <td className="py-4 px-4 text-center">{item.username}</td>
                       <td className="py-4 px-4 text-center ">
                         {item.roles.Admin

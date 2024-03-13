@@ -20,7 +20,6 @@ export const LoadgetDetailmedication = async ({ params }) => {
   const { id } = params;
   try {
     const res = await getDetailMedication(id);
-    console.log(id);
     return res;
   } catch (error) {
     throw new Error("medication with id: " + id + " could not be found.");

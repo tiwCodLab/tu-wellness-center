@@ -159,6 +159,11 @@ function RouterApp() {
               action={updateAction}
               errorElement={<ErrorPage />}
             />
+            <Route
+              path=":id/view"
+              element={<ViewMedicalRecordPage />}
+              loader={LoadgetViewMedicalRecord}
+            />
           </Route>
           <Route path="addpatient" element={<MainLayout />}>
             <Route index element={<AddpatientPage />} />

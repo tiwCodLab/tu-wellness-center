@@ -99,15 +99,14 @@ export default function MedicalSuppliesPage() {
                         <th scope="col" className="px-6 py-2 text-center">
                           จำนวนคงเหลือ
                         </th>
-                        <th scope="col" className="px-6 py-2 text-center">
+                        <th scope="col" className="py-2 text-center">
                           รายละเอียด
                         </th>
-                        <th scope="col" className="px-6 py-2 text-center">
+                        <th scope="col" className="py-2 text-center">
                           ลบ
                         </th>
-
                         <th scope="col" className="px-6 py-2 text-center">
-                          <span className="sr-only">Edit</span>
+                          <span className="sr-only"></span>
                         </th>
                       </tr>
                     </thead>
@@ -135,7 +134,7 @@ export default function MedicalSuppliesPage() {
 
                           <td className="text-center text-sm">
                             <Link
-                              to={`/medication/${item._id}`}
+                              to={`${item._id}`}
                               className="flex items-center justify-center"
                             >
                               <TbListDetails className="text-white hover:bg-blue-700 text-xl mr-2 bg-blue-600 p-1.5 h-7 w-7 rounded-md" />
