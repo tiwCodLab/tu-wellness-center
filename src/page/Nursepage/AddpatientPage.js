@@ -49,6 +49,7 @@ export default function AddpatientPage() {
 
     try {
       let finalFormData = { ...formData };
+      const authToken = localStorage.getItem("token");
 
       const response = await fetch(
         "https://api-data-medical-room-tu.onrender.com/api/patient",
@@ -56,6 +57,7 @@ export default function AddpatientPage() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
           },
           body: JSON.stringify(finalFormData),
         }
