@@ -3,10 +3,24 @@ import { useLoaderData } from "react-router-dom";
 import GoBack from "../../component/GoBack";
 import axios from "../../api/axios";
 
+function calculateAge(birthday) {
+  const today = new Date();
+  const birthDate = new Date(birthday);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  return age;
+}
+
 export async function getViewMedicalRecord(id) {
-  const res = await axios.get(
-    `/api/medicalrecord/${id}`
-  ); // Use axios.get
+  const res = await axios.get(`/api/medicalrecord/${id}`); // Use axios.get
   return res.data;
 }
 
@@ -68,7 +82,9 @@ export default function ViewMedicalRecordPage() {
 
             <div className="mb-4">
               <div className="mb-2 font-semibold text-sm">อายุ</div>
-              <p className="text-sm">{viewMedicalRecord.patient.age}</p>
+              <p className="text-sm">
+                {calculateAge(viewMedicalRecord.patient.birthday)}
+              </p>
             </div>
           </div>
         </div>
