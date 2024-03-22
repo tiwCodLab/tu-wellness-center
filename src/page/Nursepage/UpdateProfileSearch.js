@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Form, redirect, useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "../../utils/AuthProvider";
 
 async function updataPatient(id, updataPatient) {
   try {
@@ -32,27 +31,23 @@ async function updataPatient(id, updataPatient) {
   }
 }
 
-export async function ActionPatient({ request, params }) {
+export async function ActionUpdatePatientSearch({ request, params }) {
   const formData = await request.formData();
+
   let patient = Object.fromEntries(formData);
   if (!patient) {
     throw new Error("Error in updating Patient " + params.id);
   }
   const { id } = params;
-  const updatedpatient = {
-    id,
-    ...patient,
-  };
+  const updatedpatient = { id, ...patient };
   await updataPatient(id, updatedpatient);
-  return redirect(`/patient`);
+  return redirect(`/manage/page/1/${id}/general`);
 }
 
-export default function UpdatePatientPage() {
+export default function UpdateProfilePatientSearchPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [patient, setPatient] = useState();
-  let Auth = useAuth();
-  let doctorName = Auth.user.username;
 
   const [statusOptions, setStatus] = useState([]);
   const [organizationOptions, setOrganization] = useState([]);
@@ -107,38 +102,13 @@ export default function UpdatePatientPage() {
     );
   }
 
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1; // เพิ่ม 1 เพื่อปรับเป็นรูปแบบที่เริ่มที่ 1
-  const currentDay = currentDate.getDate();
-
-  const currentHours = currentDate.getHours();
-  const currentMinutes = currentDate.getMinutes();
-  const currentSeconds = currentDate.getSeconds();
-
-  const formattedDate = `${currentDay}-${currentMonth}-${currentYear}`;
-  const formattedTime = `${currentHours}:${currentMinutes}:${currentSeconds}`;
-
   return (
     <Form
       replace
       method="put"
       className="mx-auto p-4 bg-white shadow-md rounded-md mt-2 "
     >
-      <div className="flex justify-end">
-        <h1 style={{ fontSize: "12px" }}>
-          แก้ไขล่าสุด :{" "}
-          <span>
-            {patient.Last_edited ? patient.Last_edited : "ยังไม่มีการแก้ไข"}
-          </span>
-          <p>
-            โดย{" "}
-            <span>{patient.edited_by ? patient.edited_by : "ไม่มีข้อมูล"}</span>{" "}
-          </p>
-        </h1>
-      </div>
-
-      <div className="text-sm px-4">
+      <div className="text-sm ">
         <label className="block mb-2">
           รหัสนักศึกษา
           <input
@@ -231,28 +201,6 @@ export default function UpdatePatientPage() {
             defaultValue={patient.phonenumber}
             name="phonenumber"
             className="w-full border p-2 mt-2 rounded-md focus:outline-none focus:border-blue-500"
-          />
-        </label>
-
-        <label className="block mb-2">
-          วันที่แก้ไข
-          <input
-            type="text"
-            defaultValue={`${formattedTime} ${formattedDate}`}
-            name="Last_edited"
-            className="w-full border p-2 mt-2 rounded-md focus:outline-none focus:border-blue-500"
-            readOnly
-          />
-        </label>
-
-        <label className="block mb-2">
-          ผู้แก้ไข
-          <input
-            type="text"
-            value={doctorName}
-            name="edited_by"
-            className="w-full border p-2 mt-2 rounded-md focus:outline-none focus:border-blue-500"
-            readOnly
           />
         </label>
       </div>

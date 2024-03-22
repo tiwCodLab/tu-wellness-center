@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Form, redirect, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../utils/AuthProvider";
-
 async function updataPatient(id, updataPatient) {
   try {
     const authToken = localStorage.getItem("token");
@@ -32,25 +31,24 @@ async function updataPatient(id, updataPatient) {
   }
 }
 
-export async function ActionPatient({ request, params }) {
+export async function ActionUpdatePatient({ request, params }) {
   const formData = await request.formData();
+
   let patient = Object.fromEntries(formData);
   if (!patient) {
     throw new Error("Error in updating Patient " + params.id);
   }
   const { id } = params;
-  const updatedpatient = {
-    id,
-    ...patient,
-  };
+  const updatedpatient = { id, ...patient };
   await updataPatient(id, updatedpatient);
-  return redirect(`/patient`);
+  return redirect(`/manage/page/1/${id}/general`);
 }
 
-export default function UpdatePatientPage() {
+export default function UpdateProfilePatientPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [patient, setPatient] = useState();
+
   let Auth = useAuth();
   let doctorName = Auth.user.username;
 
@@ -137,8 +135,7 @@ export default function UpdatePatientPage() {
           </p>
         </h1>
       </div>
-
-      <div className="text-sm px-4">
+      <div className="text-sm ">
         <label className="block mb-2">
           รหัสนักศึกษา
           <input

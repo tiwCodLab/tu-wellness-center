@@ -12,7 +12,7 @@ const DiagnosisPage = () => {
   const [diagnosisdata, setDiagnosisdata] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
-  const diagnosesPerPage = 12;
+  const diagnosesPerPage = 20;
   const pagesVisited = pageNumber * diagnosesPerPage;
   const pageCount = Math.ceil(diagnosisdata.length / diagnosesPerPage);
 

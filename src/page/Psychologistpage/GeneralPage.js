@@ -1,6 +1,6 @@
 import axios from "../../api/axios";
 import React from "react";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 function calculateAge(birthday) {
   const today = new Date();
@@ -44,7 +44,7 @@ export async function getGeneralByPatient(id) {
   }
 }
 
-export const LoadGeneralByPatient = async ({ params }) => {
+export const LoadGeneralByPatientPsy = async ({ params }) => {
   const { id } = params;
   try {
     const res = await getGeneralByPatient(id);
@@ -55,7 +55,7 @@ export const LoadGeneralByPatient = async ({ params }) => {
   }
 };
 
-export default function ProfilePatientPage() {
+export default function Generalpage() {
   const general = useLoaderData();
   const navigate = useNavigate();
   return (
@@ -214,15 +214,6 @@ export default function ProfilePatientPage() {
           >
             กลับ
           </button>
-
-          <Link to={`${general._id}/edit`}>
-            <button
-              // onClick={() => setShowPopup(true)}
-              className="mt-4 bg-blue-500 text-white px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
-            >
-              แก้ไข
-            </button>
-          </Link>
         </div>
       </div>
     </>

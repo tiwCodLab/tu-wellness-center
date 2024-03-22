@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import FormAddGeneral from "./Nursepage/Form/FormAddGeneral";
+import { TiUserAdd } from "react-icons/ti";
 
 const Log = () => {
   const [username, setUsername] = useState("");
@@ -21,6 +23,27 @@ const Log = () => {
     birthday: "",
     email: "",
     phonenumber: "",
+
+    allergy_medicine: "",
+    allergy_medicine_detail: "",
+    allergy_food: "",
+    allergy_food_detail: "",
+    smoking_status: "",
+    smoking_status_detail: "",
+    alcohol_consumption: "",
+    alcohol_consumption_detail: "",
+    other_substance: "",
+    other_substance_detail: "",
+    weight: "",
+    height: "",
+    bmi: "",
+    body_temperature: "",
+    heart_rate: "",
+    respiratory_rate: "",
+    blood_pressure: "",
+
+    Last_edited: "",
+    edited_by: "",
   });
 
   useEffect(() => {
@@ -74,7 +97,15 @@ const Log = () => {
   };
 
   const handleInputChange = (fieldName, value) => {
-    setFormData({ ...formData, [fieldName]: value });
+    let newFormDataStep1 = { ...formData, [fieldName]: value };
+
+    if (fieldName === "weight" || fieldName === "height") {
+      const weight = newFormDataStep1.weight;
+      const height = newFormDataStep1.height / 100; // Convert height to meters
+      const bmi = (weight / (height * height)).toFixed(2); // Calculate BMI and round to 2 decimal places
+      newFormDataStep1 = { ...newFormDataStep1, bmi: parseFloat(bmi) };
+    }
+    setFormData(newFormDataStep1);
   };
 
   const handleSubmit = async (e) => {
@@ -84,7 +115,7 @@ const Log = () => {
       let finalFormData = { ...formData };
 
       const response = await fetch(
-        "https://api-data-medical-room-tu.onrender.com/api/patient",
+        "https://api-data-medical-room-tu.onrender.com/api/status/patient",
         {
           method: "POST",
           headers: {
@@ -121,6 +152,24 @@ const Log = () => {
         age: "",
         email: "",
         phonenumber: "",
+
+        allergy_medicine: "",
+        allergy_medicine_detail: "",
+        allergy_food: "",
+        allergy_food_detail: "",
+        smoking_status: "",
+        smoking_status_detail: "",
+        alcohol_consumption: "",
+        alcohol_consumption_detail: "",
+        other_substance: "",
+        other_substance_detail: "",
+        weight: "",
+        height: "",
+        bmi: "",
+        body_temperature: "",
+        heart_rate: "",
+        respiratory_rate: "",
+        blood_pressure: "",
       });
     } catch (error) {
       console.error("Error:", error.message);
@@ -130,13 +179,16 @@ const Log = () => {
 
   return (
     <>
-      <div className="mt-" style={{ textAlign: "right" }}></div>
+      <div className="" style={{ textAlign: "right" }}></div>
       <div className="p-8 bg-white shadow-lg rounded-md">
         <div>
           <div className="flex justify-between">
-            <h3 className="text-lg font-semibold mb-4">
-              เพิ่มข้อมูลผู้ใช้บริการใหม่
-            </h3>
+            <div className="flex items-center mb-4 text-base">
+              <TiUserAdd style={{ fontSize: "28px" }} />
+              <h3 className=" font-semibold ml-2">
+                เพิ่มข้อมูลผู้ใช้บริการใหม่
+              </h3>
+            </div>
 
             <div style={{ textAlign: "right" }}>
               <div className="mb-2 text-black text-sm">
@@ -168,151 +220,29 @@ const Log = () => {
 
           <div className="text-sm">
             <form onSubmit={handleSubmit}>
-              <label className="block mb-2">
-                รหัสนักศึกษา/รหัสประจำตัวประชาชน *
-                <br />
-                <input
-                  value={formData.student_id}
-                  onChange={(e) =>
-                    handleInputChange("student_id", e.target.value)
-                  }
-                  className="border p-2 w-full mt-2 rounded-md"
-                  required
-                />
-              </label>
-
-              <label className="block mb-2">
-                คำนำหน้าชื่อ *
-                <select
-                  value={formData.prefix}
-                  onChange={(e) => handleInputChange("prefix", e.target.value)}
-                  className="border p-2 w-full mt-2 rounded-md"
-                  required // เพิ่ม attribute required เพื่อบังคับให้เลือกคำนำหน้าชื่อ
+              <FormAddGeneral
+                formData={formData}
+                handleInputChange={handleInputChange}
+                organizationOptions={organizationOptions}
+                statusOptions={statusOptions}
+              />
+              <div className="px-4 py-3 sm:px-6 sm:flex  justify-center">
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-700 "
                 >
-                  <option value="" disabled>
-                    --เลือก--
-                  </option>
-                  <option value="นาย">นาย</option>
-                  <option value="นาง">นาง</option>
-                  <option value="นางสาว">นางสาว</option>
-                </select>
-              </label>
-
-              <label className="block mb-2">
-                ชื่อ *
-                <br />
-                <input
-                  value={formData.patient_fname}
-                  onChange={(e) =>
-                    handleInputChange("patient_fname", e.target.value)
-                  }
-                  className="border p-2 w-full mt-2 rounded-md"
-                  required
-                />
-              </label>
-
-              <label className="block mb-2">
-                นามสกุล *
-                <br />
-                <input
-                  value={formData.patient_lname}
-                  onChange={(e) =>
-                    handleInputChange("patient_lname", e.target.value)
-                  }
-                  className="border p-2 w-full mt-2 rounded-md"
-                  required
-                />
-              </label>
-
-              <label className="block mb-2">
-                สถานะ *
-                <select
-                  value={formData.status}
-                  onChange={(e) => handleInputChange("status", e.target.value)}
-                  className="border p-2 w-full mt-2 rounded-md"
-                  required
+                  บันทึก
+                </button>
+                <button
+                  type="button"
+                  className="ml-6 bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-700 "
+                  onClick={() => {
+                    navigate(-1);
+                  }}
                 >
-                  <option value="" disabled>
-                    --เลือก--
-                  </option>
-                  {statusOptions.map((option) => (
-                    <option key={option._id} value={option.status_name}>
-                      {option.status_name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="block mb-2">
-                คณะ/หน่วยงาน *
-                <select
-                  value={formData.organizations}
-                  onChange={(e) =>
-                    handleInputChange("organizations", e.target.value)
-                  }
-                  className="border p-2 w-full mt-2 rounded-md"
-                  required
-                >
-                  <option value="" disabled>
-                    --เลือก--
-                  </option>
-                  {organizationOptions.map((option) => (
-                    <option key={option._id} value={option.organizations_name}>
-                      {option.organizations_name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <div className="block my-2">
-                <label className="">วันเกิด</label>
-                <input
-                  type="date"
-                  value={formData.birthday}
-                  onChange={(e) =>
-                    handleInputChange("birthday", e.target.value)
-                  }
-                  className="border p-2 w-full mt-2 rounded-md"
-                />
+                  ยกเลิก
+                </button>
               </div>
-
-              <label className="block mb-2">
-                เบอร์ติดต่อ
-                <br />
-                <input
-                  value={formData.phonenumber}
-                  onChange={(e) =>
-                    handleInputChange("phonenumber", e.target.value)
-                  }
-                  className="border p-2 w-full mt-2 rounded-md"
-                />
-              </label>
-
-              <label className="block mb-2">
-                อีเมล
-                <br />
-                <input
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="border p-2 w-full mt-2 rounded-md"
-                />
-              </label>
-
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-700 mt-4"
-              >
-                บันทึก
-              </button>
-              <button
-                type="button"
-                className="ml-6 bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-700 mt-4"
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                ยกเลิก
-              </button>
             </form>
           </div>
 

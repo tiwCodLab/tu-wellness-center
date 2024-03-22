@@ -418,7 +418,7 @@ const GeneralInfoForm = () => {
         }}
         className="mt-2 bg-gray-500 text-white px-5  rounded-md hover:bg-gray-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
       >
-        กลับ111
+        กลับ
       </button>
     </>
   );

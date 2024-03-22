@@ -5,6 +5,7 @@ import { useAuth } from "../../utils/AuthProvider";
 import Select from "react-select";
 import { FaPlus } from "react-icons/fa";
 import FormCheckList from "./Form/FormMedicalRecord";
+import { FaTrashCan } from "react-icons/fa6";
 
 export default function NewmedicalRecord() {
   let auth = useAuth();
@@ -441,9 +442,8 @@ export default function NewmedicalRecord() {
                   <button
                     type="button"
                     onClick={() => handleRemoveMedication(index)}
-                    className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300"
                   >
-                    ลบรายการ
+                    <FaTrashCan className="text-white hover:bg-red-700 text-base bg-red-600 p-2 h-8 w-8 mt-1 rounded-md " />
                   </button>
                 )}
               </div>
@@ -502,9 +502,8 @@ export default function NewmedicalRecord() {
                   <button
                     type="button"
                     onClick={() => handleRemoveMedicationSup(index)}
-                    className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300"
                   >
-                    ลบรายการ
+                    <FaTrashCan className="text-white hover:bg-red-700 text-base bg-red-600 p-2 h-8 w-8 mt-1 rounded-md " />
                   </button>
                 )}
               </div>
@@ -529,7 +528,7 @@ export default function NewmedicalRecord() {
             >
               <option value="">--เลือก--</option>
               <option value="hospital">โรงพยาบาลห้างฉัตร</option>
-              <option value="clinic">คลินิก</option>
+              <option value="clinic">โรงพยาบาลลำปาง</option>
               <option value="ไม่มีการส่งต่อ">ไม่มีการส่งต่อ</option>
               {/* เพิ่มตัวเลือกเพิ่มเติมตามความเหมาะสม */}
             </select>

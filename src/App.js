@@ -92,6 +92,15 @@ import ViewCounselingById, {
   LoadgetViewCounseling,
 } from "./page/Psychologistpage/DetailHistorypage";
 import ProfilePage from "./component/Profilepage";
+import UpdateProfilePatientPage, {
+  ActionUpdatePatient,
+} from "./page/Nursepage/UpdateProfilepatient";
+import UpdateProfilePatientSearchPage, {
+  ActionUpdatePatientSearch,
+} from "./page/Nursepage/UpdateProfileSearch";
+import Generalpage, {
+  LoadGeneralByPatientPsy,
+} from "./page/Psychologistpage/GeneralPage";
 
 function RouterApp() {
   // const fetchPrivate = useFetchPrivate();
@@ -100,7 +109,6 @@ function RouterApp() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<SidebarLayout />} errorElement={<NotFound />}>
-        {/* <Route path="table" element={<Component />} /> */}
         <Route path="login" element={<LoginPage />} />
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
@@ -116,6 +124,12 @@ function RouterApp() {
                 index
                 element={<ProfilepatientPage />}
                 loader={LoadGeneralByPatient}
+              />
+              <Route
+                path=":id/edit"
+                element={<UpdateProfilePatientSearchPage />}
+                action={ActionUpdatePatientSearch}
+                errorElement={<ErrorPage />}
               />
               <Route path="add" element={<GeneralInfoForm />} />
             </Route>
@@ -137,6 +151,12 @@ function RouterApp() {
                 index
                 element={<ProfilepatientPage />}
                 loader={LoadGeneralByPatient}
+              />
+              <Route
+                path=":id/edit"
+                element={<UpdateProfilePatientPage />}
+                action={ActionUpdatePatient}
+                errorElement={<ErrorPage />}
               />
               <Route path="add" element={<GeneralInfoForm />} />
             </Route>
@@ -184,7 +204,7 @@ function RouterApp() {
             <Route path="adduser" element={<RegisterForm />} />
           </Route>
 
-          <Route path="patient/page/:page" element={<MainLayout />}>
+          <Route path="patient" element={<MainLayout />}>
             <Route index element={<PatientPage />} />
             <Route
               path=":id"
@@ -284,8 +304,8 @@ function RouterApp() {
             <Route path=":id/general">
               <Route
                 index
-                element={<ProfilepatientPage />}
-                loader={LoadGeneralByPatient}
+                element={<Generalpage />}
+                loader={LoadGeneralByPatientPsy}
               />
               <Route path="add" element={<GeneralInfoForm />} />
             </Route>

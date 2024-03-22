@@ -20,6 +20,27 @@ export default function AddpatientPage() {
     age: "",
     email: "",
     phonenumber: "",
+
+    allergy_medicine: "",
+    allergy_medicine_detail: "",
+    allergy_food: "",
+    allergy_food_detail: "",
+    smoking_status: "",
+    smoking_status_detail: "",
+    alcohol_consumption: "",
+    alcohol_consumption_detail: "",
+    other_substance: "",
+    other_substance_detail: "",
+    weight: "",
+    height: "",
+    bmi: "",
+    body_temperature: "",
+    heart_rate: "",
+    respiratory_rate: "",
+    blood_pressure: "",
+
+    Last_edited: "",
+    edited_by: "",
   });
 
   useEffect(() => {
@@ -117,6 +138,7 @@ export default function AddpatientPage() {
                     handleInputChange("student_id", e.target.value)
                   }
                   className="border p-2 w-full mt-2 rounded-md"
+                  required
                 />
               </label>
 
@@ -126,6 +148,7 @@ export default function AddpatientPage() {
                   value={formData.prefix}
                   onChange={(e) => handleInputChange("prefix", e.target.value)}
                   className="border p-2 w-full mt-2 rounded-md"
+                  required
                 >
                   <option value="" disabled>
                     --เลือก--
@@ -145,6 +168,7 @@ export default function AddpatientPage() {
                     handleInputChange("patient_fname", e.target.value)
                   }
                   className="border p-2 w-full mt-2 rounded-md"
+                  required
                 />
               </label>
 
@@ -157,6 +181,7 @@ export default function AddpatientPage() {
                     handleInputChange("patient_lname", e.target.value)
                   }
                   className="border p-2 w-full mt-2 rounded-md"
+                  required
                 />
               </label>
 
@@ -166,6 +191,7 @@ export default function AddpatientPage() {
                   value={formData.status}
                   onChange={(e) => handleInputChange("status", e.target.value)}
                   className="border p-2 w-full mt-2 rounded-md"
+                  required
                 >
                   <option value="" disabled>
                     --เลือก--
@@ -186,6 +212,7 @@ export default function AddpatientPage() {
                     handleInputChange("organizations", e.target.value)
                   }
                   className="border p-2 w-full mt-2 rounded-md"
+                  required
                 >
                   <option value="" disabled>
                     --เลือก--
@@ -209,15 +236,6 @@ export default function AddpatientPage() {
                   className="border p-2 w-full mt-2 rounded-md"
                 />
               </div>
-
-              {/* <label className="block mb-2">
-                อายุ *
-                <input
-                  value={formData.age}
-                  onChange={(e) => handleInputChange("age", e.target.value)}
-                  className="border p-2 w-full mt-2 rounded-md"
-                />
-              </label> */}
 
               <label className="block mb-2">
                 เบอร์ติดต่อ

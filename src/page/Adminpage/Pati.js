@@ -10,41 +10,24 @@ import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import headers from "./Barchart/CSV/HeaderPatientCSV";
 import Loading from "../../component/Loading";
 
-function calculateAge(birthday) {
-  const today = new Date();
-  const birthDate = new Date(birthday);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && today.getDate() < birthDate.getDate())
-  ) {
-    age--;
-  }
-
-  return age;
-}
-
 export default function PatientPage() {
   const { page } = useParams(); // ดึงค่า params ชื่อ page
   const [currentPage, setCurrentPage] = useState(page ? parseInt(page) : 1);
   const [searchTerm, setSearchTerm] = useState("");
   const [patientData, setPatientData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [pageSize] = useState(50);
+  const [pageSize] = useState(10);
   const [deletePopup, setDeletePopup] = useState({
     isOpen: false,
     patientId: null,
   });
   const [csv, setCsv] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const authToken = localStorage.getItem("token");
         const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/patient`,
+          `https://api-data-medical-room-tu.onrender.com/api/patient?page=${currentPage}&pageSize=${pageSize}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -54,7 +37,18 @@ export default function PatientPage() {
         );
         setPatientData(response.data);
         setLoading(false);
-        setCsv(response.data);
+
+        const resCSV = await axios.get(
+          `https://api-data-medical-room-tu.onrender.com/api/patient`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
+        );
+
+        setCsv(resCSV.data);
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
@@ -84,6 +78,7 @@ export default function PatientPage() {
   const handleDelete = async () => {
     try {
       const authToken = localStorage.getItem("token");
+      // Make a DELETE request to your API endpoint to delete the patient
       let res = await axios.delete(
         `https://api-data-medical-room-tu.onrender.com/api/patient/${deletePopup.patientId}`,
         {
@@ -96,8 +91,9 @@ export default function PatientPage() {
 
       if (res.status === 200) alert("ลบข้อมูลเรียบร้อย");
 
+      // After successful deletion, fetch the updated data
       const response = await axios.get(
-        `https://api-data-medical-room-tu.onrender.com/api/patient`,
+        `https://api-data-medical-room-tu.onrender.com/api/patient?page=${currentPage}&pageSize=${pageSize}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -106,50 +102,22 @@ export default function PatientPage() {
         }
       );
       setPatientData(response.data);
+      // Close the confirmation popup
       closeDeletePopup();
     } catch (error) {
       console.error("Error deleting patient:", error);
     }
   };
 
-  const totalPages = Math.ceil(patientData.length / pageSize);
-  const renderPageNumbers = () => {
-    const pageNumbers = [];
-    pageNumbers.push(
-      <button
-        key="prev"
-        className={`px-3 py-1 mx-1 rounded-md ${currentPage === 1}`}
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        <FaCircleChevronLeft className="text-white hover:bg-teal-700 text-base bg-teal-600 p-1 h-8 w-8 rounded-md" />
-      </button>
-    );
-    pageNumbers.push(
-      <button
-        key="next"
-        className={`px-3 py-1 mx-1 rounded-md ${currentPage === totalPages}`}
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        <FaCircleChevronRight className="text-white hover:bg-teal-700 text-base bg-teal-600 p-1 h-8 w-8 rounded-md" />
-      </button>
-    );
-    return pageNumbers;
-  };
-
-  const indexOfLastItem = currentPage * pageSize;
-  const indexOfFirstItem = indexOfLastItem - pageSize;
   const filteredData = patientData.filter(
     (item) =>
       item.patient_fname.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.student_id.toString().includes(searchTerm.toLowerCase())
   );
-  const currentData = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <>
-      <div className="rounded-lg bg-white px-6 pt-4 pb-2 shadow-default mt-2">
+      <div className="rounded-lg bg-white px-6 pt-4 pb-10 shadow-default mt-2">
         <div className="max-w-full overflow-x-auto">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
@@ -197,7 +165,7 @@ export default function PatientPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentData.map((item) => (
+                  {filteredData.map((item) => (
                     <tr
                       key={item._id}
                       className="border-b border-gray-100 text-sm"
@@ -214,9 +182,7 @@ export default function PatientPage() {
                       </td>
                       <td className="px-4 text-center">{item.status}</td>
                       <td className="px-4 text-center">{item.organizations}</td>
-                      <td className="py-2 px-4 text-center">
-                        {calculateAge(item.birthday)}
-                      </td>
+                      <td className="py-2 px-4 text-center">{item.age}</td>
                       <td className="text-center">
                         <Link
                           to={`${item._id}`}
@@ -237,8 +203,26 @@ export default function PatientPage() {
                   ))}
                 </tbody>
               </table>
-              <div className="flex justify-center mt-4">
-                {renderPageNumbers()}
+              <div className="flex justify-center mt-2 text-sm ">
+                <div className="flex justify-center text-sm ">
+                  <Link
+                    to={`/patient/page/${currentPage - 1}`}
+                    className={`mx-1 px-2 py-1  text-black  ${
+                      currentPage === 1 && "pointer-events-none opacity-50"
+                    }`}
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                  >
+                    <FaCircleChevronLeft className="text-white hover:bg-teal-700 text-base bg-teal-600 p-1 h-8 w-8 rounded-md" />
+                  </Link>
+                  <Link
+                    to={`/patient/page/${currentPage + 1}`}
+                    className="mx-1 px-2 py-1  text-black"
+                    onClick={() => handlePageChange(currentPage + 1)}
+                  >
+                    <FaCircleChevronRight className="text-white hover:bg-teal-700 text-base bg-teal-600 p-1 h-8 w-8 rounded-md" />
+                  </Link>
+                </div>
               </div>
             </div>
           )}

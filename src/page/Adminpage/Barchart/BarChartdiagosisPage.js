@@ -11,9 +11,6 @@ import {
 } from "recharts";
 import { CSVLink } from "react-csv";
 import { MdSimCardDownload } from "react-icons/md";
-import headers from "./CSV/HeaderDiagnosis";
-import headersNursing from "./CSV/HeaderNursing";
-import headerMedical from "./CSV/HeaderMedical";
 
 const BarChartdiagnosis = () => {
   const [chartData, setChartData] = useState([]);
@@ -42,6 +39,7 @@ const BarChartdiagnosis = () => {
         // Group data by diagnosis and calculate count
         const groupedData = filteredData.reduce((acc, item) => {
           const diagnosis = item.diagnosis;
+
           if (diagnosis) {
             acc[diagnosis] = (acc[diagnosis] || 0) + 1;
           }
@@ -143,7 +141,43 @@ const BarChartdiagnosis = () => {
     (a, b) => b.count - a.count
   );
 
+  const Csvorganization = chartDataOrganization.sort(
+    (a, b) => b.count - a.count
+  );
+
   const CsvMedical = chartDataMedication.sort((a, b) => b.count - a.count);
+
+  const startDateLabel = dateRange.start
+    ? `${dateRange.start.getDate()}/${
+        dateRange.start.getMonth() + 1
+      }/${dateRange.start.getFullYear()}-${dateRange.end.getDate()}/${
+        dateRange.end.getMonth() + 1
+      }/${dateRange.end.getFullYear()}`
+    : "";
+
+  const headers = [
+    {
+      label: `ชื่อโรค (${startDateLabel})`,
+      key: "diagnosis",
+    },
+    { label: "จำนวน", key: "count" },
+  ];
+
+  const headersNursing = [
+    { label: `ชื่อการหัตถการ (${startDateLabel})`, key: "nursing_activities" },
+    { label: "จำนวน", key: "count" },
+  ];
+
+  const headerMedical = [
+    { label: `ชื่อยา (${startDateLabel})`, key: "medicalName" },
+    { label: "จำนวน", key: "count" },
+  ];
+
+  const headersOr = [
+    { label: `คณะ (${startDateLabel})`, key: "organization" },
+    { label: "จำนวน", key: "count" },
+  ];
+
   return (
     <>
       <div className="flex justify-end mb-2.5 mt-2.5">
@@ -189,7 +223,7 @@ const BarChartdiagnosis = () => {
                       dataKey="count"
                       fill="#0d9488"
                       name="จำนวน"
-                      barSize={20}
+                      barSize={24}
                     />
                   </BarChart>
                 </div>
@@ -245,7 +279,7 @@ const BarChartdiagnosis = () => {
                       dataKey="count"
                       fill="#0d9488"
                       name="จำนวน"
-                      barSize={20}
+                      barSize={24}
                     />
                   </BarChart>
                 </div>
@@ -304,7 +338,7 @@ const BarChartdiagnosis = () => {
                       dataKey="count"
                       fill="#0d9488"
                       name="จำนวน"
-                      barSize={20}
+                      barSize={24}
                     />
                   </BarChart>
                 </div>
@@ -314,9 +348,22 @@ const BarChartdiagnosis = () => {
         </div>
 
         <div className="bg-white p-8 rounded-lg ">
-          <h3 className="text-base font-bold mb-4 text-black-800">
-            อันดับข้อมูลหน่วยงาน/คณะ
-          </h3>
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-bold mb-4 text-black-800">
+              อันดับข้อมูลหน่วยงาน/คณะ
+            </h3>
+
+            <CSVLink
+              data={Csvorganization}
+              headers={headersOr}
+              filename={"คณะที่ใช้บริการ.csv"}
+              className="text-sm font-bold text-teal-800 rounded-2xl flex items-center position-relative"
+            >
+              <MdSimCardDownload className="h-8 w-8" />
+              ดาวโหลด CSV
+            </CSVLink>
+          </div>
+
           <ul className="grid grid-cols-1 gap-3">
             {toporganization.map((item, index) => (
               <li key={index} className="flex justify-between px-6">
@@ -348,7 +395,7 @@ const BarChartdiagnosis = () => {
                       dataKey="count"
                       fill="#0d9488"
                       name="จำนวน"
-                      barSize={20}
+                      barSize={24}
                     />
                   </BarChart>
                 </div>

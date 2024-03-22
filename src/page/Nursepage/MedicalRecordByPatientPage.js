@@ -69,10 +69,7 @@ const MedicalRecordByPatient = () => {
                             <i className="fas fa-pen-alt text-gray-600 mr-4"></i>
                             การวินิจฉัย
                           </th>
-                          <th className="py-4 px-4 text-black border-b">
-                            <i className="fas fa-pen-alt text-gray-600 mr-4"></i>
-                            กิจกรรมพยาบาล
-                          </th>
+
                           <th className="py-4 px-4 text-black border-b">
                             <i className="fas fa-history text-gray-600 mr-4"></i>
                             ผู้ทำการบันทึก
@@ -108,11 +105,6 @@ const MedicalRecordByPatient = () => {
                             <td className="py-4 px-4">
                               <p className="text-black text-center">
                                 {item.diagnosis}
-                              </p>
-                            </td>
-                            <td className="py-4 px-4">
-                              <p className="text-black text-center">
-                                {item.nursing_activities}
                               </p>
                             </td>
                             <td className="py-4 px-4">

@@ -60,7 +60,7 @@ export default function LoginMenu() {
                   <FaUsers className="mr-2" /> ข้อมูลผู้ใช้งานระบบ
                 </NavLink>
 
-                <NavLink to="/patient/page/1" className={commonLinkClass}>
+                <NavLink to="/patient" className={commonLinkClass}>
                   <FaUserInjured className="mr-2" /> ข้อมูลผู้ป่วย
                 </NavLink>
 

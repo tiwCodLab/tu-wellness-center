@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 import { useAuth } from "../utils/AuthProvider";
 
-async function getProfile(user) {
+export async function getProfile(user) {
   const authToken = localStorage.getItem("token");
   try {
     const response = await axios.get(
