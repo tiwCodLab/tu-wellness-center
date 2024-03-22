@@ -6,6 +6,7 @@ import Select from "react-select";
 import { FaPlus } from "react-icons/fa";
 import FormCheckList from "./Form/FormMedicalRecord";
 import { FaTrashCan } from "react-icons/fa6";
+import SweetAlert2 from "react-sweetalert2";
 
 export default function NewmedicalRecord() {
   let auth = useAuth();
@@ -13,6 +14,9 @@ export default function NewmedicalRecord() {
   const navigate = useNavigate();
   const initialPatientID = id ? id : "";
   let doctorName = auth.user.username;
+  const [swalProps, setSwalProps] = useState({});
+  const [successMessage, setSuccessMessage] = useState(false);
+
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1; // เพิ่ม 1 เพื่อปรับเป็นรูปแบบที่เริ่มที่ 1
@@ -287,9 +291,9 @@ export default function NewmedicalRecord() {
         medicalRecord
       )
       .then((response) => {
-        console.log("Response:", response.data);
         // ทำสิ่งที่ต้องการหลังจากได้รับการตอบกลับจากเซิร์ฟเวอร์
-        alert("บันทึกเรียบร้อยแล้ว");
+        // alert("บันทึกเรียบร้อยแล้ว");
+        setSuccessMessage(true);
         navigate(-1);
       })
       .catch((error) => {
@@ -549,6 +553,13 @@ export default function NewmedicalRecord() {
         <div className="flex justify-end">
           <button
             type="submit"
+            onClick={() => {
+              setSwalProps({
+                show: true,
+                title: "บันทึกเรียบร้อย",
+                icon: "success",
+              });
+            }}
             className="px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 mr-4"
           >
             บันทึก
@@ -563,6 +574,7 @@ export default function NewmedicalRecord() {
             ยกเลิก
           </button>
         </div>
+        {successMessage && <SweetAlert2 {...swalProps} />}
       </form>
     </>
   );

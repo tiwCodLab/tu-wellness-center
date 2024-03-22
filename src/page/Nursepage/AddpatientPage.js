@@ -2,12 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TiUserAdd } from "react-icons/ti";
+import SweetAlert2 from "react-sweetalert2";
 
 export default function AddpatientPage() {
   const [statusOptions, setStatus] = useState([]);
   const [organizationOptions, setOrganization] = useState([]);
-  const [successMessage, setSuccessMessage] = useState(null);
+  
   const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [swalProps, setSwalProps] = useState({});
 
   const [formData, setFormData] = useState({
     student_id: "",
@@ -94,10 +97,12 @@ export default function AddpatientPage() {
         throw new Error(`Error: ${error.message}`);
       }
 
-      let newUser = await response.json();
-      console.log("Success:", newUser);
+      if (response.status === 201) {
+        setSuccessMessage(true);
+      }
 
-      setSuccessMessage("บันทึกเรียบร้อยแล้ว");
+      // let newUser = await response.json();
+      // console.log("Success:", newUser);
 
       // Reset form data
       setFormData({
@@ -114,7 +119,7 @@ export default function AddpatientPage() {
       });
     } catch (error) {
       console.error("Error:", error.message);
-      setSuccessMessage(null); // Reset success message on error
+      setSuccessMessage(false); // Reset success message on error
     }
   };
 
@@ -261,6 +266,16 @@ export default function AddpatientPage() {
 
               <button
                 type="submit"
+                onClick={() => {
+                  setSwalProps({
+                    show: true,
+                    title:
+                      '<span class="font-thin">บันทึกข้อมูลเรียบร้อย</span>',
+                    icon: "success",
+                    fontSize: "16px",
+                    confirmButtonText: "ปิด",
+                  });
+                }}
                 className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-700 mt-4"
               >
                 บันทึก
@@ -277,9 +292,7 @@ export default function AddpatientPage() {
             </form>
           </div>
 
-          {successMessage && (
-            <div className="text-green-600 mt-4">{successMessage}</div>
-          )}
+          {successMessage && <SweetAlert2 {...swalProps} />}
         </div>
       </div>
     </>

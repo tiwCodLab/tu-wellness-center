@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import FormAddGeneral from "./Nursepage/Form/FormAddGeneral";
 import { TiUserAdd } from "react-icons/ti";
+import SweetAlert2 from "react-sweetalert2";
 
 const Log = () => {
   const [username, setUsername] = useState("");
@@ -10,8 +11,9 @@ const Log = () => {
 
   const [statusOptions, setStatus] = useState([]);
   const [organizationOptions, setOrganization] = useState([]);
-  const [successMessage, setSuccessMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(false);
   const navigate = useNavigate();
+  const [swalProps, setSwalProps] = useState({});
 
   const [formData, setFormData] = useState({
     student_id: "",
@@ -128,6 +130,8 @@ const Log = () => {
       if (response.status === 409) {
         // Handle 409 Conflict (Duplicate Data) - Show pop-up or notification
         alert("รหัสนักศึกษา/รหัสเลขประจำตัว ซ้ำ!!!");
+      } else if (response.status === 201) {
+        setSuccessMessage(true);
       }
 
       if (!response.ok) {
@@ -136,9 +140,9 @@ const Log = () => {
       }
 
       let newUser = await response.json();
-      console.log("Success:", newUser);
+      // console.log("Success:", newUser);
 
-      setSuccessMessage("บันทึกเรียบร้อยแล้ว");
+      setSuccessMessage(newUser);
 
       // Reset form data
       setFormData({
@@ -229,6 +233,13 @@ const Log = () => {
               <div className="px-4 py-3 sm:px-6 sm:flex  justify-center">
                 <button
                   type="submit"
+                  onClick={() => {
+                    setSwalProps({
+                      show: true,
+                      title: '<span class="font-thin">บันทึกเรียบร้อย</span>',
+                      icon: "success",
+                    });
+                  }}
                   className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-700 "
                 >
                   บันทึก
@@ -246,9 +257,7 @@ const Log = () => {
             </form>
           </div>
 
-          {successMessage && (
-            <div className="text-green-600 mt-4">{successMessage}</div>
-          )}
+          {successMessage && <SweetAlert2 {...swalProps} />}
         </div>
       </div>
     </>

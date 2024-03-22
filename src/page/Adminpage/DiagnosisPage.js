@@ -83,10 +83,7 @@ const DiagnosisPage = () => {
   const displayDiagnoses = filteredData
     .slice(pagesVisited, pagesVisited + diagnosesPerPage)
     .map((item) => (
-      <tr
-        key={item._id}
-        className="border-b border-gray-100  text-sm"
-      >
+      <tr key={item._id} className="border-b border-gray-100  text-sm">
         <th
           scope="row"
           className="px-6 py-2 text-center font-medium text-gray-900 whitespace-nowrap"
@@ -197,7 +194,7 @@ const DiagnosisPage = () => {
             <p className="text-lg font-semibold mb-4">
               ต้องการลบข้อมูลผู้ป่วยหรือไม่?
             </p>
-            <div className="flex justify-end">
+            <div className="flex justify-between">
               <button
                 onClick={handleDelete}
                 className="bg-red-500 text-white px-4 rounded-md mr-2"
