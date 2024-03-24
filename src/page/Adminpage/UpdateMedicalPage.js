@@ -84,7 +84,7 @@ export default function UpdateMedicalPage() {
       <div className="py-2">
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-md shadow-md"
+          className="bg-white p-8 "
         >
           <h1 className="text-xl font-bold mb-6">แก้ไขข้อมูลยา</h1>
 

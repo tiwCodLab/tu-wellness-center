@@ -59,7 +59,7 @@ const ManagementPage = () => {
 
   return (
     <>
-      <div className="rounded-lg border mt-2 border-stroke bg-white px-8 pt-6 pb-10 shadow-default">
+      <div className="rounded-lg border mt-2 bg-white px-8 pt-6 pb-10 ">
         <div className="max-w-full overflow-x-auto">
           <div className="flex items-center justify-between mb-4 ">
             <div className="flex items-center">
@@ -83,7 +83,7 @@ const ManagementPage = () => {
           ) : (
             <div className="relative overflow-x-auto shadow-lg sm:rounded-md">
               <table className="w-full text-sm text-left rtl:text-right text-black ">
-                <thead className="text-xs text-gray-500 uppercase  text-center ">
+                <thead className="text-xs text-slate-900 uppercase  text-center">
                   <tr>
                     <th scope="col" className="px-6 py-2 text-center ">
                       รหัสนักศึกษา/รหัสประจำตัว
@@ -111,11 +111,11 @@ const ManagementPage = () => {
                   {reversedDataPatient.map((item) => (
                     <tr
                       key={item._id}
-                      className="bg-white border-b  dark:border-gray-50 hover:bg-gray-50 dark:hover:bg-gray-200"
+                      className="bg-white border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-200"
                     >
                       <th
                         scope="row"
-                        className="px-6 py-2 text-center font-medium text-gray-900 whitespace-nowrap"
+                        className="px-6 py-2 text-center font-normal text-gray-900 whitespace-nowrap"
                       >
                         <Link to={`${item._id}/general`}>
                           {item.student_id}
@@ -127,7 +127,7 @@ const ManagementPage = () => {
                         </Link>
                       </td>
 
-                      <td className="px-6 py-2">{item.organizations}</td>
+                      <td className="px-6 py-2 text-center">{item.organizations}</td>
                       <td className="px-4 py-2.5 text-center">
                         <Link
                           to={`${item._id}`}

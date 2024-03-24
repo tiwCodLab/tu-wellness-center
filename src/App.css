@@ -348,3 +348,39 @@ button {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+@media only screen and (max-width: 768px) {
+  .p-8 {
+    padding: 4px;
+  }
+  .text-base {
+    font-size: 16px;
+  }
+  .mb-4 {
+    margin-bottom: 8px;
+  }
+  .ml-2 {
+    margin-left: 4px;
+  }
+  .mr-2 {
+    margin-right: 4px;
+  }
+  .px-3 {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  .py-1 {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .sm\:px-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .text-sm {
+    font-size: 14px;
+  }
+}

@@ -31,6 +31,8 @@ const MedicalRecordByPatient = () => {
     fetchData();
   }, [id]);
 
+  const reversedDataPatient = [...medicalrecord].reverse();
+
   return (
     <>
       <div className="font-prompt rounded-lg shadow-default mt-1">
@@ -53,61 +55,61 @@ const MedicalRecordByPatient = () => {
                     <table className="w-full table-auto">
                       <thead>
                         <tr className="bg-gray-2 text-xs dark:bg-meta-4">
-                          <th className="py-4 px-4 text-black border-b">
+                          <th className="py-2 px-4 text-black border-b">
                             <i className="fas fa-user text-gray-600 mr-4"></i>
                             วันที่
                           </th>
-                          <th className="py-4 px-4 text-black border-b">
+                          <th className="py-2 px-4 text-black border-b">
                             <i className="fas fa-check-circle text-gray-600 mr-4"></i>
                             ชื่อ-นามสกุล
                           </th>
-                          <th className="py-4 px-4 text-black border-b">
+                          <th className="py-2 px-4 text-black border-b">
                             <i className="fas fa-building text-gray-600 mr-4"></i>
                             อาการ
                           </th>
-                          <th className="py-4 px-4 text-black border-b">
+                          <th className="py-2 px-4 text-black border-b">
                             <i className="fas fa-pen-alt text-gray-600 mr-4"></i>
                             การวินิจฉัย
                           </th>
 
-                          <th className="py-4 px-4 text-black border-b">
+                          <th className="py-2 px-4 text-black border-b">
                             <i className="fas fa-history text-gray-600 mr-4"></i>
                             ผู้ทำการบันทึก
                           </th>
-                          <th className="py-4 px-4 text-black border-b">
+                          <th className="py-2 px-4 text-black border-b">
                             <i className="fas fa-history text-gray-600 mr-4"></i>
                             รายละเอียด
                           </th>
                         </tr>
                       </thead>
                       <tbody className="text-sm">
-                        {medicalrecord.map((item) => (
+                        {reversedDataPatient.map((item) => (
                           <tr
                             key={item._id}
                             className="border-b border-gray-100"
                           >
-                            <td className="py-4 px-4">
+                            <td className="py-2 px-4">
                               <p className="text-black text-center">
                                 {item.visitdate}
                               </p>
                             </td>
-                            <td className="py-4 px-4">
+                            <td className="py-2 px-4">
                               <p className="text-black text-center">
                                 {item.patient.patient_fname}{" "}
                                 {item.patient.patient_lname}
                               </p>
                             </td>
-                            <td className="py-4 px-4">
+                            <td className="py-2 px-4">
                               <p className="text-black text-center">
                                 {item.chief_complaint}
                               </p>
                             </td>
-                            <td className="py-4 px-4">
+                            <td className="py-2 px-4">
                               <p className="text-black text-center">
                                 {item.diagnosis}
                               </p>
                             </td>
-                            <td className="py-4 px-4">
+                            <td className="py-2 px-4">
                               <p className="text-black text-center">
                                 {item.doctor}
                               </p>
@@ -115,7 +117,7 @@ const MedicalRecordByPatient = () => {
                             <td className="text-center text-sm">
                               <Link
                                 to={`${item._id}/view`}
-                                className="inline-block text-black font-bold py-2.5 px-2 rounded-xl "
+                                className="inline-block text-black font-bold py-1.5 px-2 rounded-xl "
                               >
                                 <IoEye className="text-white hover:bg-teal-700 text-base bg-teal-400 p-2 h-8 w-8 rounded-md" />
                               </Link>

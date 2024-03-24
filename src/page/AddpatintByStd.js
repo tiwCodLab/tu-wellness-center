@@ -184,17 +184,17 @@ const Log = () => {
   return (
     <>
       <div className="" style={{ textAlign: "right" }}></div>
-      <div className="p-8 bg-white shadow-lg rounded-md">
+      <div className="p-4 md:p-8 bg-white shadow-lg rounded-md">
         <div>
-          <div className="flex justify-between">
-            <div className="flex items-center mb-4 text-base">
+          <div className="flex flex-col md:flex-row justify-between">
+            <div className="flex items-center mb-4 md:mb-0 text-base">
               <TiUserAdd style={{ fontSize: "28px" }} />
-              <h3 className=" font-semibold ml-2">
+              <h3 className="font-semibold ml-2">
                 เพิ่มข้อมูลผู้ใช้บริการใหม่
               </h3>
             </div>
 
-            <div style={{ textAlign: "right" }}>
+            <div className="md:text-right">
               <div className="mb-2 text-black text-sm">
                 *หากต้องการดึงข้อมูล สามารถใช้ รหัสนักศึกษา และ
                 รหัสผ่านของมหาลัยในการดึงข้อมูลได้
@@ -204,18 +204,18 @@ const Log = () => {
                 placeholder="รหัสนักศึกษา"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="border text-sm rounded-md px-3 py-1 mr-2 focus:outline-none"
+                className="border text-sm rounded-md px-3 py-1 mb-2 md:mr-2 md:mb-0 focus:outline-none"
               />
               <input
                 type="password"
                 placeholder="รหัสผ่าน"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="border text-sm rounded-md px-3 py-1 mr-2 focus:outline-none"
+                className="border text-sm rounded-md px-3 py-1 mb-2 md:mr-2 md:mb-0 focus:outline-none"
               />
               <button
                 onClick={handleVerify}
-                className="bg-teal-600  text-white  px-4 rounded-md hover:bg-yellow-300 focus:outline-none"
+                className="bg-teal-600 text-white px-4 rounded-md hover:bg-yellow-300 focus:outline-none"
               >
                 รับข้อมูล
               </button>
@@ -230,7 +230,7 @@ const Log = () => {
                 organizationOptions={organizationOptions}
                 statusOptions={statusOptions}
               />
-              <div className="px-4 py-3 sm:px-6 sm:flex  justify-center">
+              <div className="px-4 py-3 sm:px-6 sm:flex justify-center">
                 <button
                   type="submit"
                   onClick={() => {
@@ -240,13 +240,13 @@ const Log = () => {
                       icon: "success",
                     });
                   }}
-                  className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-700 "
+                  className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-700 mb-2 md:mb-0 md:mr-4"
                 >
                   บันทึก
                 </button>
                 <button
                   type="button"
-                  className="ml-6 bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-700 "
+                  className="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-700 "
                   onClick={() => {
                     navigate(-1);
                   }}

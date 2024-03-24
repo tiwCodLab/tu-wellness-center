@@ -151,26 +151,26 @@ const FormCheckList = ({
         <div className="flex mt-2">
           <Link
             onClick={handleSelectOptionA}
-            className="bg-form1 text-sm bg-sky-600 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded-md mr-4"
+            className="bg-form1 text-sm bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-md mr-4"
           >
             ระบบทางเดินหายใจ
           </Link>
           <Link
             onClick={handleSelectOptionB}
-            className="bg-form1 text-sm bg-sky-600 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded-md mr-4"
+            className="bg-form1 text-sm bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-md mr-4"
           >
             ระบบทางเดินอาหาร
           </Link>
           <Link
             onClick={handleSelectOptionC}
-            className="bg-form1 text-sm bg-sky-600 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded-md mr-4"
+            className="bg-form1 text-sm bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-md mr-4"
           >
             ตรวจร่างกาย
           </Link>
 
           <Link
             onClick={handleSelectOptionD}
-            className="bg-form1 text-sm bg-sky-600 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded-md mr-4"
+            className="bg-form1 text-sm bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-md mr-4"
           >
             จิตเวช
           </Link>
@@ -843,31 +843,31 @@ const FormCheckList = ({
                 <div className="w-1/2 mb-6">
                   <Link
                     onClick={handSelectedA}
-                    className="text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black bgblack "
+                    className="text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black"
                   >
                     ดู
                   </Link>
                   <Link
                     onClick={handSelectedB}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black bgblack "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black"
                   >
                     คลำ
                   </Link>
                   <Link
                     onClick={handSelectedC}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black bgblack "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black"
                   >
                     เคาะ
                   </Link>
                   <Link
                     onClick={handSelectedD}
-                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black bgblack "
+                    className=" ml-4  text-sm rounded-md  px-6 py-1.5 border-2 border-gray-300 text-black"
                   >
                     ฟัง
                   </Link>
                 </div>
               </div>
-              <div className="pt-1">
+              <div className="pt-2">
                 {selected === "A" && (
                   <div>
                     <div className="flex mb-4 bg-white shadow-slate-50 rounded-md pt-3">

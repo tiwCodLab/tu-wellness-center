@@ -31,7 +31,7 @@ const LayoutBarchart = () => {
         </div>
       </nav>
 
-      <div className="p-2.5 border-2 border-gray-300 border-dashed rounded-md mt-2">
+      <div className="p-3 border-2 border-gray-300  rounded-md mt-0.5 bg-gradient-to-r from-teal-800 to-teal-600">
         <div className="grid grid-cols-3 gap-6">
           <div className="flex items-center justify-center h-24 rounded-md bg-white ">
             <div className="text-center">

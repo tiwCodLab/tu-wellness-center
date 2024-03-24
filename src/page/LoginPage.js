@@ -101,58 +101,60 @@ const LoginPage = () => {
           >
             {error}
           </p>
-          <div className="flex-1 p-2">
-            <div className="max-w-md mx-auto p-6 mb-24  mt-24 bg-teal-700 shadow-md rounded-lg">
-              <form onSubmit={handleSubmit} className="space-y-4 p-10">
-                <div>
-                  <img
-                    src={logo}
-                    alt="Logo"
-                    className="w-32 h-32 mx-auto mb-4"
-                  />
-                  <h1 className="text-2xl font-bold font-Kanit mb-4 text-center text-white">
-                    TULP WELLNESS CENTER
-                  </h1>
-                </div>
+          <div className="bg-teal-800 py-1 max-h-screen rounded-md">
+            <div className="h-auto mt-24">
+              <div className="max-w-md mx-auto px-6 p-6 mb-24  bg-white shadow-md rounded-lg">
+                <form onSubmit={handleSubmit} className="space-y-4 p-10 mt-4">
+                  <div>
+                    <img
+                      src={logo}
+                      alt="Logo"
+                      className="w-32 h-32 mx-auto mb-4"
+                    />
+                    <h1 className="text-2xl font-bold  mb-4 text-center text-teal-700">
+                      TULP WELLNESS CENTER
+                    </h1>
+                  </div>
 
-                <div className="flex flex-col text-sm">
-                  <label htmlFor="username" className="mb-2 text-white">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    ref={usernameRef}
-                    placeholder="Username"
-                    autoComplete="off"
-                    required
-                    className="border border-gray-300 p-2 rounded-md focus:outline-none"
-                  />
-                </div>
-                <div className="flex flex-col text-sm">
-                  <label htmlFor="password" className="mb-2 text-white">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Password"
-                    autoComplete="off"
-                    required
-                    className="border border-gray-300 p-2 rounded-md focus:outline-none"
-                  />
-                </div>
-                <div className="flex justify-center items-center ">
-                  <button
-                    type="submit"
-                    className="bg-teal-500 text-white px-4 rounded-lg hover:bg-teal-700"
-                  >
-                    เข้าสู่ระบบ
-                  </button>
-                </div>
-              </form>
+                  <div className="flex flex-col text-sm">
+                    <label htmlFor="username" className="mb-2 ">
+                      Username
+                    </label>
+                    <input
+                      type="text"
+                      name="username"
+                      id="username"
+                      ref={usernameRef}
+                      placeholder="Username"
+                      autoComplete="off"
+                      required
+                      className="border border-gray-300 p-2 rounded-md focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col text-sm">
+                    <label htmlFor="password" className="mb-2 ">
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Password"
+                      autoComplete="off"
+                      required
+                      className="border border-gray-300 p-2 rounded-md focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex justify-center items-center ">
+                    <button
+                      type="submit"
+                      className="bg-teal-500 text-white px-4  rounded-lg hover:bg-teal-400"
+                    >
+                      เข้าสู่ระบบ
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </>

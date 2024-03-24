@@ -1,6 +1,7 @@
 import axios from "../../api/axios";
 import React from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { FaInfoCircle } from "react-icons/fa";
 
 function calculateAge(birthday) {
   const today = new Date();
@@ -64,7 +65,8 @@ export default function ProfilePatientPage() {
         <div className="bg-white rounded-md">
           <div className="p-10">
             <div className="px-4 sm:px-0">
-              <h3 className="text-lg font-semibold leading-7 text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold leading-7 text-gray-900 mb-2 flex items-center">
+                <FaInfoCircle className="mr-2" />
                 ข้อมูลทั่วไป
               </h3>
             </div>
@@ -205,12 +207,12 @@ export default function ProfilePatientPage() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-2 px-2">
           <button
             onClick={() => {
               navigate(-1);
             }}
-            className="ml-1 mt-4 bg-gray-500 text-white px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+            className="ml-1 bg-gray-500 text-white px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
           >
             กลับ
           </button>
@@ -218,7 +220,7 @@ export default function ProfilePatientPage() {
           <Link to={`${general._id}/edit`}>
             <button
               // onClick={() => setShowPopup(true)}
-              className="mt-4 bg-blue-500 text-white px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+              className=" bg-blue-500 text-white px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
             >
               แก้ไข
             </button>

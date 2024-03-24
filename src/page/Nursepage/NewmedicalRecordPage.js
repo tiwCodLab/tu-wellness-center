@@ -455,7 +455,7 @@ export default function NewmedicalRecord() {
             <button
               type="button"
               onClick={addMedication}
-              className="flex items-center justify-center px-3 py-1 bg-teal-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-300"
+              className="flex items-center justify-center px-3 py-1 bg-teal-500 text-white rounded-md "
             >
               <FaPlus className="mr-2" />
               เพิ่มรายการ
@@ -515,7 +515,7 @@ export default function NewmedicalRecord() {
             <button
               type="button"
               onClick={addMedicationSup}
-              className="flex items-center justify-center px-3 py-1 bg-teal-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-300"
+              className="flex items-center justify-center px-3 py-1 bg-teal-500 text-white rounded-md "
             >
               <FaPlus className="mr-2" />
               เพิ่มรายการ

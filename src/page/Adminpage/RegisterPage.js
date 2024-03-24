@@ -92,7 +92,7 @@ function RegisterForm() {
               name="firstname"
               value={newUser.firstname}
               onChange={handleInputChange}
-              className="border rounded-md px-2 py-2 w-full focus:outline-none"
+              className="border rounded-md px-2 py-2 w-full focus:outline-none mt-2"
             />
           </label>
         </div>
@@ -104,7 +104,7 @@ function RegisterForm() {
               name="lastname"
               value={newUser.lastname}
               onChange={handleInputChange}
-              className="border rounded-md px-3 py-2 w-full focus:outline-none"
+              className="border rounded-md px-3 py-2 w-full focus:outline-none mt-2"
             />
           </label>
         </div>
@@ -116,7 +116,7 @@ function RegisterForm() {
               name="username"
               value={newUser.username}
               onChange={handleInputChange}
-              className="border rounded-md px-3 py-2 w-full"
+              className="border rounded-md px-3 py-2 w-full focus:outline-none mt-2"
             />
           </label>
         </div>
@@ -128,7 +128,7 @@ function RegisterForm() {
               name="password"
               value={newUser.password}
               onChange={handleInputChange}
-              className="border rounded-md px-3 py-2 w-full"
+              className="border rounded-md px-3 py-2 w-full focus:outline-none mt-2"
             />
           </label>
         </div>
@@ -139,7 +139,7 @@ function RegisterForm() {
               name="roles"
               value={newUser.roles}
               onChange={handleInputChange}
-              className="border rounded-md px-3 py-2 w-full"
+              className="border rounded-md px-3 py-2 w-full focus:outline-none mt-2"
             >
               <option value="">คลิกเพื่อเลือก</option>
               <option value="Admin">ผู้ดูแลระบบ</option>
@@ -149,17 +149,17 @@ function RegisterForm() {
           </label>
         </div>
       </div>
-      <div className="my-2">
+      <div className="my-2 flex justify-end">
         <button
           type="button"
           onClick={addUserData}
-          className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-700"
+          className="bg-blue-500 text-white px-4 py-1 h-10 rounded-md hover:bg-blue-700"
         >
           สมัครใช้งาน
         </button>
         <button
           type="button"
-          className="ml-5 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded-md w-24 focus:outline-none focus:shadow-outline"
+          className="ml-5 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 h-10 rounded-md w-24 focus:outline-none focus:shadow-outline"
           onClick={() => {
             navigate("/users");
           }}

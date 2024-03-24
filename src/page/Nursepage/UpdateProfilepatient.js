@@ -121,7 +121,7 @@ export default function UpdateProfilePatientPage() {
     <Form
       replace
       method="put"
-      className="mx-auto p-4 bg-white shadow-md rounded-md mt-2 "
+      className="mx-auto p-4 bg-white rounded-md mt-2 "
     >
       <div className="flex justify-end">
         <h1 style={{ fontSize: "12px" }}>

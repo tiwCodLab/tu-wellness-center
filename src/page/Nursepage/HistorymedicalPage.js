@@ -6,7 +6,7 @@ import { FaHistory } from "react-icons/fa";
 import { IoEye } from "react-icons/io5";
 
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
-import Spinners from "../../component/Spinner";
+// import Spinners from "../../component/Spinner";
 
 export default function HistorymedicalPage() {
   const { page } = useParams(); // ดึงค่า params ชื่อ page
@@ -53,7 +53,7 @@ export default function HistorymedicalPage() {
                     <th className="py-2 px-4 text-black">ชื่อ-นามสกุล</th>
                     <th className="py-2 px-4 text-black">อาการ</th>
                     <th className="py-2 px-4 text-black">การวินิจฉัย</th>
-                    <th className="py-2 px-4 text-black">กิจกรรมพยาบาล</th>
+                    <th className="py-2 px-4 text-black">ผู้บันทึก</th>
                     <th className="py-2 px-4 text-black">รายละเอียด</th>
                   </tr>
                 </thead>
@@ -75,14 +75,14 @@ export default function HistorymedicalPage() {
                             ? `${item.patient.patient_fname} ${item.patient.patient_lname}`
                             : "ไม่มีข้อมูล"}
                         </td>
-                        <td className="px-4 text-sm text-center">
+                        <td className="px-4 text-sm ">
                           {item.chief_complaint || "ไม่มีข้อมูล"}
                         </td>
-                        <td className="px-4 text-sm text-center">
+                        <td className="px-4 text-sm ">
                           {item.diagnosis || "ไม่มีข้อมูล"}
                         </td>
                         <td className="px-4 text-sm text-center">
-                          {item.nursing_activities || "ไม่มีข้อมูล"}
+                          {item.doctor || "ไม่มีข้อมูล"}
                         </td>
                         <td className="text-center">
                           <Link
@@ -97,7 +97,7 @@ export default function HistorymedicalPage() {
                   ) : (
                     <tr>
                       <td colSpan="7" className="text-center">
-                        <Spinners />
+                        <p className="pt-4">ไม่มีข้อมูล</p>
                       </td>
                     </tr>
                   )}

@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { FaChevronCircleLeft } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
-
+import { FaInfoCircle } from "react-icons/fa";
 import axios from "axios";
 
 export async function getDetailMedication(id) {
@@ -31,8 +31,13 @@ export default function DetailsMedicalPage() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="mt-2 bg-white p-8 rounded-md shadow-md">
-        <h1 className="text-xl font-bold mb-6">รายละเอียด</h1>
+      <div className="mt-2 bg-white p-8 rounded-md ">
+        <div className="px-4 sm:px-0">
+          <h3 className="text-xl font-semibold leading-7 text-gray-900 mb-6 flex items-center">
+            <FaInfoCircle className="mr-2 " />
+            รายละเอียด
+          </h3>
+        </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
@@ -66,7 +71,7 @@ export default function DetailsMedicalPage() {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between mt-4 px-2 font-bold">
+      <div className="flex items-center justify-between my-4 px-2 font-bold">
         <button
           className="flex items-center px-4  text-teal-black rounded-md hover:text-teal-500"
           type="button"

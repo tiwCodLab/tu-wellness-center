@@ -18,10 +18,10 @@ const HomePage = () => {
   return (
     <>
       {auth?.user?.username ? (
-        <div className="bg-gray-100 mt-1 rounded-lg">
+        <div className="bg-gradient-to-r from-teal-800 to-teal-600 mt-1 rounded-lg">
           <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-gray-900 text-center">
-              ยินดีต้อนรับ
+            <h1 className="text-3xl font-bold text-center text-white">
+              TULP WELLNESS CENTER
             </h1>
           </div>
 
@@ -52,14 +52,14 @@ const HomePage = () => {
           </main>
           <footer className="bg-gradient-to-r from-teal-800 to-teal-600 text-white py-2 rounded-b-lg mt-2">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
-              <p>&copy; 2024 ห้องพยาบาล. สงวนสิทธิ์.</p>
+              <p>&copy; 2024 ห้องพยาบาลมหาวิทยาลัยธรรมศาสตร์ ศูนย์ลำปาง</p>
             </div>
           </footer>
         </div>
       ) : (
-        <div className="bg-gray-100 mt-1 rounded-lg">
+        <div className="bg-gradient-to-r from-teal-800 to-teal-600 mt-1 rounded-lg">
           <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-gray-900 text-center">
+            <h1 className="text-3xl font-bold text-white text-center">
               ห้องพยาบาลมหาวิทยาลัยธรรมศาสตร์ ศูนย์ลำปาง
             </h1>
           </div>
@@ -91,7 +91,7 @@ const HomePage = () => {
           </main>
           <footer className="bg-gradient-to-r from-teal-800 to-teal-600 text-white py-2 rounded-b-lg mt-2">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
-              <p>&copy; 2024 ห้องพยาบาล. สงวนสิทธิ์.</p>
+              <p>&copy; 2024 ห้องพยาบาลมหาวิทยาลัยธรรมศาสตร์ ศูนย์ลำปาง</p>
             </div>
           </footer>
         </div>

@@ -44,7 +44,7 @@ export default function AddNursingActivitiesPage() {
   };
   return (
     <div className="py-2">
-      <div className="bg-white p-8 rounded-md shadow-md">
+      <div className="bg-white p-8 rounded-md">
         <h3 className="text-xl font-bold mb-6">เพิ่มข้อมูลกิจกรรมพยาบาล</h3>
 
         <form onSubmit={handleSubmit} className="space-y-4">

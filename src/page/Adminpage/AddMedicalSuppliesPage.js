@@ -54,7 +54,7 @@ export default function AddMedicalSuppliesPage() {
   };
   return (
     <div className="py-2">
-      <div className="bg-white p-8 rounded-md shadow-md">
+      <div className="bg-white p-8 rounded-md">
         <h3 className="text-xl font-bold mb-4">เพิ่มข้อมูลเวชภัณฑ์</h3>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-sm">
