@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import GoBack from "../../component/GoBack";
+import axios from "../../api/axios";
 
 function calculateAge(birthday) {
   const today = new Date();
@@ -19,13 +20,12 @@ function calculateAge(birthday) {
 }
 
 export async function getViewCounseling(id) {
-  const res = await fetch(`/api/counseling/${id}`);
-
-  let viewredcord = await res.json();
-  if (!res.ok) {
-    throw Error(viewredcord.error);
+  try {
+    const res = await axios.get(`/api/counseling/${id}`);
+    return res.data; // Return response data directly
+  } catch (error) {
+    throw new Error(error.response.data.error || "Something went wrong."); // Adjust error handling
   }
-  return viewredcord; //res.json()
 }
 
 export const LoadgetViewCounseling = async ({ params }) => {
