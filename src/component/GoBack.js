@@ -8,7 +8,7 @@ export default function GoBack() {
   return (
     <div className="mt-4">
       <button
-        className="flex items-center px-4  text-teal-700"
+        className="flex items-center px-4 pb-4 text-teal-700"
         type="button"
         onClick={() => {
           navigate(-1);

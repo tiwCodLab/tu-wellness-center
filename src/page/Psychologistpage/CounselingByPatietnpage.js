@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import GoBack from "../../component/GoBack";
 import { IoEye } from "react-icons/io5";
 import Spinners from "../../component/Spinner";
+import axios from "../../api/axios";
 
 export async function getCounselingByPatient(id) {
-  const res = await fetch(`/api/counseling/patient/${id}`);
-
-  let medicalrecord = await res.json();
-  if (!res.ok) {
-    throw Error(medicalrecord.error);
+  try {
+    const res = await axios.get(`/api/counseling/patient/${id}`); // Use axios.get
+    return res.data; // Return response data directly
+  } catch (error) {
+    throw new Error(error.response.data.error || "Something went wrong."); // Adjust error handling
   }
-  return medicalrecord; //res.json()
 }
 
 export const LoadCounselingbyPatient = async ({ params }) => {
@@ -42,7 +42,6 @@ const CounselingByPateint = () => {
     <>
       <div className="font-prompt rounded-lg  shadow-default mt-2">
         <div className="max-w-full overflow-x-auto">
-          {/* เพิ่มเนื้อหาของตารางหรือ UI ที่ต้องการที่นี่ */}
           <div>
             <div className="font-prompt rounded-lg border border-stroke bg-white px-8 pt-4 pb-10 shadow-default">
               <div className="py-2">
@@ -66,7 +65,6 @@ const CounselingByPateint = () => {
                             <i className="fas fa-check-circle text-gray-600"></i>
                             ชื่อ-นามสกุล
                           </th>
-
                           <th className="py-4 px-4 text-black border-b">
                             <i className="fas fa-building text-gray-600"></i>
                             คณะ/สถาบัน
@@ -75,7 +73,6 @@ const CounselingByPateint = () => {
                             <i className="fas fa-building text-gray-600 "></i>
                             อาการ
                           </th>
-
                           <th className="py-4 px-4 text-black border-b">
                             <i className="fas fa-history text-gray-600 "></i>
                             ผู้ทำการบันทึก
@@ -100,25 +97,21 @@ const CounselingByPateint = () => {
                                 {item.patient.patient_lname}
                               </p>
                             </td>
-
                             <td className="py-5 px-4">
                               <p className="text-black text-center">
                                 {item.patient.organizations}
                               </p>
                             </td>
-
                             <td className="py-5 px-4">
                               <p className="text-black text-center">
                                 {item.problems}
                               </p>
                             </td>
-
                             <td className="py-5 px-4">
                               <p className="text-black text-center">
                                 {item.psychologist}
                               </p>
                             </td>
-
                             <td className="text-center text-sm">
                               <Link
                                 to={`${item._id}/views`}
