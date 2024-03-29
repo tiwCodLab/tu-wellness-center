@@ -81,7 +81,7 @@ export default function ViewMedicalRecordPage() {
               <span className="font-semibold">อายุ</span>
               <span className="ml-2">
                 {viewMedicalRecord.patient.birthday
-                  ? calculateAge(viewMedicalRecord.patient.birthday)
+                  ? calculateAge(viewMedicalRecord.patient.birthday) + 543
                   : "ไม่ได้ระบุ"}
               </span>
             </p>
