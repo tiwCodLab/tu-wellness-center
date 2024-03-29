@@ -232,9 +232,7 @@ const FormAddGeneral = ({
         </div>
 
         <div className="mb-4">
-          <label className="block mb-2 font-semibold ">
-            การสูบบุหรี่
-          </label>
+          <label className="block mb-2 font-semibold ">การสูบบุหรี่</label>
           <div className="flex items-center mb-2">
             <input
               type="radio"
@@ -283,9 +281,7 @@ const FormAddGeneral = ({
         </div>
 
         <div className="mb-4">
-          <label className="block mb-2 font-semibold ">
-            การดื่มสุรา
-          </label>
+          <label className="block mb-2 font-semibold ">การดื่มสุรา</label>
           <div className="flex items-center mb-2">
             <input
               type="radio"
@@ -337,9 +333,7 @@ const FormAddGeneral = ({
         </div>
 
         <div className="mb-4">
-          <label className="block mb-2 font-semibold">
-            สารเสพติอื่น ๆ
-          </label>
+          <label className="block mb-2 font-semibold">สารเสพติดอื่น ๆ</label>
           <div className="flex items-center mb-2">
             <input
               type="radio"
@@ -421,7 +415,7 @@ const FormAddGeneral = ({
           />
         </label>
 
-        <label className="block mt-0 font-bold">
+        {/* <label className="block mt-0 font-bold">
           อุณหภูมิ (°C)
           <input
             type="number"
@@ -467,7 +461,7 @@ const FormAddGeneral = ({
             }
             className="border rounded-md px-2 py-1 ml-2 mt-2"
           />
-        </label>
+        </label> */}
       </div>
     </div>
   );
