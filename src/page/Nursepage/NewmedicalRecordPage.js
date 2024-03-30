@@ -103,34 +103,35 @@ export default function NewmedicalRecord() {
     musculoskeletal_system_detail: "",
     nervous_system: "",
     nervous_system_detail: "",
+    form_2q: "",
     medications: [{ medication_name: "", quantity: "" }],
     supplies: [{ medical_supplies_name: "", quantity: "" }],
     forwarding: "",
     remarks: "",
   });
 
-  const [medicalCounseling, setMedicalCounseling] = useState({
-    patient: initialPatientID,
-    visittime: formattedTime, // เวลาปัจจุบัน
-    visitdate: formattedDate,
-    // visitdate: new Date().toLocaleDateString("en-GB").split("/").join("-"),
-    psychologist: doctorName,
-    format: "",
-    firstproblems: "",
-    problems: "",
-    behavior: "",
-    counseling_result: "",
-    counseling_plan: "",
-    assistance: "",
-    form_2q: "",
-    form_9q: "",
-    form_8q: "",
-    form_st_5: "",
-    form_gad: "",
-    remarks: "",
-    appointment_date: "",
-    appointment_time: "",
-  });
+  // const [medicalCounseling, setMedicalCounseling] = useState({
+  //   patient: initialPatientID,
+  //   visittime: formattedTime, // เวลาปัจจุบัน
+  //   visitdate: formattedDate,
+  //   // visitdate: new Date().toLocaleDateString("en-GB").split("/").join("-"),
+  //   psychologist: doctorName,
+  //   format: "",
+  //   firstproblems: "",
+  //   problems: "",
+  //   behavior: "",
+  //   counseling_result: "",
+  //   counseling_plan: "",
+  //   assistance: "",
+  //   form_2q: "",
+  //   form_9q: "",
+  //   form_8q: "",
+  //   form_st_5: "",
+  //   form_gad: "",
+  //   remarks: "",
+  //   appointment_date: "",
+  //   appointment_time: "",
+  // });
   // จิต
 
   // ถึงตรงนี้
@@ -280,10 +281,10 @@ export default function NewmedicalRecord() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post(
-      `https://api-data-medical-room-tu.onrender.com/api/counseling`,
-      medicalCounseling
-    );
+    // axios.post(
+    //   `https://api-data-medical-room-tu.onrender.com/api/counseling`,
+    //   medicalCounseling
+    // );
 
     axios
       .post(
@@ -348,8 +349,8 @@ export default function NewmedicalRecord() {
           handleInputChange={handleInputChange}
           handleSelectOptionC={handleSelectOptionC}
           handleSelectOptionD={handleSelectOptionD}
-          setMedicalCounseling={setMedicalCounseling}
-          medicalCounseling={medicalCounseling}
+          // setMedicalCounseling={setMedicalCounseling}
+          // medicalCounseling={medicalCounseling}
         />
         <div className="mt-4">
           <label className="block mb-4 ">

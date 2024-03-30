@@ -1,6 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const Dropdown = ({ options, selectedValue, onChange }) => {
+  return (
+    <select
+      value={selectedValue}
+      onChange={onChange}
+      className="mt-2 p-2 block w-full rounded-md border border-gray-800 shadow-sm "
+    >
+      <option value="" disabled hidden>
+        เลือกรายการ
+      </option>
+      {options.map((option, index) => (
+        <option key={index} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  );
+};
+
 const FormCheckList = ({
   selected,
   selectedOption,
@@ -13,8 +32,117 @@ const FormCheckList = ({
   handSelectedC,
   handSelectedD,
   medicalRecord,
+  medicalCounseling,
+  setMedicalCounseling,
   handleInputChange,
 }) => {
+  const handleChangeCounseling = (event) => {
+    const { name, value } = event.target;
+    setMedicalCounseling({
+      ...medicalCounseling,
+      [name]: value,
+    });
+  };
+
+  const handleFormatChange = (e) => {
+    const formatValue = e.target.value;
+    setMedicalCounseling((prevRecord) => ({
+      ...prevRecord,
+      format: formatValue,
+    }));
+  };
+
+  const handlefirstproblemsChange = (e) => {
+    const formatValue = e.target.value;
+    setMedicalCounseling((prevRecord) => ({
+      ...prevRecord,
+      firstproblems: formatValue,
+    }));
+  };
+
+  const handleassistanceChange = (e) => {
+    const formatValue = e.target.value;
+    setMedicalCounseling((prevRecord) => ({
+      ...prevRecord,
+      assistance: formatValue,
+    }));
+  };
+
+  const formatOptions = [
+    {
+      value: "On site (TULP Wellness Center)",
+      label: "On site (TULP Wellness Center)",
+    },
+    { value: "Online", label: "Online" },
+  ];
+
+  const firstproblemsOptions = [
+    {
+      value: "สัมพันธภาพกับคนรัก",
+      label:
+        "สัมพันธภาพกับคนรัก - สื่อสารไม่เข้าใจกัน , ลืมคนรักเก่าไม่ได้ , ถูกนอกใจ , ความต้องการไม่ตรงกัน , อยากยุติความสัมพันธ์ ฯลฯ",
+    },
+    {
+      value: "ความสัมพันธ์ในครอบครัว",
+      label:
+        "ความสัมพันธ์ในครอบครัว - ถูกกดดัน , ไม่มีอิสระ , ทัศนคติไม่ตรงกัน , แบกรับความคาดหวัง , ฝืนใจทำสิ่งที่ไม่ต้องการ ฯลฯ",
+    },
+
+    {
+      value: "การทำงาน",
+      label:
+        "การทำงาน - ขัดแย้งกับเพื่อนร่วมงาน/หัวหน้างาน , ไม่ก้าวหน้า , ถูกกลั่นแกล้ง , ทำงานที่ไม่ชอบ , หมดไฟในการทำงาน ฯลฯ",
+    },
+
+    {
+      value: "การเรียน",
+      label:
+        "การเรียน - เรียนในสิ่งที่ตัวเองไม่ชอบ , คาดหวังต่อตัวเองสูง , ไม่มีวินัยในตัวเอง , ไม่มีเป้าหมายในอนาคต , ไม่รู้ว่าตัวเองชอบอะไร ฯลฯ",
+    },
+
+    {
+      value: "การสูญเสียบุคคลที่สำคัญในชีวิต",
+      label:
+        "การสูญเสียบุคคลที่สำคัญในชีวิต - คนรักเสียชีวิต , เลิกรากับคนรัก , มีความจำเป็นต้องอยู่ห่างไกลกัน ฯลฯ",
+    },
+
+    {
+      value: "การปรับตัวเข้ากับความเปลี่ยนแปลง",
+      label:
+        "การปรับตัวเข้ากับความเปลี่ยนแปลง - ย้ายที่อยู่ , เปลี่ยนงาน , เริ่มต้นกับความสัมพันธ์ใหม่ , มีลูก ฯลฯ",
+    },
+
+    {
+      value: "ปัญหาที่เกี่ยวข้องกับโรคทางจิตเวช",
+      label: "ปัญหาที่เกี่ยวข้องกับโรคทางจิตเวช",
+    },
+
+    {
+      label: "อื่น ๆ",
+    },
+  ];
+
+  const assistanceOptions = [
+    {
+      value: "ส่งต่อโรงพยาบาลห้างฉัตรเพื่อประเมินทางจิตเวช",
+      label: "ส่งต่อโรงพยาบาลห้างฉัตรเพื่อประเมินทางจิตเวช",
+    },
+    {
+      value: "แจ้งให้คณะทราบเพื่อความสะดวกในการดูแลช่วยเหลือ",
+      label: "แจ้งให้คณะทราบเพื่อความสะดวกในการดูแลช่วยเหลือ",
+    },
+
+    {
+      value: "แจ้งให้ผู้ปกครองทราบ",
+      label: "แจ้งให้ผู้ปกครองทราบ",
+    },
+
+    {
+      value: "ไม่มีการส่งต่อ",
+      label: "ไม่มีการส่งต่อ",
+    },
+  ];
+
   return (
     <div className="flex flex-col justify-center text-xs rounded-md ">
       <h2 className="mt-2 mr-8 text-base mb-2">
@@ -2299,27 +2427,126 @@ const FormCheckList = ({
         {selectedOption === "D" && (
           <div>
             <div className="" style={{ fontSize: "16px" }}>
+              <label className="block mt-4">
+                <span className="text-gray-700">รูปแบบการปรึกษา</span>
+                {/* Dropdown component */}
+                <Dropdown
+                  options={formatOptions}
+                  selectedValue={medicalCounseling.format}
+                  onChange={handleFormatChange}
+                />
+              </label>
+              <label className="block mt-4">
+                <span className="text-gray-700 ">ปัญหานำ</span>
+                <Dropdown
+                  options={firstproblemsOptions}
+                  selectedValue={medicalCounseling.firstproblems}
+                  onChange={handlefirstproblemsChange}
+                />
+              </label>
+
+              <label className="block mb-4 mt-4">
+                <span className="text-gray-700 ">ปัญหาสำคัญ</span>
+                <input
+                  type="text"
+                  name="problems"
+                  value={medicalCounseling.problems}
+                  onChange={handleChangeCounseling}
+                  className="mt-2 p-2 block w-full rounded-md border border-gray-800 shadow-sm"
+                />
+              </label>
+
               <label className="block mb-4 mt-4">
                 <span className="text-gray-700 ">
-                  แบบคัดกรองโรคซึมเศร้า (2Q)
+                  ลักษณะทั่วไปและพฤติกรรมขณะให้การปรึกษา
                 </span>
+                <textarea
+                  type="text"
+                  name="behavior"
+                  value={medicalCounseling.behavior}
+                  onChange={handleChangeCounseling}
+                  className="mt-1 p-2 block w-full rounded-md border border-gray-800 shadow-sm "
+                />
+              </label>
 
-                <select
-                  name="form_2q"
-                  value={medicalRecord.form_2q}
-                  onChange={(e) => handleInputChange("form_2q", e.target.value)}
-                  className="mt-2 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                >
-                  <option value="">โปรดเลือก</option>
-                  <option value="ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกหดหู่ เศร้า หรือท้อแท้สิ้นหวัง">
-                    ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกหดหู่ เศร้า
-                    หรือท้อแท้สิ้นหวัง
-                  </option>
-                  <option value="ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกเบื่อ ทำอะไรก็ไม่เพลิดเพลิน">
-                    ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกเบื่อ
-                    ทำอะไรก็ไม่เพลิดเพลิน
-                  </option>
-                </select>
+              <label className="block mb-4 mt-4">
+                <span className="text-gray-700 ">ผลการให้คำปรึกษา</span>
+                <textarea
+                  type="text"
+                  name="counseling_result"
+                  value={medicalCounseling.counseling_result}
+                  onChange={handleChangeCounseling}
+                  className="mt-1 p-2 h-40 block w-full rounded-md border border-gray-800 shadow-sm "
+                />
+              </label>
+
+              <label className="block mb-4 mt-4">
+                <span className="text-gray-700 ">
+                  แผนการให้คำปรึกษาในครั้งต่อไป
+                </span>
+                <textarea
+                  type="text"
+                  name="counseling_plan"
+                  value={medicalCounseling.counseling_plan}
+                  onChange={handleChangeCounseling}
+                  className="mt-1 p-2 h-40 block w-full rounded-md border border-gray-800 shadow-sm"
+                />
+              </label>
+
+              <label className="block mt-4 mb-4">
+                <span className="text-gray-700 ">
+                  แนวทางการให้ความช่วยเหลือ
+                </span>
+                <Dropdown
+                  options={assistanceOptions}
+                  selectedValue={medicalCounseling.assistance}
+                  onChange={handleassistanceChange}
+                />
+              </label>
+
+              <div className="block mt-4">
+                <label htmlFor="appointmentDate" className="text-gray-700">
+                  การนัดครั้งหน้า
+                </label>
+                <input
+                  type="date"
+                  value={medicalCounseling.appointment_date}
+                  onChange={(e) =>
+                    setMedicalCounseling({
+                      ...medicalCounseling,
+                      appointment_date: e.target.value,
+                    })
+                  }
+                  className="mt-2 p-2 block w-full rounded-md border border-gray-800 shadow-sm "
+                />
+              </div>
+
+              <div className="block mt-4">
+                <label htmlFor="appointmentDate" className="text-gray-700">
+                  เวลา
+                </label>
+                <input
+                  type="time"
+                  value={medicalCounseling.appointment_time}
+                  onChange={(e) =>
+                    setMedicalCounseling({
+                      ...medicalCounseling,
+                      appointment_time: e.target.value,
+                    })
+                  }
+                  className="mt-2 p-2 block w-full rounded-md border border-gray-800 shadow-sm "
+                />
+              </div>
+
+              <label className="block mb-4 mt-2">
+                <span className="text-gray-700">หมายเหตุ</span>
+                <textarea
+                  type="text"
+                  name="remarks"
+                  value={medicalCounseling.remarks}
+                  onChange={handleChangeCounseling}
+                  className="mt-2 p-2 h-40 block w-full rounded-md border border-gray-800 shadow-sm"
+                />
               </label>
             </div>
           </div>
