@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TiUserAdd } from "react-icons/ti";
@@ -49,7 +49,7 @@ export default function AddpatientPage() {
   useEffect(() => {
     // ดึงข้อมูลจาก API สำหรับ diagnosis
     axios
-      .get("https://api-data-medical-room-tu.onrender.com/api/status")
+      .get("/api/status")
       .then((response) => setStatus(response.data))
       .catch((error) =>
         console.error("Error fetching diagnosis options:", error)
@@ -57,7 +57,7 @@ export default function AddpatientPage() {
 
     // ดึงข้อมูลจาก API สำหรับ nursing activities
     axios
-      .get("https://api-data-medical-room-tu.onrender.com/api/organization")
+      .get("/api/organization")
       .then((response) => setOrganization(response.data))
       .catch((error) =>
         console.error("Error fetching nursing activities options:", error)
@@ -84,7 +84,7 @@ export default function AddpatientPage() {
       const authToken = localStorage.getItem("token");
 
       const response = await fetch(
-        "https://api-data-medical-room-tu.onrender.com/api/patient",
+        "/api/patient",
         {
           method: "POST",
           headers: {

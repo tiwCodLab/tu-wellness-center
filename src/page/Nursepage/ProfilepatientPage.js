@@ -31,7 +31,7 @@ export async function getGeneralByPatient(id) {
   const authToken = localStorage.getItem("token");
   try {
     const response = await axios.get(
-      `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`,
+      `/api/patient/${id}`,
       {
         headers: {
           "Content-Type": "application/json",

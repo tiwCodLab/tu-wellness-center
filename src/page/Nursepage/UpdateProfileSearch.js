@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Form, redirect, useNavigate, useParams } from "react-router-dom";
@@ -6,16 +6,12 @@ import { Form, redirect, useNavigate, useParams } from "react-router-dom";
 async function updataPatient(id, updataPatient) {
   try {
     const authToken = localStorage.getItem("token");
-    const response = await axios.put(
-      `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`,
-      updataPatient,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    );
+    const response = await axios.put(`/api/patient/${id}`, updataPatient, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
 
     if (response.status === 200) {
       alert("แก้ไขข้อมูลเรียบร้อย");
@@ -55,7 +51,7 @@ export default function UpdateProfilePatientSearchPage() {
   useEffect(() => {
     // ดึงข้อมูลจาก API สำหรับ diagnosis
     axios
-      .get("https://api-data-medical-room-tu.onrender.com/api/status")
+      .get("/api/status")
       .then((response) => setStatus(response.data))
       .catch((error) =>
         console.error("Error fetching diagnosis options:", error)
@@ -63,7 +59,7 @@ export default function UpdateProfilePatientSearchPage() {
 
     // ดึงข้อมูลจาก API สำหรับ nursing activities
     axios
-      .get("https://api-data-medical-room-tu.onrender.com/api/organization")
+      .get("/api/organization")
       .then((response) => setOrganization(response.data))
       .catch((error) =>
         console.error("Error fetching nursing activities options:", error)
@@ -76,15 +72,12 @@ export default function UpdateProfilePatientSearchPage() {
     const fetchPatient = async () => {
       const authToken = localStorage.getItem("token");
       try {
-        const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${authToken}`,
-            },
-          }
-        );
+        const response = await axios.get(`/api/patient/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
         setPatient(response.data);
       } catch (error) {
         console.error("Error fetching patient:", error);
