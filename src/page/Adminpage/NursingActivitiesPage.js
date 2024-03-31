@@ -4,7 +4,7 @@ import { MdVolunteerActivism } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import { FaTrashCan } from "react-icons/fa6";
-import axios from "axios";
+import axios from "../../api/axios";
 
 const NursingActivitiesPage = () => {
   const [nursingActivitiesData, setNursingActivitiesData] = useState([]);
@@ -17,9 +17,7 @@ const NursingActivitiesPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://api-data-medical-room-tu.onrender.com/api/activities"
-        );
+        const response = await axios.get("/api/activities");
         setNursingActivitiesData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -32,12 +30,9 @@ const NursingActivitiesPage = () => {
   const handleDelete = async (id) => {
     if (window.confirm("ต้องการลบข้อมูลโรคนี้ใช่หรือไม่?")) {
       try {
-        await axios.delete(
-          `https://api-data-medical-room-tu.onrender.com/api/activities/${id}`,
-          {
-            method: "DELETE",
-          }
-        );
+        await axios.delete(`/api/activities/${id}`, {
+          method: "DELETE",
+        });
         alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
         window.location.reload(); // Refresh the page after successful deletion
       } catch (error) {

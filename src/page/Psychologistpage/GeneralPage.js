@@ -29,15 +29,12 @@ function formatBirthday(birthday) {
 export async function getGeneralByPatient(id) {
   const authToken = localStorage.getItem("token");
   try {
-    const response = await axios.get(
-      `https://api-data-medical-room-tu.onrender.com/api/patient/${id}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    );
+    const response = await axios.get(`/api/patient/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
     return response.data;
   } catch (error) {
     throw new Error(error.message);

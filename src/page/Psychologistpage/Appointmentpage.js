@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 
 function Appointment() {
   const [dateRange, setDateRange] = useState({
@@ -13,7 +13,7 @@ function Appointment() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api-data-medical-room-tu.onrender.com/api/appoinment"
+          "/api/appoinment"
         );
         setData(response.data);
         setLoading(false);
@@ -29,7 +29,7 @@ function Appointment() {
   const handleAppointmentDone = async (id) => {
     try {
       await axios.put(
-        `https://api-data-medical-room-tu.onrender.com/api/appoinment/${id}`,
+        `/api/appoinment/${id}`,
         { status: false }, // Update the status to false
         {
           headers: {

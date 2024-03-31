@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MdMedication, MdAddCircle } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
 import { FaTrashCan } from "react-icons/fa6";
-import axios from "axios";
+import axios from "../../api/axios";
 
 export default function MedicationsPage() {
   const [medication, setMedication] = useState([]);
@@ -12,9 +12,7 @@ export default function MedicationsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/medication`
-        );
+        const response = await axios.get(`/api/medication`);
         setMedication(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,9 +29,7 @@ export default function MedicationsPage() {
   const handleDelete = async (id) => {
     if (window.confirm("ต้องการลบข้อมูลโรคนี้ใช่หรือไม่?")) {
       try {
-        await axios.delete(
-          `https://api-data-medical-room-tu.onrender.com/api/medication/${id}`
-        );
+        await axios.delete(`/api/medication/${id}`);
 
         alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
         window.location.reload(); // Refresh the page after successful deletion
@@ -119,9 +115,7 @@ export default function MedicationsPage() {
                           >
                             {item.medication_id}
                           </th>
-                          <td className="px-6 py-3">
-                            {item.medication_name}
-                          </td>
+                          <td className="px-6 py-3">{item.medication_name}</td>
 
                           <td className="px-6 py-2 text-center">{item.unit}</td>
 

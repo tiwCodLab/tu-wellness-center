@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Form, useNavigate, useParams } from "react-router-dom";
 
-import axios from "axios";
+import axios from "../../api/axios";
 
 async function updateActivities(id, updatedActivities) {
   try {
     const response = await axios.put(
-      `https://api-data-medical-room-tu.onrender.com/api/activities/${id}`,
+      `/api/activities/${id}`,
       updatedActivities,
       {
         headers: {
@@ -42,9 +42,7 @@ export default function UpdateNursingActivities() {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/activities/${id}`
-        );
+        const response = await axios.get(`/api/activities/${id}`);
         setactivities(response.data);
       } catch (error) {
         console.error("Error fetching activities:", error);

@@ -94,7 +94,7 @@ export default function UserPage() {
             <div className="relative overflow-x-auto shadow-lg sm:rounded-lg">
               <table className="w-full text-sm text-left rtl:text-right text-gray-600 dark:text-gray-900">
                 <thead className="text-xs text-black uppercase bg-gray-200 text-center">
-                  <tr >
+                  <tr>
                     <th scope="col" className="px-6 py-3 text-center">
                       ชื่อ-นามสกุล
                     </th>

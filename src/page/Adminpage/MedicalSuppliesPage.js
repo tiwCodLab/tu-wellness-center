@@ -4,7 +4,7 @@ import { FaBriefcaseMedical } from "react-icons/fa6";
 import { MdAddCircle } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
 import { FaTrashCan } from "react-icons/fa6";
-import axios from "axios";
+import axios from "../../api/axios";
 
 export default function MedicalSuppliesPage() {
   const [medicalsuppliesdata, setMedicalsupplies] = useState([]);
@@ -14,9 +14,7 @@ export default function MedicalSuppliesPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/medicalsupplies`
-        );
+        const response = await axios.get(`/api/medicalsupplies`);
         setMedicalsupplies(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -33,9 +31,7 @@ export default function MedicalSuppliesPage() {
   const handleDelete = async (id) => {
     if (window.confirm("ต้องการลบข้อมูลโรคนี้ใช่หรือไม่?")) {
       try {
-        await axios.delete(
-          `https://api-data-medical-room-tu.onrender.com/api/medicalsupplies/${id}`
-        );
+        await axios.delete(`/api/medicalsupplies/${id}`);
 
         alert("ลบข้อมูลโรคเรียบร้อยแล้ว");
         window.location.reload(); // Refresh the page after successful deletion

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../../api/axios";
 import {
   BarChart,
   Bar,
@@ -22,9 +22,7 @@ const BarChartdiagnosis = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://api-data-medical-room-tu.onrender.com/api/medicalrecord"
-        );
+        const response = await axios.get("/api/medicalrecord");
         const apiData = response.data;
 
         // Filter and format data based on date range

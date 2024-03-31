@@ -2,14 +2,12 @@ import React from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { FaChevronCircleLeft } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
-import axios from "axios";
+import axios from "../../api/axios";
 import { FaInfoCircle } from "react-icons/fa";
 
 export async function getDetailmedicalSupplies(id) {
   try {
-    const response = await axios.get(
-      `https://api-data-medical-room-tu.onrender.com/api/medicalsupplies/${id}`
-    );
+    const response = await axios.get(`/api/medicalsupplies/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error.message);

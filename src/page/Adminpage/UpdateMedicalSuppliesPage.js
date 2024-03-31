@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
-import axios from "axios";
-
+import axios from "../../api/axios";
 async function updateMedicationSupplies(id, updatedMedicationSupplies) {
   try {
     const response = await axios.put(
-      `https://api-data-medical-room-tu.onrender.com/api/medicalsupplies/${id}`,
+      `/api/medicalsupplies/${id}`,
       updatedMedicationSupplies,
       {
         headers: {
@@ -49,9 +47,7 @@ export default function UpdateMedicalSupplies() {
   useEffect(() => {
     const fetchMedication = async () => {
       try {
-        const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/medicalsupplies/${id}`
-        );
+        const response = await axios.get(`/api/medicalsupplies/${id}`);
         setMedicationsupplies(response.data);
       } catch (error) {
         console.error("Error fetching medical supplies:", error);
@@ -90,10 +86,7 @@ export default function UpdateMedicalSupplies() {
   return (
     <>
       <div className="py-2">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-md"
-        >
+        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-md">
           <h1 className="text-xl font-bold mb-6">แก้ไขข้อมูลเวชภัณฑ์</h1>
 
           <div className="grid grid-cols-2 gap-4">

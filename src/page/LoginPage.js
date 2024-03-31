@@ -29,7 +29,7 @@ const LoginPage = () => {
     try {
       setLoginLoading(true);
       const response = await axios.post(
-        "https://api-data-medical-room-tu.onrender.com/auth",
+        "/auth",
         {
           username,
           password,
@@ -204,7 +204,7 @@ export default LoginPage;
 //     try {
 //       setLoginLoading(true);
 //       const response = await axios.post(
-//         "https://api-data-medical-room-tu.onrender.com/auth",
+//         "/auth",
 //         { username, password },
 //         {
 //           headers: {

@@ -6,7 +6,7 @@ import { MdAddCircle } from "react-icons/md";
 import { CSVLink } from "react-csv";
 import { FaShieldVirus } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
-import axios from "axios";
+import axios from "../../api/axios";
 
 const DiagnosisPage = () => {
   const [diagnosisdata, setDiagnosisdata] = useState([]);
@@ -19,9 +19,7 @@ const DiagnosisPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/diagnosis`
-        );
+        const response = await axios.get(`/api/diagnosis`);
         setDiagnosisdata(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -54,13 +52,9 @@ const DiagnosisPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(
-        `https://api-data-medical-room-tu.onrender.com/api/diagnosis/${deletePopup.patientId}`
-      );
+      await axios.delete(`/api/diagnosis/${deletePopup.patientId}`);
 
-      const dataRes = await axios.get(
-        `https://api-data-medical-room-tu.onrender.com/api/diagnosis`
-      );
+      const dataRes = await axios.get(`/api/diagnosis`);
       setDiagnosisdata(dataRes.data);
       closeDeletePopup();
       // Refresh the page after successful deletion

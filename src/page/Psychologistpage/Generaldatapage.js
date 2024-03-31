@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios"; // Import Axios
+import axios from "../../api/axios";
 
 const ProfileInfoItem = ({ label, value }) => (
   <div className="flex mb-2">
@@ -18,7 +18,7 @@ export default function Generaldata() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/psypatient/${id}`
+          `/api/psypatient/${id}`
         ); // Use Axios to fetch data
         setGeneral(response.data); // Set fetched data to state
       } catch (error) {

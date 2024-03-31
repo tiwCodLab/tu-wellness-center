@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../utils/AuthProvider";
 
@@ -77,7 +77,7 @@ export default function NewCounselingRecord() {
 
     axios
       .post(
-        "https://api-data-medical-room-tu.onrender.com/api/counseling",
+        "/api/counseling",
         medicalRecord
       )
       .then((response) => {

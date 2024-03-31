@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axios";
 import { useEffect, useState } from "react";
 import { FaHospitalSymbol } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
@@ -8,9 +8,7 @@ const LayoutBarchart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiCount = await axios.get(
-          "https://api-data-medical-room-tu.onrender.com/api/medicalrecord/count/record"
-        );
+        const apiCount = await axios.get("/api/medicalrecord/count/record");
         setCount(apiCount.data);
       } catch (error) {
         console.error("Error fetching data:", error);

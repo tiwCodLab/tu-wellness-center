@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../../api/axios";
 import { CSVLink } from "react-csv";
 import { FaUserInjured } from "react-icons/fa";
 import { FaTrashCan } from "react-icons/fa6";
@@ -43,15 +43,12 @@ export default function PatientPage() {
     const fetchData = async () => {
       try {
         const authToken = localStorage.getItem("token");
-        const response = await axios.get(
-          `https://api-data-medical-room-tu.onrender.com/api/patient`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${authToken}`,
-            },
-          }
-        );
+        const response = await axios.get(`/api/patient`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
         setPatientData(response.data);
         setLoading(false);
         setCsv(response.data);
@@ -84,27 +81,21 @@ export default function PatientPage() {
   const handleDelete = async () => {
     try {
       const authToken = localStorage.getItem("token");
-      let res = await axios.delete(
-        `https://api-data-medical-room-tu.onrender.com/api/patient/${deletePopup.patientId}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
+      let res = await axios.delete(`/api/patient/${deletePopup.patientId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
 
       if (res.status === 200) alert("ลบข้อมูลเรียบร้อย");
 
-      const response = await axios.get(
-        `https://api-data-medical-room-tu.onrender.com/api/patient`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
+      const response = await axios.get(`/api/patient`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
       setPatientData(response.data);
       closeDeletePopup();
     } catch (error) {

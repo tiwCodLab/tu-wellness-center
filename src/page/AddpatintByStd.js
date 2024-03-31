@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import FormAddGeneral from "./Nursepage/Form/FormAddGeneral";
 import { TiUserAdd } from "react-icons/ti";
@@ -51,7 +51,7 @@ const Log = () => {
   useEffect(() => {
     // ดึงข้อมูลจาก API สำหรับ diagnosis
     axios
-      .get("https://api-data-medical-room-tu.onrender.com/api/status")
+      .get("/api/status")
       .then((response) => setStatus(response.data))
       .catch((error) =>
         console.error("Error fetching diagnosis options:", error)
@@ -59,7 +59,7 @@ const Log = () => {
 
     // ดึงข้อมูลจาก API สำหรับ nursing activities
     axios
-      .get("https://api-data-medical-room-tu.onrender.com/api/organization")
+      .get("/api/organization")
       .then((response) => setOrganization(response.data))
       .catch((error) =>
         console.error("Error fetching nursing activities options:", error)
@@ -116,16 +116,13 @@ const Log = () => {
     try {
       let finalFormData = { ...formData };
 
-      const response = await fetch(
-        "https://api-data-medical-room-tu.onrender.com/api/status/patient",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(finalFormData),
-        }
-      );
+      const response = await fetch("/api/status/patient", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(finalFormData),
+      });
 
       if (response.status === 409) {
         // Handle 409 Conflict (Duplicate Data) - Show pop-up or notification
