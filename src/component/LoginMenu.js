@@ -98,6 +98,9 @@ export default function LoginMenu() {
                 <NavLink to="/addpatients" className={commonLinkClass}>
                   <FaUserPlus className="mr-2" /> เพิ่มข้อมูลผู้ป่วย
                 </NavLink>
+                <NavLink to="/report" className={commonLinkClass}>
+                  <FaChartBar className="mr-2" /> รายงานข้อมูล
+                </NavLink>
               </li>
             )}
 

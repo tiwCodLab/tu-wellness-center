@@ -101,6 +101,8 @@ import UpdateProfilePatientSearchPage, {
 import Generalpage, {
   LoadGeneralByPatientPsy,
 } from "./page/Psychologistpage/GeneralPage";
+import Barcartpsy from "./page/Psychologistpage/Barchart/Barcartpsy";
+import LayoutBarchartPsy from "./layout/LayoutBarchatPsy";
 
 function RouterApp() {
   // const fetchPrivate = useFetchPrivate();
@@ -328,6 +330,10 @@ function RouterApp() {
           </Route>
           <Route path="addpatients" element={<MainLayout />}>
             <Route index element={<AddpatientPage />} />
+          </Route>
+
+          <Route path="report" element={<LayoutBarchartPsy />}>
+            <Route index element={<Barcartpsy />} />
           </Route>
         </Route>
 

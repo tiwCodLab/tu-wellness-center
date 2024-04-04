@@ -101,7 +101,7 @@ const BarChartdiagnosis = () => {
 
         //คณะ
 
-        setChartDataMedication(chartDataMedications);
+        setChartDataMedication(chartDataMedications.slice(0, 10));
         setChartData(chartData.slice(0, 10));
         setChartDataActivity(chartDataActivity.slice(0, 10));
         setChartDataOrganization(chartDataOrganization.slice(0, 10));
@@ -145,13 +145,14 @@ const BarChartdiagnosis = () => {
 
   const CsvMedical = chartDataMedication.sort((a, b) => b.count - a.count);
 
-  const startDateLabel = dateRange.start
-    ? `${dateRange.start.getDate()}/${
-        dateRange.start.getMonth() + 1
-      }/${dateRange.start.getFullYear()}-${dateRange.end.getDate()}/${
-        dateRange.end.getMonth() + 1
-      }/${dateRange.end.getFullYear()}`
-    : "";
+  const startDateLabel =
+    dateRange.start && dateRange.end
+      ? `${dateRange.start.getDate()}/${
+          dateRange.start.getMonth() + 1
+        }/${dateRange.start.getFullYear()}-${dateRange.end.getDate()}/${
+          dateRange.end.getMonth() + 1
+        }/${dateRange.end.getFullYear()}`
+      : "";
 
   const headers = [
     {
