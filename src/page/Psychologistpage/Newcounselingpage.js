@@ -76,10 +76,7 @@ export default function NewCounselingRecord() {
     event.preventDefault();
 
     axios
-      .post(
-        "/api/counseling",
-        medicalRecord
-      )
+      .post("/api/counseling", medicalRecord)
       .then((response) => {
         console.log("Response:", response.data);
         // ทำสิ่งที่ต้องการหลังจากได้รับการตอบกลับจากเซิร์ฟเวอร์
@@ -280,25 +277,100 @@ export default function NewCounselingRecord() {
 
           <label className="block mb-4 mt-4">
             <span className="text-gray-700 ">แบบคัดกรองโรคซึมเศร้า (2Q)</span>
-            <p className="text-sm ml-4">
-              1. ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกหดหู่ เศร้า
-              หรือท้อแท้สิ้นหวังหรือไม่
-            </p>
-            <p className="text-sm ml-4">
-              2. ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกเบื่อ
-              ทำอะไรก็ไม่เพลิดเพลินหรือไม่
-            </p>
-            <p className="text-sm ml-4">(ถ้ามีให้ระบุว่ามีข้อใหน)</p>
-            <input
-              type="text"
-              name="form_2q"
-              value={medicalRecord.form_2q}
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
+            <div className="ml-4 ">
+              <div className="mb-1">
+                <input
+                  type="radio"
+                  id="form_2q_yes"
+                  name="form_2q"
+                  value="ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกหดหู่ เศร้า
+                  หรือท้อแท้สิ้นหวัง"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }}
+                />
+                <label htmlFor="form_2q_yes" className="ml-4">
+                  ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกหดหู่ เศร้า
+                  หรือท้อแท้สิ้นหวัง
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="form_2q_no"
+                  name="form_2q"
+                  value="ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกเบื่อ
+                  ทำอะไรก็ไม่เพลิดเพลิน"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_2q_no" className="ml-4">
+                  ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกเบื่อ
+                  ทำอะไรก็ไม่เพลิดเพลิน
+                </label>
+              </div>
+            </div>
           </label>
 
           <label className="block mb-4 mt-4">
+            <span className="text-gray-700 ">แบบคัดกรองโรคซึมเศร้า (9Q)</span>
+            <div className="ml-4 ">
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_9q_1"
+                  name="form_9q"
+                  value="ไม่มีอาการของโรคซึมเศร้าหรือมีอาการของโรคซึมเศร้าในระดับน้อยมาก"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }}
+                />
+                <label htmlFor="form_9q_1" className="ml-4">
+                  ไม่มีอาการของโรคซึมเศร้าหรือมีอาการของโรคซึมเศร้าในระดับน้อยมาก
+                </label>
+              </div>
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_9q_2"
+                  name="form_9q"
+                  value="มีอาการของโรคซึมเศร้า ระดับน้อย"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_9q_2" className="ml-4">
+                  มีอาการของโรคซึมเศร้า ระดับน้อย
+                </label>
+              </div>
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_9q_3"
+                  name="form_9q"
+                  value="มีอาการของโรคซึมเศร้า ระดับปานกลาง"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_9q_3" className="ml-4">
+                  มีอาการของโรคซึมเศร้า ระดับปานกลาง
+                </label>
+              </div>
+
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_9q_4"
+                  name="form_9q"
+                  value="มีอาการของโรคซึมเศร้า ระดับรุนแรง"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_9q_3" className="ml-4">
+                  มีอาการของโรคซึมเศร้า ระดับรุนแรง
+                </label>
+              </div>
+            </div>
+          </label>
+
+          {/* <label className="block mb-4 mt-4">
             <span className="text-gray-700 ">แบบคัดกรองโรคซึมเศร้า (9Q)</span>
             <p className="text-sm ml-4">
               {"<"} 7
@@ -325,95 +397,171 @@ export default function NewCounselingRecord() {
               onChange={handleChange}
               className="mt-1 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
-          </label>
+          </label> */}
 
           <label className="block mb-4 mt-4">
             <span className="text-gray-700 ">แบบคัดกรองการฆ่าตัวตาย (8Q)</span>
-            <p className="text-sm ml-4">
-              0<span className="ml-10">ไม่มีแนวโน้มฆ่าตัวตายในปัจจุบัน</span>
-            </p>
-            <p className="text-sm ml-4">
-              1 - 8
-              <span className="ml-6">
-                มีแนวโน้นฆ่าตัวตายในปัจจุัน ระดับน้อย
-              </span>
-            </p>
-            <p className="text-sm ml-4">
-              9 - 16
-              <span className="ml-4">
-                มีแนวโน้มฆ่าตัวตายในปัจจุบัน ระดับปานกลาง
-              </span>
-            </p>
-            <p className="text-sm ml-4">
-              {">"} 16
-              <span className="ml-6">
-                มีแนวโน้มฆ่าตัวตายในปัจจุบัน ระดับรุนแรง
-              </span>
-            </p>
-            <input
-              type="text"
-              name="form_8q"
-              value={medicalRecord.form_8q}
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
+            <div className="ml-4 ">
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_8q_1"
+                  name="form_8q"
+                  value="ไม่มีแนวโน้มฆ่าตัวตายในปัจจุบัน"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }}
+                />
+                <label htmlFor="form_8q_1" className="ml-4">
+                  ไม่มีแนวโน้มฆ่าตัวตายในปัจจุบัน
+                </label>
+              </div>
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_8q_2"
+                  name="form_8q"
+                  value="มีแนวโน้นฆ่าตัวตายในปัจจุัน ระดับน้อย"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_8q_2" className="ml-4">
+                  มีแนวโน้นฆ่าตัวตายในปัจจุัน ระดับน้อย
+                </label>
+              </div>
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_8q_3"
+                  name="form_8q"
+                  value="มีแนวโน้มฆ่าตัวตายในปัจจุบัน ระดับปานกลาง"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_8q_3" className="ml-4">
+                  มีแนวโน้มฆ่าตัวตายในปัจจุบัน ระดับปานกลาง
+                </label>
+              </div>
+
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_8q_4"
+                  name="form_8q"
+                  value="มีแนวโน้มฆ่าตัวตายในปัจจุบัน ระดับรุนแรง"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_8q_4" className="ml-4">
+                  มีแนวโน้มฆ่าตัวตายในปัจจุบัน ระดับรุนแรง
+                </label>
+              </div>
+            </div>
           </label>
 
           <label className="block mb-4 mt-4">
             <span className="text-gray-700 ">แบบประเมินความเครียด (ST-5)</span>
-            <p className="text-sm ml-4">
-              0 - 4 <span className="ml-5">ความเครียด ระดับน้อย</span>
-            </p>
-            <p className="text-sm ml-4">
-              5 - 7<span className="ml-6">ความเครียด ระดับปานกลาง</span>
-            </p>
-            <p className="text-sm ml-4">
-              8 - 9<span className="ml-6">ความเครียด ระดับมาก</span>
-            </p>
-            <p className="text-sm ml-4">
-              10 - 15
-              <span className="ml-2">ความเครียด ระดับมากที่สุด</span>
-            </p>
-            <input
-              type="text"
-              name="form_st_5"
-              value={medicalRecord.form_st_5}
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
+            <div className="ml-4 ">
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_st_5_1"
+                  name="form_st_5"
+                  value="ความเครียด ระดับน้อย"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }}
+                />
+                <label htmlFor="form_8q_1" className="ml-4">
+                  ความเครียด ระดับน้อย
+                </label>
+              </div>
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_st_5_2"
+                  name="form_st_5"
+                  value="ความเครียด ระดับปานกลาง"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_st_5_2" className="ml-4">
+                  ความเครียด ระดับปานกลาง
+                </label>
+              </div>
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_st_5_3"
+                  name="form_st_5"
+                  value="ความเครียด ระดับมาก"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_st_5_3" className="ml-4">
+                  ความเครียด ระดับมาก
+                </label>
+              </div>
+
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_st_5_4"
+                  name="form_st_5"
+                  value="ความเครียด ระดับมากที่สุด"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_st_5_4" className="ml-4">
+                  ความเครียด ระดับมากที่สุด
+                </label>
+              </div>
+            </div>
           </label>
 
           <label className="block mb-4 mt-4">
             <span className="text-gray-700 ">แบบวัดความวิตกกังวล (GAD-7)</span>
-            <p className="text-sm ml-4">
-              0 - 9{" "}
-              <span className="ml-8">
-                หมายถึง ท่านมีความวิตกกังวลในระดับเฉลี่ย
-                หรือสูงกว่าเกณฑ์เฉลี่ยเพียงเล็กน้อย
-              </span>
-            </p>
-            <p className="text-sm ml-3">
-              10 - 14
-              <span className="ml-6">
-                หมายถึง ท่านมีความวิตกกังวลในระดับปานกลาง
-                และควรทำแบบประเมินซ้ำในอีก 1-2 สัปดาห์
-              </span>
-            </p>
-            <p className="text-sm ml-4">
-              15 - 21
-              <span className="ml-4">
-                หมายถึง ท่านมีความวิตกกังวลในระดับสูง
-                ควรได้รับการประเมินจากผู้เชี่ยวชาญ
-              </span>
-            </p>
-
-            <input
-              type="text"
-              name="form_gad"
-              value={medicalRecord.form_gad}
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
+            <div className="ml-4 ">
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_gad_1"
+                  name="form_gad"
+                  value="มีความวิตกกังวลในระดับเฉลี่ย หรือสูงกว่าเกณฑ์เฉลี่ยเพียงเล็กน้อย"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }}
+                />
+                <label htmlFor="fform_8q_1" className="ml-4">
+                  มีความวิตกกังวลในระดับเฉลี่ย
+                  หรือสูงกว่าเกณฑ์เฉลี่ยเพียงเล็กน้อย
+                </label>
+              </div>
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_gad_2"
+                  name="form_gad"
+                  value="มีความวิตกกังวลในระดับปานกลาง และควรทำแบบประเมินซ้ำในอีก 1-2 สัปดาห์"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_gad_2" className="ml-4">
+                  มีความวิตกกังวลในระดับปานกลาง และควรทำแบบประเมินซ้ำในอีก 1-2
+                  สัปดาห์
+                </label>
+              </div>
+              <div className="mb-2">
+                <input
+                  type="radio"
+                  id="form_gad_3"
+                  name="form_gad"
+                  value="มีความวิตกกังวลในระดับสูง ควรได้รับการประเมินจากผู้เชี่ยวชาญ"
+                  onChange={handleChange}
+                  style={{ transform: "scale(1.5)" }} // เพิ่มขนาดของ radio button โดยการขยายขนาด
+                />
+                <label htmlFor="form_gad_3" className="ml-4">
+                  มีความวิตกกังวลในระดับสูง ควรได้รับการประเมินจากผู้เชี่ยวชาญ
+                </label>
+              </div>
+            </div>
           </label>
 
           <div className="block mt-4">

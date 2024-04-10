@@ -2304,22 +2304,93 @@ const FormCheckList = ({
                   แบบคัดกรองโรคซึมเศร้า (2Q)
                 </span>
 
-                <select
-                  name="form_2q"
-                  value={medicalRecord.form_2q}
-                  onChange={(e) => handleInputChange("form_2q", e.target.value)}
-                  className="mt-2 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                >
-                  <option value="">โปรดเลือก</option>
-                  <option value="ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกหดหู่ เศร้า หรือท้อแท้สิ้นหวัง">
-                    ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกหดหู่ เศร้า
-                    หรือท้อแท้สิ้นหวัง
-                  </option>
-                  <option value="ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกเบื่อ ทำอะไรก็ไม่เพลิดเพลิน">
-                    ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกเบื่อ
-                    ทำอะไรก็ไม่เพลิดเพลิน
-                  </option>
-                </select>
+                <div className="flex mb-2 bg-white shadow-slate-50 rounded-md pt-3 mt-2">
+                  <div className="w-1/2 pl-14">
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
+                      1. ใน 2 สัปดาห์ที่ผ่านมารวมวันนี้ ท่านรู้สึกหดหู่ เศร้า
+                      หรือท้อแท้สิ้นหวังหรือไม่
+                    </label>
+                  </div>
+                  <div className="w-1/2 pl-2">
+                    <div className="flex items-center justify-center">
+                      <input
+                        type="radio"
+                        id="form_2q_1_no"
+                        name="form_2q_1"
+                        value="ใช่"
+                        className="form-radio h-5 w-5 text-indigo-600"
+                        checked={medicalRecord.form_2q_1 === "ใช่"}
+                        onChange={(e) =>
+                          handleInputChange("form_2q_1", e.target.value)
+                        }
+                      />
+                      <label htmlFor="form_2q_1_no" className="ml-2">
+                        ใช่
+                      </label>
+                      <input
+                        type="radio"
+                        id="form_2q_1_no"
+                        name="form_2q_1"
+                        value="ไม่ใช่"
+                        className="form-radio h-5 w-5 text-indigo-600 ml-4"
+                        checked={medicalRecord.form_2q_1 === "ไม่ใช่"}
+                        onChange={(e) =>
+                          handleInputChange("form_2q_1", e.target.value)
+                        }
+                      />
+                      <label htmlFor="form_2q_1_no" className="ml-2">
+                        ไม่ใช่
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex bg-white shadow-slate-50 rounded-md pt-3 ">
+                  <div className="w-1/2 pl-14">
+                    <label
+                      className="block mb-2 text-base"
+                      style={{ fontSize: "15px" }}
+                    >
+                      2. ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ท่านรู้สึกเบื่อ
+                      ทำอะไรก็ไม่เพลิดเพลินหรือไม่
+                    </label>
+                  </div>
+                  <div className="w-1/2 pl-2">
+                    <div className="flex items-center justify-center">
+                      <input
+                        type="radio"
+                        id="form_2q_2_no"
+                        name="form_2q_2"
+                        value="ใช่"
+                        className="form-radio h-5 w-5 text-indigo-600"
+                        checked={medicalRecord.form_2q_2 === "ใช่"}
+                        onChange={(e) =>
+                          handleInputChange("form_2q_2", e.target.value)
+                        }
+                      />
+                      <label htmlFor="form_2q_2_no" className="ml-2">
+                        ใช่
+                      </label>
+                      <input
+                        type="radio"
+                        id="form_2q_2_no"
+                        name="form_2q_2"
+                        value="ไม่ใช่"
+                        className="form-radio h-5 w-5 text-indigo-600 ml-4"
+                        checked={medicalRecord.form_2q_2 === "ไม่ใช่"}
+                        onChange={(e) =>
+                          handleInputChange("form_2q_2", e.target.value)
+                        }
+                      />
+                      <label htmlFor="form_2q_2_no" className="ml-2">
+                        ไม่ใช่
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </label>
             </div>
           </div>

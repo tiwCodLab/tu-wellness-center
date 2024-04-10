@@ -83,17 +83,14 @@ export default function AddpatientPage() {
       let finalFormData = { ...formData };
       const authToken = localStorage.getItem("token");
 
-      const response = await fetch(
-        "/api/patient",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-          body: JSON.stringify(finalFormData),
-        }
-      );
+      const response = await fetch("/api/patient", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify(finalFormData),
+      });
 
       if (response.status === 409) {
         // Handle 409 Conflict (Duplicate Data) - Show pop-up or notification
@@ -120,7 +117,9 @@ export default function AddpatientPage() {
         patient_fname: "",
         patient_lname: "",
         status: "",
+        otherStatus: "",
         organizations: "",
+        otherorganizations: "",
         age: "",
         email: "",
         phonenumber: "",
@@ -219,8 +218,23 @@ export default function AddpatientPage() {
                           {option.status_name}
                         </option>
                       ))}
+                      <option value="อื่น">อื่น ๆ</option>
                     </select>
                   </label>
+                  {formData.status === "อื่น" && (
+                    <label className="block mb-2">
+                      ระบุ
+                      <input
+                        type="text"
+                        value={formData.otherStatus}
+                        onChange={(e) =>
+                          handleInputChange("otherStatus", e.target.value)
+                        }
+                        className="border p-2 w-full mt-2 rounded-md"
+                        required
+                      />
+                    </label>
+                  )}
 
                   <label className="block mb-2">
                     คณะ/หน่วยงาน *
@@ -243,7 +257,25 @@ export default function AddpatientPage() {
                           {option.organizations_name}
                         </option>
                       ))}
+                      <option value="อื่น">อื่น ๆ</option>
                     </select>
+                    {formData.organizations === "อื่น" && (
+                      <label className="block mb-2">
+                        ระบุ
+                        <input
+                          type="text"
+                          value={formData.otherorganizations}
+                          onChange={(e) =>
+                            handleInputChange(
+                              "otherorganizations",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full mt-2 rounded-md"
+                          required
+                        />
+                      </label>
+                    )}
                   </label>
 
                   <div className="block my-2">
