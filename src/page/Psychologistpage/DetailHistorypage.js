@@ -49,7 +49,12 @@ export default function ViewCounselingById() {
           <h1 className="text-xl font-bold mb-4">
             มหาวิทยาลัยธรรมศาสตร์ ศูนย์ลำปาง
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-1  ml-8 ">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-1  ml-8 ">
+            <div className="mb-4">
+              <div className="mb-2 font-semibold text-sm">ลำดับที่</div>
+              <p className="text-sm ">{viewCounseling.id}</p>
+            </div>
+
             <div className="mb-4">
               <div className="mb-2 font-semibold text-sm">วันที่</div>
               <p className="text-sm">{viewCounseling.visitdate}</p>

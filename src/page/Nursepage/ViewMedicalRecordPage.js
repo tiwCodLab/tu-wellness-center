@@ -48,42 +48,47 @@ export default function ViewMedicalRecordPage() {
         <h2 className="text-xl font-semibold mb-4">
           ห้องพยาบาลมหาวิทยาลัยธรรมศาสตร์ ศูนย์ลำปาง
         </h2>
-        <div className="flex flex-wrap -mx-2 text-sm">
-          <div className="w-full md:w-1/2 px-6 mb-4">
-            <p className="text-gray-800 mb-2">
-              <span className="font-semibold">วันที่</span>
-              <span className="ml-2">{viewMedicalRecord.visitdate}</span>
-            </p>
-            <p className="text-gray-800 mb-2">
-              <span className="font-semibold">รหัสประจำตัว</span>
-              <span className="ml-2">
-                {viewMedicalRecord.patient.student_id}
-              </span>
-            </p>
-            <p className="text-gray-800 mb-2">
-              <span className="font-semibold">ชื่อผู้ป่วย</span>
-              <span className="ml-2">
-                {viewMedicalRecord.patient.patient_fname}{" "}
-                {viewMedicalRecord.patient.patient_lname}
-              </span>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-1  ml-8 ">
+          <div className="mb-4">
+            <div className="mb-2 font-semibold text-sm">ลำดับที่</div>
+            <p className="text-sm ">{viewMedicalRecord.medicalRecord_no}</p>
+          </div>
+
+          <div className="mb-4">
+            <div className="mb-2 font-semibold text-sm">วันที่</div>
+            <p className="text-sm">{viewMedicalRecord.visitdate}</p>
+          </div>
+
+          <div className="mb-4">
+            <div className="mb-2 font-semibold text-sm">รหัสนักศึกษา</div>
+            <p className="text-sm">{viewMedicalRecord.patient.student_id}</p>
+          </div>
+
+          <div className="mb-4">
+            <div className="mb-2 font-semibold text-sm">ชื่อ-นามสกุล</div>
+            <p className="text-sm">
+              {viewMedicalRecord.patient.patient_fname}{" "}
+              {viewMedicalRecord.patient.patient_lname}
             </p>
           </div>
-          <div className="w-full md:w-1/2 px-2 mb-4">
-            <p className="text-gray-800 mb-2">
-              <span className="font-semibold">สถานภาพ</span>{" "}
-              <span>{viewMedicalRecord.patient.status}</span>
-            </p>
-            <p className="text-gray-800 mb-2">
-              <span className="font-semibold">คณะ/หน่วยงาน</span>{" "}
-              <span> {viewMedicalRecord.patient.organizations}</span>
-            </p>
-            <p className="text-gray-800">
-              <span className="font-semibold">อายุ</span>
-              <span className="ml-2">
-                {viewMedicalRecord.patient.birthday
-                  ? calculateAge(viewMedicalRecord.patient.birthday)
-                  : "ไม่ได้ระบุ"}
-              </span>
+
+          <div className="mb-4">
+            <div className="mb-2 font-semibold text-sm">สถานภาพ</div>
+            <p className="text-sm">{viewMedicalRecord.patient.status}</p>
+          </div>
+
+          <div className="mb-4">
+            <div className="mb-2 font-semibold text-sm">คณะ/หน่วยงาน</div>
+            <p className="text-sm">{viewMedicalRecord.patient.organizations}</p>
+          </div>
+
+          <div className="mb-4">
+            <div className="mb-2 font-semibold text-sm">อายุ</div>
+            <p className="text-sm">
+              {viewMedicalRecord.patient.birthday
+                ? calculateAge(viewMedicalRecord.patient.birthday)
+                : "ไม่ได้ระบุ"}
             </p>
           </div>
         </div>
