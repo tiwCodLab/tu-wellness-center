@@ -7,8 +7,8 @@ export default function AddMedicalSuppliesPage() {
     medical_supplies_name: "",
     unit: "",
     price: "",
-    quantity: "",
     properties: "",
+    stock: "",
   });
 
   const navigate = useNavigate();
@@ -105,9 +105,9 @@ export default function AddMedicalSuppliesPage() {
           <div>
             <label className="block text-gray-700 mb-2">จำนวน</label>
             <input
-              type="number"
-              value={formData.quantity}
-              onChange={(e) => handleInputChange("quantity", e.target.value)}
+              type="stock"
+              value={formData.stock}
+              onChange={(e) => handleInputChange("stock", e.target.value)}
               className="w-full p-2 border rounded-md"
             />
           </div>
