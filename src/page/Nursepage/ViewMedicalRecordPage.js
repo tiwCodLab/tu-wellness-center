@@ -38,10 +38,6 @@ export const LoadgetViewMedicalRecord = async ({ params }) => {
 export default function ViewMedicalRecordPage() {
   const viewMedicalRecord = useLoaderData();
 
-  // const handlePrint = () => {
-  //   window.print();
-  // };
-
   return (
     <>
       <div className="bg-white rounded-lg pt-6 pl-6 mt-2">
@@ -550,20 +546,24 @@ export default function ViewMedicalRecordPage() {
                 </tr>
               ))}
             </tbody>
+            <thead className=" text-gray-800">
+              <tr>
+                <th scope="col" className="text-center py-1">
+                  ราคารวมทั้งหมด
+                </th>
+                <th scope="col" className="px-6 py-1 ">
+                  {viewMedicalRecord.total_price_medications} {"บาท"}
+                </th>
+                <th scope="col" className="px-6 py-1"></th>
+                <th scope="col" className="px-6 py-1"></th>
+              </tr>
+            </thead>
           </table>
         </div>
       </div>
 
       <div className="flex justify-between ">
         <GoBack />
-        {/* <div className="mt-4">
-          <button
-           className="bg-teal-500 text-white px-6  py-1 rounded-md hover:bg-blue-700"
-            onClick={handlePrint}
-          >
-            พิมพ์
-          </button>
-        </div> */}
       </div>
     </>
   );

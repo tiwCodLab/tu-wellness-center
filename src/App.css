@@ -280,21 +280,6 @@ button {
   margin-bottom: 0.5rem;
 }
 
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  .print-section,
-  .print-section * {
-    visibility: visible;
-  }
-  .print-section {
-    position: fixed;
-    left: 0;
-    top: 0;
-  }
-}
-
 .number {
   font-size: 1rem; /* เลือกขนาดตัวอักษร */
   font-weight: bold; /* เลือกความหนาของตัวอักษร */
