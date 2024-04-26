@@ -115,7 +115,6 @@ const Log = () => {
 
     try {
       let finalFormData = { ...formData };
-
       const response = await fetch("/api/status/patient", {
         method: "POST",
         headers: {

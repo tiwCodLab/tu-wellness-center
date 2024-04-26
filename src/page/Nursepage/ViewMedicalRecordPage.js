@@ -96,9 +96,24 @@ export default function ViewMedicalRecordPage() {
           <table className="text-sm w-4/5 text-left ">
             <thead className="text-xs"></thead>
             <tbody>
+              <tr>
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  อาการที่มารับบริการ
+                </th>
+                <td className="px-6 py-1">
+                  {viewMedicalRecord.chief_complaint}
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  การตรวจร่างกายตามระบบที่สัมพันธ์กับความเจ็บป่วย
+                </th>
+                <td className="px-6 py-1">{viewMedicalRecord.physical_exam}</td>
+              </tr>
+
               {viewMedicalRecord.skin_color && (
                 <>
-                  <h1 className="text-sm font-bold">ระบบทางเดินหายใจ</h1>
+                  <h1 className="text-sm font-bold pt-2">ระบบทางเดินหายใจ</h1>
                   <tr>
                     <th scope="row" className="px-6 text-sm font-normal pt-2">
                       สีผิวหนัง/ปาก/เล็บ
@@ -200,7 +215,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.mouth_and_throat && (
                 <>
-                  <h1 className="text-sm font-bold pt-4">ระบบทางเดินอาหาร</h1>
+                  <h1 className="text-sm font-bold pt-2">ระบบทางเดินอาหาร</h1>
                   <tr>
                     <th scope="row" className="px-6 text-sm font-normal pt-2">
                       ช่องปากและลำคอ
@@ -259,7 +274,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.skin && (
                 <>
-                  <h1 className="text-sm font-bold pt-4">การตรวจร่างกาย</h1>
+                  <h1 className="text-sm font-bold pt-2">การตรวจร่างกาย</h1>
                   <tr>
                     <th scope="row" className="px-6 text-sm font-normal pt-2">
                       ผิวหนัง
@@ -456,21 +471,6 @@ export default function ViewMedicalRecordPage() {
 
               <tr>
                 <th scope="row" className="px-6 pt-2 text-sm font-normal ">
-                  อาการที่มารับบริการ
-                </th>
-                <td className="px-6 py-1">
-                  {viewMedicalRecord.chief_complaint}
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
-                  การตรวจร่างกายตามระบบที่สัมพันธ์กับความเจ็บป่วย
-                </th>
-                <td className="px-6 py-1">{viewMedicalRecord.physical_exam}</td>
-              </tr>
-
-              <tr>
-                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
                   การวินิจฉัย
                 </th>
                 <td className="px-6 py-1">{viewMedicalRecord.diagnosis}</td>
@@ -484,21 +484,26 @@ export default function ViewMedicalRecordPage() {
                   {viewMedicalRecord.nursing_activities}
                 </td>
               </tr>
-              {/* <tr>
-                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
-                  การจ่ายยา
+
+              <tr>
+                <th scope="row" className="px-6 pt-2 text-sm font-normal">
+                  การให้คำแนะนำ
                 </th>
-                <td className="px-6 py-2">
-                  {viewMedicalRecord.medications_dis.map(
-                    (medication, index) => (
-                      <span key={index}>
-                        {medication.medical_name} {medication.qty} <br />
-                        {"     "}
-                      </span>
-                    )
+                <td className="px-6 py-1">
+                  {viewMedicalRecord.recommendations === "อื่น ๆ" ? (
+                    <span>{viewMedicalRecord.otherRecommendations}</span>
+                  ) : (
+                    <span>{viewMedicalRecord.recommendations}</span>
                   )}
                 </td>
-              </tr> */}
+              </tr>
+
+              <tr>
+                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+                  การส่งต่อ
+                </th>
+                <td className="px-6 py-1"> {viewMedicalRecord.forwarding}</td>
+              </tr>
 
               <tr>
                 <th scope="row" className="px-6 pt-2 text-sm font-normal ">

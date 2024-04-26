@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "../../api/axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "../../utils/AuthProvider";
+// import { useAuth } from "../../utils/AuthProvider";
 
 const Dropdown = ({ options, selectedValue, onChange }) => {
   return (
@@ -23,10 +23,11 @@ const Dropdown = ({ options, selectedValue, onChange }) => {
 };
 
 export default function NewCounselingRecord() {
-  let auth = useAuth();
+  // let auth = useAuth();
   const { id } = useParams();
   const initialPatientID = id ? id : "";
-  let doctorName = auth.user.username;
+  // let doctorName = auth.user.username;
+
   const navigate = useNavigate();
 
   const currentDate = new Date();
@@ -46,7 +47,7 @@ export default function NewCounselingRecord() {
     visittime: formattedTime, // เวลาปัจจุบัน
     visitdate: formattedDate,
     // visitdate: new Date().toLocaleDateString("en-GB").split("/").join("-"),
-    psychologist: doctorName,
+    psychologist: "",
     format: "",
     firstproblems: "",
     problems: "",
@@ -606,6 +607,17 @@ export default function NewCounselingRecord() {
               value={medicalRecord.remarks}
               onChange={handleChange}
               className="mt-1 p-2 h-40 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </label>
+
+          <label className="block mb-4 mt-4">
+            <span className="text-gray-700 ">ชื่อนักจิตวิทยาที่ให้บริการ</span>
+            <input
+              type="text"
+              name="psychologist"
+              value={medicalRecord.psychologist}
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </label>
         </div>

@@ -41,6 +41,9 @@ export default function NewmedicalRecord() {
     diagnosis: "",
     nursing_activities: "",
     recommendations: "",
+    otherRecommendations: "",
+    forwarding: "",
+
     skin_color: "",
     skin_color_detail: "",
     chest_size: "",
@@ -106,7 +109,6 @@ export default function NewmedicalRecord() {
     form_2q: "",
     medications: [{ medication_name: "", quantity: "" }],
     supplies: [{ medical_supplies_name: "", quantity: "" }],
-    forwarding: "",
     remarks: "",
   });
 
@@ -352,7 +354,7 @@ export default function NewmedicalRecord() {
         <div className="mt-4">
           <label className="block mb-4 ">
             <span className="text-gray-700">การวินิจฉัย</span>
-            <div className="">
+            <div>
               <Select
                 value={diagnosisOptions.find(
                   (option) => option.diagnosis_name === medicalRecord.diagnosis
@@ -394,15 +396,59 @@ export default function NewmedicalRecord() {
           </label>
 
           <label className="block mb-4">
-            <span className="text-gray-700">การให้คำแนะนำ/แผนการดูแลรักษา</span>
-            <textarea
-              type="text"
-              name="recommendations"
+            <span className="text-gray-700">การให้คำแนะนำ</span>
+
+            <select
               value={medicalRecord.recommendations}
-              onChange={handleChange}
-              className="mt-1 p-2 h-20 block w-full rounded-md shadow-sm focus:border-black focus:ring focus:ring-indigo-100 focus:ring-opacity-10 focus:outline-none border border-gray-500"
-            />
+              onChange={(e) =>
+                handleInputChange("recommendations", e.target.value)
+              }
+              className="border border-gray-500 focus:outline-none mt-1 p-2 block w-full rounded-md shadow-sm"
+            >
+              <option value="">--เลือก--</option>
+              <option value="ให้คำแนะนำการปฏิบัติตัวที่เหมาะสมกับโรคและอาการ">
+                ให้คำแนะนำการปฏิบัติตัวที่เหมาะสมกับโรคและอาการ
+              </option>
+              <option value="ให้คำแนะนำการใช้ยาที่ถูกต้อง">
+                ให้คำแนะนำการใช้ยาที่ถูกต้อง
+              </option>
+              <option value="ให้คำแนะนำการดูแลแผล">ให้คำแนะนำการดูแลแผล</option>
+              <option value="ให้คำแนะนำการสังเกตอาการผิดปกติ">
+                ให้คำแนะนำการสังเกตอาการผิดปกติ
+              </option>
+              <option value="ให้คำแนะนำการไปตรวจรักษาต่อที่โรงพยาบาล">
+                ให้คำแนะนำการไปตรวจรักษาต่อที่โรงพยาบาล
+              </option>
+              <option value="อื่น ๆ">อื่น ๆ</option>
+            </select>
+            {medicalRecord.recommendations === "อื่น ๆ" && (
+              <input
+                type="text"
+                value={medicalRecord.otherRecommendations}
+                onChange={(e) =>
+                  handleInputChange("otherRecommendations", e.target.value)
+                }
+                placeholder="โปรดระบุ"
+                className="border border-gray-500 focus:outline-none mt-1 p-2 block w-full rounded-md shadow-sm"
+              />
+            )}
           </label>
+
+          <label className="block mb-4">
+            <span className="text-gray-700">การส่งต่อ</span>
+            <select
+              value={medicalRecord.forwarding}
+              onChange={(e) => handleInputChange("forwarding", e.target.value)}
+              className="border border-gray-500 focus:outline-none mt-1 p-2 block w-full rounded-md shadow-sm"
+            >
+              <option value="">--เลือก--</option>
+              <option value="โรงพยาบาลห้างฉัตร">โรงพยาบาลห้างฉัตร</option>
+              <option value="โรงพยาบาลลำปาง">โรงพยาบาลลำปาง</option>
+              <option value="ไม่มีการส่งต่อ">ไม่มีการส่งต่อ</option>
+              {/* Add additional options if necessary */}
+            </select>
+          </label>
+
           <label className="block mb-4">
             <span className="text-gray-700">การจ่ายยา</span>
             {medicalRecord.medications.map((medication, index) => (
@@ -523,16 +569,15 @@ export default function NewmedicalRecord() {
           <label className="block mb-4">
             <span className="text-gray-700">การส่งต่อ</span>
             <select
-              name="forwarding"
               value={medicalRecord.forwarding}
-              onChange={handleChange}
+              onChange={(e) => handleInputChange("forwarding", e.target.value)}
               className="border border-gray-500 focus:outline-none mt-1 p-2 block w-full rounded-md shadow-sm"
             >
               <option value="">--เลือก--</option>
-              <option value="hospital">โรงพยาบาลห้างฉัตร</option>
-              <option value="clinic">โรงพยาบาลลำปาง</option>
+              <option value="โรงพยาบาลห้างฉัตร">โรงพยาบาลห้างฉัตร</option>
+              <option value="โรงพยาบาลลำปาง">โรงพยาบาลลำปาง</option>
               <option value="ไม่มีการส่งต่อ">ไม่มีการส่งต่อ</option>
-              {/* เพิ่มตัวเลือกเพิ่มเติมตามความเหมาะสม */}
+              {/* Add additional options if necessary */}
             </select>
           </label>
 

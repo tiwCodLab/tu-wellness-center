@@ -407,7 +407,7 @@ const FormCheckList = ({
                           className="block mb-2 text-base"
                           style={{ fontSize: "15px" }}
                         >
-                          การยายตัวของทรวงอก
+                          การขยายตัวของทรวงอก
                         </label>
                       </div>
                       <div className="w-1/2 pl-2">
