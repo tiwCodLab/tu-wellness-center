@@ -369,3 +369,23 @@ button {
     font-size: 14px;
   }
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-section,
+  .print-section * {
+    visibility: visible;
+  }
+  .print-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  /* ตั้งค่าการแบ่งหน้า */
+  .page-break {
+    page-break-before: always;
+  }
+}

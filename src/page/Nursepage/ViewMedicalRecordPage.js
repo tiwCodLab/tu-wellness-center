@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import GoBack from "../../component/GoBack";
 import axios from "../../api/axios";
+import { FaPrint } from "react-icons/fa";
 
 function calculateAge(birthday) {
   const today = new Date();
@@ -38,18 +39,24 @@ export const LoadgetViewMedicalRecord = async ({ params }) => {
 export default function ViewMedicalRecordPage() {
   const viewMedicalRecord = useLoaderData();
 
+  const printPage = () => {
+    window.print();
+  };
+
   return (
     <>
-      <div className="bg-white rounded-lg pt-6 pl-6 mt-2">
-        <h2 className="text-xl font-semibold mb-4">
+      {/* <div className="bg-white rounded-lg pt-6 pl-6 mt-2"></div> */}
+
+      <div className="bg-white pt-4 pl-8 mt-1 rounded-md print-section">
+        <h2 className="text-xl font-semibold mb-4 ">
           ห้องพยาบาลมหาวิทยาลัยธรรมศาสตร์ ศูนย์ลำปาง
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-1  ml-8 ">
-          <div className="mb-4">
-            <div className="mb-2 font-semibold text-sm">ลำดับที่</div>
-            <p className="text-sm ">{viewMedicalRecord.medicalRecord_no}</p>
-          </div>
+        <div className="grid grid-cols-4 md:grid-cols-3 gap-1  ml-8 ">
+          {/* <div className="mb-4">
+              <div className="mb-2 font-semibold text-sm">ลำดับที่</div>
+              <p className="text-sm ">{viewMedicalRecord.medicalRecord_no}</p>
+            </div> */}
 
           <div className="mb-4">
             <div className="mb-2 font-semibold text-sm">วันที่</div>
@@ -88,9 +95,6 @@ export default function ViewMedicalRecordPage() {
             </p>
           </div>
         </div>
-      </div>
-
-      <div className="bg-white pt-4 pl-8 mt-1 rounded-md">
         <h1 className="text-xl font-bold mt-4 mb-2">รายละเอียดการรักษา</h1>
         <div className="relative overflow-x-auto px-4">
           <table className="text-sm w-4/5 text-left ">
@@ -104,18 +108,20 @@ export default function ViewMedicalRecordPage() {
                   {viewMedicalRecord.chief_complaint}
                 </td>
               </tr>
-              <tr>
-                <th scope="row" className="px-6 pt-2 text-sm font-normal ">
+              {/* <tr>
+                <th scope="row" className="px-6 pt-2 text-sm font-semibold">
                   การตรวจร่างกายตามระบบที่สัมพันธ์กับความเจ็บป่วย
                 </th>
                 <td className="px-6 py-1">{viewMedicalRecord.physical_exam}</td>
-              </tr>
+              </tr> */}
 
               {viewMedicalRecord.skin_color && (
                 <>
-                  <h1 className="text-sm font-bold pt-2">ระบบทางเดินหายใจ</h1>
+                  <h1 className="px-6 text-sm font-bold pt-2">
+                    ระบบทางเดินหายใจ
+                  </h1>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       สีผิวหนัง/ปาก/เล็บ
                     </th>
                     <td className="px-6 py-1">
@@ -127,7 +133,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.chest_size && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     ขนาดและรูปร่างทรวงอก
                   </th>
                   <td className="px-6 py-1">
@@ -138,7 +144,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.breathingRate && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     ลักษณะการหายใจ
                   </th>
                   <td className="px-6 py-1">
@@ -149,7 +155,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.lungTube && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     หลอดลม
                   </th>
                   <td className="px-6 py-1">
@@ -160,7 +166,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.ribCage && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     กระดูกซี่โครง
                   </th>
                   <td className="px-6 py-1">
@@ -171,7 +177,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.chestExpansion && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     การยายตัวของทรวงอก
                   </th>
                   <td className="px-6 py-1">
@@ -182,7 +188,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.abnormalBreathSounds && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     เสียงผิดปกติ
                   </th>
                   <td className="px-6 py-1">
@@ -193,7 +199,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.breathing_sound && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     เสียงหายใจ
                   </th>
                   <td className="px-6 py-1">
@@ -204,7 +210,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.yellow_gland && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     ต่อมน้ำเหลือง
                   </th>
                   <td className="px-6 py-1">
@@ -215,9 +221,11 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.mouth_and_throat && (
                 <>
-                  <h1 className="text-sm font-bold pt-2">ระบบทางเดินอาหาร</h1>
+                  <h1 className="px-6 text-sm font-bold pt-2">
+                    ระบบทางเดินอาหาร
+                  </h1>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ช่องปากและลำคอ
                     </th>
                     <td className="px-6 py-1">
@@ -229,7 +237,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.abdominal_appearance && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     ลักษณะท้อง
                   </th>
                   <td className="px-6 py-1">
@@ -240,7 +248,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.intestinal_movement_sound && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     เสียงลำไส้เคลื่อนไหว
                   </th>
                   <td className="px-6 py-1">
@@ -252,7 +260,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.abdominal_wall_sound && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     เสียงผนังหน้าท้อง
                   </th>
                   <td className="px-6 py-1">
@@ -263,7 +271,7 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.abdominal_surface && (
                 <tr>
-                  <th scope="row" className="px-6 text-sm font-normal pt-2">
+                  <th scope="row" className="px-10 text-sm font-normal pt-2">
                     หน้าท้องและอวัยวะช่องท้อง
                   </th>
                   <td className="px-6 py-1">
@@ -274,9 +282,11 @@ export default function ViewMedicalRecordPage() {
 
               {viewMedicalRecord.skin && (
                 <>
-                  <h1 className="text-sm font-bold pt-2">การตรวจร่างกาย</h1>
+                  <h1 className="px-6 text-sm font-bold pt-2">
+                    การตรวจร่างกาย
+                  </h1>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ผิวหนัง
                     </th>
                     <td className="px-6 py-1">
@@ -289,7 +299,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.head && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ศีรษะ
                     </th>
                     <td className="px-6 py-1">
@@ -302,7 +312,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.face && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       หน้า
                     </th>
                     <td className="px-6 py-1">
@@ -315,7 +325,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.eyes && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ตา
                     </th>
                     <td className="px-6 py-1">
@@ -328,7 +338,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.mouth && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ช่องปาก
                     </th>
                     <td className="px-6 py-1">
@@ -341,7 +351,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.tongue && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ลิ้น
                     </th>
                     <td className="px-6 py-1">
@@ -354,7 +364,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.throat && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ช่องคอ
                     </th>
                     <td className="px-6 py-1">
@@ -367,7 +377,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.thyroid && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ต่อมน้ำเหลือง
                     </th>
                     <td className="px-6 py-1">
@@ -380,7 +390,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.breasts && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       เต้านม
                     </th>
                     <td className="px-6 py-1">
@@ -393,7 +403,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.chest && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ทรวงอก
                     </th>
                     <td className="px-6 py-1">
@@ -406,7 +416,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.circulatory_system && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ระบบไหวเวียนโลหิต
                     </th>
                     <td className="px-6 py-1">
@@ -419,7 +429,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.abdomen && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ท้อง
                     </th>
                     <td className="px-6 py-1">
@@ -432,7 +442,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.reproductive_system && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ระบบสืบพันธ์
                     </th>
                     <td className="px-6 py-1">
@@ -445,7 +455,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.musculoskeletal_system && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ระบบโครงร่างกล้ามเนื้อ
                     </th>
                     <td className="px-6 py-1">
@@ -459,7 +469,7 @@ export default function ViewMedicalRecordPage() {
               {viewMedicalRecord.nervous_system && (
                 <>
                   <tr>
-                    <th scope="row" className="px-6 text-sm font-normal pt-2">
+                    <th scope="row" className="px-10 text-sm font-normal pt-2">
                       ระบบประสาท
                     </th>
                     <td className="px-6 py-1">
@@ -521,54 +531,59 @@ export default function ViewMedicalRecordPage() {
             </tbody>
           </table>
         </div>
-      </div>
-
-      <div className="bg-white pt-4 pl-8 pr-8 pb-6 mt-1 rounded-md">
-        <h1 className="text-xl font-bold mt-4 mb-2">รายละเอียดการจ่ายยา</h1>
-        <div className="relative overflow-x-auto">
-          <table className="w-full text-sm text-left">
-            <thead className="text-xs text-gray-800">
-              <tr>
-                <th scope="col" className="text-center py-1">
-                  ชื่อยา
-                </th>
-                <th scope="col" className="px-6 py-1 ">
-                  จำนวน
-                </th>
-                <th scope="col" className="px-6 py-1"></th>
-                <th scope="col" className="px-6 py-1"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {viewMedicalRecord.medications_dis.map((medication) => (
-                <tr className="" key={medication._id}>
-                  <td className="py-1 font-medium pl-8 ">
-                    {medication.medical_name}
-                  </td>
-                  <td className="px-8 py-1 ">{medication.qty}</td>
-                  <td className="px-10 py-1"></td>
-                  <td className="px-10 py-1"></td>
+        <div className="bg-white pt-2 pl-8 pr-8 pb-4 mt-1 rounded-md">
+          <h1 className="text-xl font-bold mt-0 mb-2">รายละเอียดการจ่ายยา</h1>
+          <div className="relative overflow-x-auto">
+            <table className="w-full text-sm text-left">
+              <thead className="text-xs text-gray-800">
+                <tr>
+                  <th scope="col" className="text-center py-1">
+                    ชื่อยา
+                  </th>
+                  <th scope="col" className="px-6 py-1 ">
+                    จำนวน
+                  </th>
+                  <th scope="col" className="px-6 py-1"></th>
+                  <th scope="col" className="px-6 py-1"></th>
                 </tr>
-              ))}
-            </tbody>
-            <thead className=" text-gray-800">
-              <tr>
-                <th scope="col" className="text-center py-1">
-                  ราคารวมทั้งหมด
-                </th>
-                <th scope="col" className="px-6 py-1 ">
-                  {viewMedicalRecord.total_price_medications} {"บาท"}
-                </th>
-                <th scope="col" className="px-6 py-1"></th>
-                <th scope="col" className="px-6 py-1"></th>
-              </tr>
-            </thead>
-          </table>
+              </thead>
+              <tbody>
+                {viewMedicalRecord.medications_dis.map((medication) => (
+                  <tr className="" key={medication._id}>
+                    <td className="py-1 font-medium pl-8 ">
+                      {medication.medical_name}
+                    </td>
+                    <td className="px-8 py-1 ">{medication.qty}</td>
+                    <td className="px-10 py-1"></td>
+                    <td className="px-10 py-1"></td>
+                  </tr>
+                ))}
+              </tbody>
+              <thead className=" text-gray-800">
+                <tr>
+                  <th scope="col" className="text-center py-1">
+                    ราคารวมทั้งหมด
+                  </th>
+                  <th scope="col" className="px-6 py-1 ">
+                    {viewMedicalRecord.total_price_medications} {"บาท"}
+                  </th>
+                  <th scope="col" className="px-6 py-1"></th>
+                  <th scope="col" className="px-6 py-1"></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </div>
       </div>
 
       <div className="flex justify-between ">
         <GoBack />
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white rounded mt-2 mr-4"
+          onClick={printPage}
+        >
+          <FaPrint className="m-2 text-xl" /> 
+        </button>
       </div>
     </>
   );

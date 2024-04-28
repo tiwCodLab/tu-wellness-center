@@ -7,7 +7,7 @@ const SidebarLayout = () => {
   return (
     <AuthProvider>
       <div>
-        <div className="flex h-screen font-Sarabun">
+        <div className="flex h-screen font-Sarabun Sidebar">
           <div>
             <aside className="fixed top-0 left-0 z-40 w-60 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-teal-900 text-white shadow-2xl rounded-sm">
               <div className="h-full px-4 py-8 overflow-y-auto">

@@ -104,6 +104,7 @@ import Generalpage, {
 import Barcartpsy from "./page/Psychologistpage/Barchart/Barcartpsy";
 import LayoutBarchartPsy from "./layout/LayoutBarchatPsy";
 
+
 function RouterApp() {
   // const fetchPrivate = useFetchPrivate();
   // const { hasPermission } = usePermission();
@@ -112,6 +113,7 @@ function RouterApp() {
     createRoutesFromElements(
       <Route path="/" element={<SidebarLayout />} errorElement={<NotFound />}>
         <Route path="login" element={<LoginPage />} />
+       
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
         </Route>
