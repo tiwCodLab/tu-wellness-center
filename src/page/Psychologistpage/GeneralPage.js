@@ -15,7 +15,7 @@ function calculateAge(birthday) {
     age--;
   }
 
-  return age;
+  return age+543;
 }
 
 // ฟังก์ชันสำหรับแปลงรูปแบบวันเกิด

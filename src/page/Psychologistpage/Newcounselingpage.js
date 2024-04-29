@@ -201,6 +201,17 @@ export default function NewCounselingRecord() {
           </h3>
         </div>
         <div>
+          <label className="block mb-4 mt-4">
+            <span className="text-gray-700 ">ครั้งที่</span>
+            <input
+              type="text"
+              name="no"
+              value={medicalRecord.no}
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full rounded-md border border-gray-500 shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </label>
+
           <label className="block">
             <span className="text-gray-700 ">รูปแบบการปรึกษา</span>
             {/* Dropdown component */}

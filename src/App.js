@@ -103,7 +103,7 @@ import Generalpage, {
 } from "./page/Psychologistpage/GeneralPage";
 import Barcartpsy from "./page/Psychologistpage/Barchart/Barcartpsy";
 import LayoutBarchartPsy from "./layout/LayoutBarchatPsy";
-
+import AddpatientByPsyPage from "./page/Psychologistpage/AddpatientByPsy";
 
 function RouterApp() {
   // const fetchPrivate = useFetchPrivate();
@@ -113,7 +113,7 @@ function RouterApp() {
     createRoutesFromElements(
       <Route path="/" element={<SidebarLayout />} errorElement={<NotFound />}>
         <Route path="login" element={<LoginPage />} />
-       
+
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
         </Route>
@@ -331,7 +331,7 @@ function RouterApp() {
             <Route index element={<Appointment />} />
           </Route>
           <Route path="addpatients" element={<MainLayout />}>
-            <Route index element={<AddpatientPage />} />
+            <Route index element={<AddpatientByPsyPage />} />
           </Route>
 
           <Route path="report" element={<LayoutBarchartPsy />}>

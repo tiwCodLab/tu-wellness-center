@@ -582,7 +582,7 @@ export default function ViewMedicalRecordPage() {
           className="bg-blue-500 hover:bg-blue-700 text-white rounded mt-2 mr-4"
           onClick={printPage}
         >
-          <FaPrint className="m-2 text-xl" /> 
+          <FaPrint className="m-2 text-xl" />
         </button>
       </div>
     </>

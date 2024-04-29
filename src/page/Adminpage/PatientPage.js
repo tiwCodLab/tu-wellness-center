@@ -23,7 +23,7 @@ function calculateAge(birthday) {
     age--;
   }
 
-  return age;
+  return age+543;
 }
 
 export default function PatientPage() {
