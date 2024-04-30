@@ -115,13 +115,16 @@ const Log = () => {
 
     try {
       let finalFormData = { ...formData };
-      const response = await fetch("/api/status/patient", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(finalFormData),
-      });
+      const response = await fetch(
+        "https://api-data-medical-room-tu.onrender.com/api/status/patient",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(finalFormData),
+        }
+      );
 
       if (response.status === 409) {
         // Handle 409 Conflict (Duplicate Data) - Show pop-up or notification
