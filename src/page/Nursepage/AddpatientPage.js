@@ -83,14 +83,17 @@ export default function AddpatientPage() {
       let finalFormData = { ...formData };
       const authToken = localStorage.getItem("token");
 
-      const response = await fetch("/api/patient", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${authToken}`,
-        },
-        body: JSON.stringify(finalFormData),
-      });
+      const response = await fetch(
+        "https://api-data-medical-room-tu.onrender.com/api/patient",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+          body: JSON.stringify(finalFormData),
+        }
+      );
 
       if (response.status === 409) {
         // Handle 409 Conflict (Duplicate Data) - Show pop-up or notification
