@@ -15,7 +15,7 @@ const ManagementPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true); // เพิ่ม state เพื่อตรวจสอบการโหลดข้อมูล
 
-  const [pageSize] = useState(20);
+  const [pageSize] = useState(30);
 
   useEffect(() => {
     const fetchData = async () => {
