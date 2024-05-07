@@ -136,7 +136,7 @@ const BarChartdiagnosis = () => {
 
   const topmedicalName = chartDataMedication
     .sort((a, b) => b.count - a.count)
-    .slice(0, 5);
+    .slice(0, 10);
   // Display the top 5 diagnoses in the console
 
   //CSV
