@@ -282,14 +282,18 @@ export default function NewmedicalRecord() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // axios.post(
-    //   `/api/counseling`,
-    //   medicalCounseling
-    // );
-
+    const authToken = localStorage.getItem("token");
     axios
-      .post("/api/medicalrecord", medicalRecord)
+      .post(
+        "/api/medicalrecord",
+        medicalRecord, // move medicalRecord to the second parameter
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      )
       .then((response) => {
         // ทำสิ่งที่ต้องการหลังจากได้รับการตอบกลับจากเซิร์ฟเวอร์
         // alert("บันทึกเรียบร้อยแล้ว");
@@ -432,21 +436,6 @@ export default function NewmedicalRecord() {
                 className="border border-gray-500 focus:outline-none mt-1 p-2 block w-full rounded-md shadow-sm"
               />
             )}
-          </label>
-
-          <label className="block mb-4">
-            <span className="text-gray-700">การส่งต่อ</span>
-            <select
-              value={medicalRecord.forwarding}
-              onChange={(e) => handleInputChange("forwarding", e.target.value)}
-              className="border border-gray-500 focus:outline-none mt-1 p-2 block w-full rounded-md shadow-sm"
-            >
-              <option value="">--เลือก--</option>
-              <option value="โรงพยาบาลห้างฉัตร">โรงพยาบาลห้างฉัตร</option>
-              <option value="โรงพยาบาลลำปาง">โรงพยาบาลลำปาง</option>
-              <option value="ไม่มีการส่งต่อ">ไม่มีการส่งต่อ</option>
-              {/* Add additional options if necessary */}
-            </select>
           </label>
 
           <label className="block mb-4">
