@@ -10,6 +10,7 @@ const SearchPatientPage = () => {
   const storedStudentId = localStorage.getItem("studentId") || "";
   const [searchResults, setSearchResults] = useState([]);
   const [studentId, setStudentId] = useState(storedStudentId);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchPatients = async () => {
@@ -19,6 +20,8 @@ const SearchPatientPage = () => {
           setSearchResults([]);
           return;
         }
+
+        setLoading(true); // Set loading to true when fetching data
 
         const authToken = localStorage.getItem("token");
 
@@ -39,12 +42,14 @@ const SearchPatientPage = () => {
 
         // Delay the fetch by 2 seconds
         const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-        await delay(800);
+        await delay(1000);
 
         const data = await response.json();
         setSearchResults(data);
+        setLoading(false); // Set loading to false after fetching data
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false); // Set loading to false in case of error
       }
     };
 
@@ -70,10 +75,6 @@ const SearchPatientPage = () => {
               </div>
             </div>
             <div className="max-w-full overflow-x-auto">
-              {/* <label className="block text-base font-semibold mb-2 text-center">
-                ค้นหาผู้ป่วย
-              </label> */}
-
               <form className="flex items-center max-w-sm mx-auto">
                 <label htmlFor="simple-search" className="sr-only">
                   Search
@@ -92,25 +93,28 @@ const SearchPatientPage = () => {
                   />
                 </div>
               </form>
-              {studentId.trim() !== "" && (
-                <div className="mt-4 bg-white  p-4 rounded-lg">
-                  <table className="w-full table-auto text-sm">
-                    <thead>
-                      <tr className="bg-gray-2 text-xs">
-                        <th className="py-2 px-4 text-black">
-                          รหัสนักศึกษา/รหัสประจำตัว
-                        </th>
-                        <th className="py-2 px-4 text-black">ชื่อ-นามสกุล</th>
-                        <th className="py-2 px-4 text-black">สถานะ</th>
-                        <th className="py-2 px-4 text-black">คณะ/สถาบัน</th>
-                        <th className="py-2 px-4 text-black">
-                          บันทึกเวชระเบียน
-                        </th>
-
-                        <th className="py-2 px-4 text-black">ประวัติ</th>
-                      </tr>
-                    </thead>
-                    {searchResults.length > 0 ? (
+              {loading ? ( // Show loading component while fetching data
+                <div className="mt-4 text-center ">
+                  <Loading />
+                </div>
+              ) : (
+                <div className="mt-4 bg-white p-4 rounded-lg">
+                  {searchResults.length > 0 ? (
+                    <table className="w-full table-auto text-sm">
+                      <thead>
+                        <tr className="bg-gray-2 text-xs">
+                          <th className="py-2 px-4 text-black">
+                            รหัสนักศึกษา/รหัสประจำตัว
+                          </th>
+                          <th className="py-2 px-4 text-black">ชื่อ-นามสกุล</th>
+                          <th className="py-2 px-4 text-black">สถานะ</th>
+                          <th className="py-2 px-4 text-black">คณะ/สถาบัน</th>
+                          <th className="py-2 px-4 text-black">
+                            บันทึกเวชระเบียน
+                          </th>
+                          <th className="py-2 px-4 text-black">ประวัติ</th>
+                        </tr>
+                      </thead>
                       <tbody>
                         {searchResults.slice(0, 10).map((item) => (
                           <tr
@@ -137,7 +141,6 @@ const SearchPatientPage = () => {
                                 <FaFileMedical className="text-white hover:bg-sky-600 text-base bg-sky-500 p-1.5 h-7 w-7 rounded-md" />
                               </Link>
                             </td>
-
                             <td className="px-4 py-2.5 text-center">
                               <Link
                                 to={`${item._id}/history`}
@@ -149,16 +152,12 @@ const SearchPatientPage = () => {
                           </tr>
                         ))}
                       </tbody>
-                    ) : (
-                      <tbody>
-                        <tr>
-                          <td colSpan="7" className="px-4  text-sm text-center">
-                            <Loading />
-                          </td>
-                        </tr>
-                      </tbody>
-                    )}
-                  </table>
+                    </table>
+                  ) : (
+                    <p className="text-sm font-semibold text-center mt-2">
+                      -- ไม่มีรายการที่ค้นหา --
+                    </p>
+                  )}
                 </div>
               )}
             </div>

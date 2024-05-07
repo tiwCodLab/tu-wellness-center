@@ -21,7 +21,13 @@ function calculateAge(birthday) {
 }
 
 export async function getViewMedicalRecord(id) {
-  const res = await axios.get(`/api/medicalrecord/${id}`); // Use axios.get
+  const authToken = localStorage.getItem("token");
+  const res = await axios.get(`/api/medicalrecord/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`,
+    },
+  }); // Use axios.get
   return res.data;
 }
 

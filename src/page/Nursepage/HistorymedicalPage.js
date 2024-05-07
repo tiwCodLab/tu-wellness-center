@@ -16,9 +16,16 @@ export default function HistorymedicalPage() {
   const [pageSize] = useState(14); // Adjust the page size as needed
   useEffect(() => {
     const fetchData = async () => {
+      const authToken = localStorage.getItem("token");
       try {
         const response = await axios.get(
-          `/api/medicalrecord?page=${currentPage}&pageSize=${pageSize}`
+          `/api/medicalrecord?page=${currentPage}&pageSize=${pageSize}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
         );
         setdataHistory(response.data);
       } catch (error) {

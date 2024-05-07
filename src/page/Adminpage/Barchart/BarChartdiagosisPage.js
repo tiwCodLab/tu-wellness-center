@@ -21,8 +21,14 @@ const BarChartdiagnosis = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const authToken = localStorage.getItem("token");
       try {
-        const response = await axios.get("/api/medicalrecord");
+        const response = await axios.get("/api/medicalrecord", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
         const apiData = response.data;
 
         // Filter and format data based on date range

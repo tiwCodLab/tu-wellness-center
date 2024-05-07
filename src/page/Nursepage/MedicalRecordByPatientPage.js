@@ -7,7 +7,13 @@ import axios from "../../api/axios";
 import GoBack from "../../component/GoBack";
 
 export async function getMedicalRecordByPatient(id) {
-  const res = await axios.get(`/api/medicalrecord/patient/${id}`);
+  const authToken = localStorage.getItem("token");
+  const res = await axios.get(`/api/medicalrecord/patient/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
   return res.data;
 }
 
