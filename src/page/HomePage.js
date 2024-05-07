@@ -3,6 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useAuth } from "../utils/AuthProvider";
+import img_tu from "../assets/1.png";
+import img_tu_1 from "../assets/2.jpg";
+import img_tu_2 from "../assets/3.jpg";
 const HomePage = () => {
   const settings = {
     dots: true,
@@ -29,23 +32,24 @@ const HomePage = () => {
             <Slider {...settings}>
               <div>
                 <img
-                  src="https://via.placeholder.com/1200x600?text=Slide+1"
+                  src={img_tu}
                   alt="Slide 1"
-                  className="w-full rounded-lg"
+                  className="rounded-xl w-fit
+                "
                 />
               </div>
               <div>
                 <img
-                  src="https://via.placeholder.com/1200x600?text=Slide+2"
+                  src={img_tu_1}
                   alt="Slide 2"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-xl"
                 />
               </div>
               <div>
                 <img
-                  src="https://via.placeholder.com/1200x600?text=Slide+3"
-                  alt="Slide 3"
-                  className="w-full rounded-lg"
+                  src={img_tu_2}
+                  alt="Slide 1"
+                  className="rounded-xl w-full h-auto"
                 />
               </div>
             </Slider>
@@ -68,23 +72,24 @@ const HomePage = () => {
             <Slider {...settings}>
               <div>
                 <img
-                  src="https://via.placeholder.com/1200x600?text=Slide+1"
+                  src={img_tu}
                   alt="Slide 1"
-                  className="w-full rounded-lg"
+                  className="rounded-xl w-fit
+                "
                 />
               </div>
               <div>
                 <img
-                  src="https://via.placeholder.com/1200x600?text=Slide+2"
+                  src={img_tu_1}
                   alt="Slide 2"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-xl"
                 />
               </div>
               <div>
                 <img
-                  src="https://via.placeholder.com/1200x600?text=Slide+3"
-                  alt="Slide 3"
-                  className="w-full rounded-lg"
+                  src={img_tu_2}
+                  alt="Slide 1"
+                  className="rounded-xl w-full h-auto"
                 />
               </div>
             </Slider>
