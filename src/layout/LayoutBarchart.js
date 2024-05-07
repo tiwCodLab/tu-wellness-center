@@ -6,9 +6,16 @@ import { Outlet } from "react-router-dom";
 const LayoutBarchart = () => {
   const [count, setCount] = useState([]);
   useEffect(() => {
+    const authToken = localStorage.getItem("token");
     const fetchData = async () => {
       try {
-        const apiCount = await axios.get("/api/medicalrecord/count/record");
+        const apiCount = await axios.get("/api/medicalrecord/count/record", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
         setCount(apiCount.data);
       } catch (error) {
         console.error("Error fetching data:", error);
