@@ -105,18 +105,20 @@ function Appointment() {
                 key={item._id}
                 className="border-b bg-white rounded-md shadow-sm border-gray-200 p-4 mt-1"
               >
-                <div className="flex justify-between ">
+                <div className="flex justify-between">
                   <div>
                     <p className="mb-2 text-xm font-bold">
-                      {item.patient.patient_fname} {item.patient.patient_lname}
+                      {item.patient
+                        ? `${item.patient.patient_fname} ${item.patient.patient_lname}`
+                        : "ไม่ระบุ"}
                     </p>
                     <p className="text-sm mb-2">
                       <span className="font-bold">วันที่</span>{" "}
-                      {item.appointment_date}
+                      {item.appointment_date || "ไม่ระบุ"}
                     </p>
                     <p className="text-sm font-medium mb-2">
                       <span className="font-bold">เวลา </span>
-                      {item.appointment_time}
+                      {item.appointment_time || "ไม่ระบุ"}
                     </p>
                   </div>
                   <button
