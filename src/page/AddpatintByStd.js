@@ -116,7 +116,7 @@ const Log = () => {
     try {
       let finalFormData = { ...formData };
       const response = await fetch(
-        "https://api-data-medical-room-tu.onrender.com/api/status/patient",
+        "/api/status/patient",
         {
           method: "POST",
           headers: {

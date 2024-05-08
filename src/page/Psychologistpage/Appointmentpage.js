@@ -12,7 +12,9 @@ function Appointment() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/appoinment");
+        const response = await axios.get(
+          "https://api-data-medical-room-tu.onrender.com/api/appoinment"
+        );
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -56,7 +58,7 @@ function Appointment() {
   };
 
   const filteredData = data.filter((item) => {
-    const itemDate = new Date(item.appointment_date );
+    const itemDate = new Date(item.appointment_date);
     return (
       (!dateRange.start || itemDate >= dateRange.start) &&
       (!dateRange.end || itemDate <= dateRange.end) &&
