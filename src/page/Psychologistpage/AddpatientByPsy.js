@@ -84,17 +84,14 @@ export default function AddpatientByPsyPage() {
       let finalFormData = { ...formData };
       const authToken = localStorage.getItem("token");
 
-      const response = await fetch(
-        "https://api-data-medical-room-tu.onrender.com/api/patient",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-          body: JSON.stringify(finalFormData),
-        }
-      );
+      const response = await fetch("/api/patient", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify(finalFormData),
+      });
 
       if (response.status === 409) {
         // Handle 409 Conflict (Duplicate Data) - Show pop-up or notification
@@ -332,7 +329,7 @@ export default function AddpatientByPsyPage() {
                   </label>
                 </div>
 
-                <div className="flex-1 ml-20">
+                <div className="flex-1 ml-14 bg-gray-200 p-8 rounded-xl">
                   <div>
                     <h3 className="font-semibold text-lg mb-2">
                       ซักประวัติเพิ่มเติม

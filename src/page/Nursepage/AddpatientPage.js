@@ -83,7 +83,7 @@ export default function AddpatientPage() {
       let finalFormData = { ...formData };
       const authToken = localStorage.getItem("token");
 
-      const response = await fetch("https://api-data-medical-room-tu.onrender.com/api/patient", {
+      const response = await fetch("/api/patient", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -279,7 +279,7 @@ export default function AddpatientPage() {
                   </label>
 
                   <div className="block my-2">
-                    <label className="">วันเกิด</label>
+                    <label className="">วันเกิด * ระบุเป็น พ.ศ.</label>
                     <input
                       type="date"
                       value={formData.birthday}
@@ -315,7 +315,7 @@ export default function AddpatientPage() {
                   </label>
                 </div>
 
-                <div className="flex-1 ml-20">
+                <div className="flex-1 ml-14 bg-gray-200 p-8 rounded-xl">
                   <div>
                     <h3 className="font-semibold text-lg mb-2">
                       ซักประวัติเพิ่มเติม
