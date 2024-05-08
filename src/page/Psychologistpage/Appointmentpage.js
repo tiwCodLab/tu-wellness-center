@@ -12,9 +12,7 @@ function Appointment() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://api-data-medical-room-tu.onrender.com/api/appoinment"
-        );
+        const response = await axios.get("/api/appoinment");
         setData(response.data);
         setLoading(false);
       } catch (error) {
