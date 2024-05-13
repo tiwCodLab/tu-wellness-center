@@ -296,7 +296,7 @@ export default function ViewMedicalRecordPage() {
                       ผิวหนัง
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.skin_detail || "ปกติ"}
+                      {viewMedicalRecord.skin || viewMedicalRecord.skin_detail}
                     </td>
                   </tr>
                 </>
@@ -309,7 +309,7 @@ export default function ViewMedicalRecordPage() {
                       ศีรษะ
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.head_detail || "ปกติ"}
+                      {viewMedicalRecord.head_detail || viewMedicalRecord.head}
                     </td>
                   </tr>
                 </>
@@ -322,7 +322,7 @@ export default function ViewMedicalRecordPage() {
                       หน้า
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.face_detail || "ปกติ"}
+                      {viewMedicalRecord.face_detail || viewMedicalRecord.face}
                     </td>
                   </tr>
                 </>
@@ -335,7 +335,7 @@ export default function ViewMedicalRecordPage() {
                       ตา
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.eyes_detail || "ปกติ"}
+                      {viewMedicalRecord.eyes_detail || viewMedicalRecord.eyes}
                     </td>
                   </tr>
                 </>
@@ -348,7 +348,8 @@ export default function ViewMedicalRecordPage() {
                       ช่องปาก
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.mouth_detail || "ปกติ"}
+                      {viewMedicalRecord.mouth_detail ||
+                        viewMedicalRecord.mouth}
                     </td>
                   </tr>
                 </>
@@ -361,7 +362,8 @@ export default function ViewMedicalRecordPage() {
                       ลิ้น
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.tongue_detail || "ปกติ"}
+                      {viewMedicalRecord.tongue_detail ||
+                        viewMedicalRecord.tongue}
                     </td>
                   </tr>
                 </>
@@ -374,7 +376,8 @@ export default function ViewMedicalRecordPage() {
                       ช่องคอ
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.throat_detail || "ปกติ"}
+                      {viewMedicalRecord.throat_detail ||
+                        viewMedicalRecord.throat}
                     </td>
                   </tr>
                 </>
@@ -387,7 +390,8 @@ export default function ViewMedicalRecordPage() {
                       ต่อมน้ำเหลือง
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.thyroid_detail || "ปกติ"}
+                      {viewMedicalRecord.thyroid_detail ||
+                        viewMedicalRecord.thyroid}
                     </td>
                   </tr>
                 </>
@@ -400,7 +404,8 @@ export default function ViewMedicalRecordPage() {
                       เต้านม
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.breasts_detail || "ปกติ"}
+                      {viewMedicalRecord.breasts_detail ||
+                        viewMedicalRecord.breasts}
                     </td>
                   </tr>
                 </>
@@ -413,7 +418,8 @@ export default function ViewMedicalRecordPage() {
                       ทรวงอก
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.chest_detail || "ปกติ"}
+                      {viewMedicalRecord.chest_detail ||
+                        viewMedicalRecord.chest}
                     </td>
                   </tr>
                 </>
@@ -426,7 +432,8 @@ export default function ViewMedicalRecordPage() {
                       ระบบไหวเวียนโลหิต
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.circulatory_system_detail || "ปกติ"}
+                      {viewMedicalRecord.circulatory_system_detail ||
+                        viewMedicalRecord.circulatory_system}
                     </td>
                   </tr>
                 </>
@@ -439,7 +446,8 @@ export default function ViewMedicalRecordPage() {
                       ท้อง
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.abdomen_detail || "ปกติ"}
+                      {viewMedicalRecord.abdomen_detail ||
+                        viewMedicalRecord.abdomen}
                     </td>
                   </tr>
                 </>
@@ -452,7 +460,8 @@ export default function ViewMedicalRecordPage() {
                       ระบบสืบพันธ์
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.reproductive_system_detail || "ปกติ"}
+                      {viewMedicalRecord.reproductive_system_detail ||
+                        viewMedicalRecord.reproductive_system}
                     </td>
                   </tr>
                 </>
@@ -466,7 +475,7 @@ export default function ViewMedicalRecordPage() {
                     </th>
                     <td className="px-6 py-1">
                       {viewMedicalRecord.musculoskeletal_system_detail ||
-                        "ปกติ"}
+                        viewMedicalRecord.musculoskeletal_system}
                     </td>
                   </tr>
                 </>
@@ -479,7 +488,8 @@ export default function ViewMedicalRecordPage() {
                       ระบบประสาท
                     </th>
                     <td className="px-6 py-1">
-                      {viewMedicalRecord.nervous_system_detail || "ปกติ"}
+                      {viewMedicalRecord.nervous_system_detail ||
+                        viewMedicalRecord.nervous_system}
                     </td>
                   </tr>
                 </>

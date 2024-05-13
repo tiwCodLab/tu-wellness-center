@@ -29,13 +29,15 @@ export default function NewmedicalRecord() {
   const formattedDate = `${currentYear}-${currentMonth}-${currentDay}`;
   const formattedTime = `${currentHours}:${currentMinutes}:${currentSeconds}`;
 
+  const [user, SetUser] = useState(null);
+
   const [medicalRecord, setMedicalRecord] = useState({
     medicalRecord_id: "",
     patient: initialPatientID,
     visittime: formattedTime, // เวลาปัจจุบัน
     visitdate: formattedDate,
     // visitdate: new Date().toLocaleDateString("en-GB").split("/").join("-"),
-    doctor: doctorName,
+    doctor: user,
     chief_complaint: "",
     physical_exam: "",
     diagnosis: "",
@@ -112,31 +114,34 @@ export default function NewmedicalRecord() {
     remarks: "",
   });
 
-  // const [medicalCounseling, setMedicalCounseling] = useState({
-  //   patient: initialPatientID,
-  //   visittime: formattedTime, // เวลาปัจจุบัน
-  //   visitdate: formattedDate,
-  //   // visitdate: new Date().toLocaleDateString("en-GB").split("/").join("-"),
-  //   psychologist: doctorName,
-  //   format: "",
-  //   firstproblems: "",
-  //   problems: "",
-  //   behavior: "",
-  //   counseling_result: "",
-  //   counseling_plan: "",
-  //   assistance: "",
-  //   form_2q: "",
-  //   form_9q: "",
-  //   form_8q: "",
-  //   form_st_5: "",
-  //   form_gad: "",
-  //   remarks: "",
-  //   appointment_date: "",
-  //   appointment_time: "",
-  // });
-  // จิต
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const authToken = localStorage.getItem("token");
+        const response = await axios.get(`/api/user/users/${doctorName}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+        SetUser(response.data); // Set user data fetched from API
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  // ถึงตรงนี้
+    fetchUser();
+  }, [doctorName]);
+
+  useEffect(() => {
+    // Once the user data is available, update the medical record state
+    if (user) {
+      setMedicalRecord((prevState) => ({
+        ...prevState,
+        doctor: `${user.firstname} ${user.lastname}`, // Concatenate first name and last name
+      }));
+    }
+  }, [user]);
 
   const handleInputChange = (fieldName, value) => {
     setMedicalRecord({ ...medicalRecord, [fieldName]: value });
@@ -302,7 +307,8 @@ export default function NewmedicalRecord() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        // ทำสิ่งที่ต้องการหากเกิดข้อผิดพลาดในการโพสต์ข้อมูล
+        // แสดง Alert เมื่อมีข้อผิดพลาด
+        alert("จำนวนยาหรือเวชภัณฑ์ไม่เพียงพอ ไม่เพียงพอ");
       });
   };
 
