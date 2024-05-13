@@ -34,7 +34,6 @@ import Editmedicalreacord, {
 } from "./page/Nursepage/EditmedicalrecordPage";
 import HomePage from "./page/HomePage";
 import UserPage from "./page/Adminpage/UserPage";
-import SecretPage from "./page/SecretPage";
 import AddpatientPage from "./page/Nursepage/AddpatientPage";
 import PatientPage from "./page/Adminpage/PatientPage";
 import UpdatePatientPage, {
@@ -295,7 +294,6 @@ function RouterApp() {
               element={<BarChartmedicationSup />}
             />
           </Route>
-          <Route path="secret" element={<SecretPage />} />
         </Route>
 
         <Route
